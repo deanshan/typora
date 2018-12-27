@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>background-clip演示</title>
+	<style>
+		.container{
+			width: 800px;
+			height: 500px;
+			border: rgba(0, 0, 0, 0.1) 20px solid;
+			/* border: transparent 20px solid; */
+			padding: 30px;
+			background-image:  url(images/1.jpg)  ;
+			background-repeat: no-repeat;
+			background-color: orange;
+
+			/* 规定背景的绘制区域 ,用来控制背景（背景色和背景图片）的显示区域  默认 border-box */
+			background-clip: content-box;
+			
+			/* 决定背景图片的定位原点  默认 padding-box
+			background-origin: border-box; */
+
+			background-origin: border-box; 
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		
+	</div>
+	
+</body>
+</html>

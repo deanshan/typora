@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>太极八卦</title>
+	<style>
+		#canvas {
+			background: url(coordinate.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="800"></canvas>
+	
+	<script>
+		var canvas = document.querySelector('#canvas');
+		var ctx = canvas.getContext("2d");
+
+		// 外部大圆
+		ctx.beginPath();
+		ctx.arc(300,300,165,0,Math.PI*2);
+		ctx.stroke();
+		// 左半圆
+		ctx.beginPath();
+		ctx.fillStyle = "#000";
+		ctx.arc(300,300,160,Math.PI/2,Math.PI*1.5);
+		ctx.stroke();
+		ctx.fill();
+
+		// 右半圆
+		ctx.beginPath();
+		ctx.fillStyle = "#fff";
+		ctx.arc(300,300,160,Math.PI*1.5,Math.PI/2);
+		ctx.stroke();
+		ctx.fill();
+
+		// 上面半圆
+		ctx.beginPath();
+		ctx.fillStyle = "#fff";
+		ctx.arc(300,220,80,Math.PI/2,Math.PI*1.5);
+		ctx.stroke();
+		ctx.fill();
+
+		// 黑色圆点
+		
+		ctx.beginPath();
+		ctx.fillStyle = "#000";
+		ctx.arc(300,220,10,0,Math.PI*2);
+		ctx.stroke();
+		ctx.fill();
+
+		// 下面半圆的圆点
+		ctx.beginPath();
+		ctx.fillStyle = "#000";
+		ctx.arc(300,380,80,Math.PI*1.5,Math.PI/2);
+		ctx.stroke();
+		ctx.fill();
+
+		// 白色圆点
+		ctx.beginPath();
+		ctx.fillStyle = "#fff";
+		ctx.arc(300,380,10,0,Math.PI*2);
+		ctx.stroke();
+		ctx.fill();
+
+		// 外部八卦线条
+		// 正上方
+		for (var i = 1; i < 4; i++) {
+			ctx.beginPath();
+			ctx.fillStyle = "#000";
+			ctx.lineWidth = "10";
+			ctx.moveTo(250,20+i*30);
+			ctx.lineTo(350,20+i*30);
+			ctx.stroke();
+			ctx.fill();
+		}
+		// 正下方
+		for (var i = 0; i < 2; i++) {
+			for (var j = 1; j < 4; j++) {
+				ctx.beginPath();
+				ctx.fillStyle = "#000";
+				ctx.lineWidth = "10";
+				ctx.moveTo(250+i*60,460+j*30);
+				ctx.lineTo(290+i*60,460+j*30);
+				ctx.stroke();
+				ctx.fill();
+			}
+		}
+		// 正左边
+		for (var i = 0; i < 2; i++) {
+			ctx.beginPath();
+			ctx.fillStyle = "#000";
+			ctx.lineWidth = "10";
+			ctx.moveTo(50+ i*60,250);
+			ctx.lineTo(50+ i*60,350);
+			ctx.stroke();
+			ctx.fill();
+
+			ctx.beginPath();
+			ctx.fillStyle = "#000";
+			ctx.lineWidth = "10";
+			ctx.moveTo(80,250+i*60);
+			ctx.lineTo(80,290+i*60);
+			ctx.stroke();
+			ctx.fill();
+		}
+		// 正右边
+		for (var i = 0; i < 2; i++) {
+			for (var j = 0; j < 2; j++) {
+				ctx.beginPath();
+				ctx.fillStyle = "#000";
+				ctx.lineWidth = "10";
+				ctx.moveTo(490+ i*60,250+j*60);
+				ctx.lineTo(490+ i*60,290+j*60);
+				ctx.stroke();
+				ctx.fill();
+			}
+		}
+		ctx.beginPath();
+		ctx.fillStyle = "#000";
+		ctx.lineWidth = "10";
+		ctx.moveTo(520,250);
+		ctx.lineTo(520,350);
+		ctx.stroke();
+		ctx.fill();
+		// 左上方
+		for (var i = 0; i < 2; i++) {
+			ctx.beginPath();
+			ctx.fillStyle = "#000";
+			ctx.lineWidth = "10";
+			ctx.moveTo(170 + i*25,100+i*25);
+			ctx.lineTo(100 + i*25,170+i*25);
+			ctx.stroke();
+			ctx.fill();
+		}
+		for (var i = 0; i < 2; i++) {
+			ctx.beginPath();
+			ctx.fillStyle = "#000";
+			ctx.lineWidth = "10";
+			ctx.moveTo(145-i*40,75+i*40);
+			ctx.lineTo(115-i*40 ,105+i*40);
+			ctx.stroke();
+			ctx.fill();
+		}
+		// 右下方
+		for (var i = 0; i < 2; i++) {
+			for (var j = 0; j < 2; j++) {
+				ctx.beginPath();
+				ctx.fillStyle = "#000";
+				ctx.lineWidth = "10";
+				ctx.moveTo(475 - i*40+j*25,405+i*40+j*25);
+				ctx.lineTo(445 - i*40+j*25,435+i*40+j*25);
+				ctx.stroke();
+				ctx.fill();
+			}
+		}
+		ctx.beginPath();
+		ctx.fillStyle = "#000";
+		ctx.lineWidth = "10";
+		ctx.moveTo(525,455);
+		ctx.lineTo(455,525);
+		ctx.stroke();
+		ctx.fill();
+
+		// 右上方
+		for (var i = 0; i < 2; i++) {
+			ctx.beginPath();
+			ctx.fillStyle = "#000";
+			ctx.lineWidth = "10";
+			ctx.moveTo(430 + i*25,100-i*25);
+			ctx.lineTo(500 + i*25,170-i*25);
+			ctx.stroke();
+			ctx.fill();
+		}
+		for (var i = 0; i < 2; i++) {
+			ctx.beginPath();
+			ctx.fillStyle = "#000";
+			ctx.lineWidth = "10";
+			ctx.moveTo(405+i*40,125+i*40);
+			ctx.lineTo(435+i*40 ,155+i*40);
+			ctx.stroke();
+			ctx.fill();
+		}
+		// 左下方
+		for (var i = 0; i < 2; i++) {
+			for (var j = 0; j < 2; j++) {
+				ctx.beginPath();
+				ctx.fillStyle = "#000";
+				ctx.lineWidth = "10";
+				ctx.moveTo(100+i*40-j*25,430 + i*40+j*25);
+				ctx.lineTo(130+i*40-j*25,460 + i*40+j*25);
+				ctx.stroke();
+				ctx.fill();
+			}
+		}
+		ctx.beginPath();
+		ctx.fillStyle = "#000";
+		ctx.lineWidth = "10";
+		ctx.moveTo(125,405);
+		ctx.lineTo(195,475);
+		ctx.stroke();
+		ctx.fill();
+	</script>
+</body>
+</html>

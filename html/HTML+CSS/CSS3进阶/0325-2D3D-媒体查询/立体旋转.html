@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>立体旋转</title>
+	<style>
+		* {margin: 0;padding: 0;}
+		ul, li {list-style: none;}
+		html, body {width: 100%;height: 100%;}
+		#pic{
+			width: 100%;
+			padding: 20px;
+		}
+		#pic > ul {
+			width: 300px;
+			height: 180px;
+			margin: 180px auto;
+			position: relative;
+			transform-style: preserve-3d;
+			/*-webkit-perspective: 1000px;*/
+			-webkit-transform-origin: center center 90px;
+		}
+		#pic li {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+		}
+		#pic li:nth-child(1) {
+			transform: translateZ(300px);
+		}
+		#pic li:nth-child(2) {
+			-webkit-transform-origin: left;
+			transform: translateX(-180px) translateZ(40px) rotateY(-60deg);
+		}
+		#pic li:nth-child(3) {
+			-webkit-transform-origin: left;
+			transform: translateX(-180px) rotateY(60deg);
+		}
+		#pic li:nth-child(4) {
+			transform: translateZ(-260px);
+		}
+		#pic li:nth-child(5) {
+			-webkit-transform-origin: right;
+			transform: translateX(180px) translateZ(40px) rotateY(60deg);
+		}
+		#pic li:nth-child(6) {
+			-webkit-transform-origin: right;
+			transform: translateX(180px) rotateY(-60deg);
+		}
+		#pic img {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="pic">
+		<ul>
+			<li><img src="image/a1.jpg" alt=""></li>
+			<li><img src="image/a2.jpg" alt=""></li>
+			<li><img src="image/a3.jpg" alt=""></li>
+			<li><img src="image/a4.jpg" alt=""></li>
+			<li><img src="image/a5.jpg" alt=""></li>
+			<li><img src="image/a6.jpg" alt=""></li>
+		</ul>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var ul =document.querySelector('ul');
+	var deg = 0;
+	var timer = setInterval(function () {
+		deg++;
+		ul.style.transform = "rotateX(-30deg) rotateY(" + deg + "deg)";
+	},30);
+</script>

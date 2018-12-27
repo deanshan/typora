@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>人物移动</title>
+<style type="text/css">
+	body{
+		background:url(images/QixiB-bright.png) repeat-x left top;
+	}
+	.animation{
+		position:absolute;
+		top: 400px;
+		animation: boys-walk 10s linear infinite  ;
+	}
+	.bird{
+		width: 91px;
+        height: 71px;
+		background:url(images/bird.png);
+		transform:rotateY(180deg);
+		animation: bird-slow 400ms steps(1,start) infinite;
+	}
+	.body{
+		background:url(images/boy-walk.png);
+		display: inline-block;
+		width:151px;
+		height:291px;
+		position:relative;
+		left:30%;
+		animation: boy-walk 400ms steps(3,start) infinite  ; 
+	}
+	@keyframes bird-slow {
+        0% {
+            background-position: -182px 0px;
+        }
+        50% {
+            background-position: 0px 0px;
+        }
+        75% {
+            background-position: -91px 0px;
+        }
+        100% {
+            background-position: -182px 0px;
+        }
+	}
+	@keyframes boy-walk {
+	   100% { background-position: -300% 0; }
+	}
+	@keyframes boys-walk {
+			0% {
+				transform:translateX(0px);
+			}
+			100% {
+				transform:translateX(1000px);
+			}
+	}
+</style>
+</head>
+
+<body>
+	<div class="animation">
+    	<div class="bird"></div>
+        <div class="body"></div>
+    </div>
+</body>
+</html>

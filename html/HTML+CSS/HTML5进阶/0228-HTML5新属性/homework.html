@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body style {
+			display: block;/*一定要写这个属性（将自定义标签设置为块级元素）*/
+			padding:0.6em 0.8em; 
+		    border:1px dashed #ccc; 
+		    background-color:#f5f5f5; 
+		    color:#000; 
+		    font-family:Monaco, monospace; 
+		    font-size:12px; 
+		    white-space:pre-wrap;/*强制不换行*/
+		    word-wrap:break-word;
+		}
+		body > section {
+			width: 500px;
+			height: 320px;
+			border: 5px solid gray;
+			margin-left: 50px;
+			box-shadow: 2px 2px 2px #000, -2px -2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+		}
+		section > ul {
+			float: left;
+			width: 120px;
+			height: 290px;
+			background: #dddddd;
+			margin-left: 80px;
+			list-style: none;
+			padding: 0;
+			border: 1px solid red;
+		}
+		section > ul > li {
+			height: 30px;
+			background: #0d88c1;
+			text-align: center;
+			color: #fff;
+			font-size: 24px;
+			font-weight: bold;
+			font-family: 'simsun';
+			margin-bottom: 2px;
+		}
+	</style>
+</head>
+<body>
+<!-- 1、html4和HTML5的不同之处，HTML5的优缺点，简述HTML5和H5的区别 -->
+	<details>
+		<summary>
+			<h3>1、html4和HTML5的不同之处，HTML5的优缺点，简述HTML5和H5的区别</h3>
+		</summary>
+		<p>html4和HTML5的不同之处：HTML5简化了语法(如doctype的声明)，HTML5新增了些标签、属性、接口并删除了部分标签、属性、接口</p>
+		<p>HTML5的优缺点：1、部分浏览器并不能完全兼容HTML5，造成用户体验不佳。
+			2、自从它诞生后，它的原则就是所有的技术必须是开放的，不准有专利限制，这方面也是引起争议的方面</p>
+		<p>HTML5和H5的区别：1、HTML5是定义 HTML 标准的最新的版本，2012年推出的HTML最新标准。
+							2、H5:是指HTML5+CSS3+JavaScript等技术的组合</p>
+	</details>
+<!-- 2、在线编辑样式 -->
+	<details>
+		<summary><h3>2、在线编辑样式</h3></summary>
+		<div class="box"></div>
+		<!-- contenteditable：规定元素是否可以被编辑 -->
+		<style contenteditable>
+			h3 {
+				display: inline-block;
+			}
+			.box {
+				width: 500px;
+				height: 100px;
+				background: red;
+				border: 5px solid yellow;
+				margin: 0 auto;
+			}
+		</style>
+	</details>	
+<!-- 3、列表的左右拖放 -->
+	<h3>3、列表的左右拖放</h3>
+	<section>
+		<ul>
+			<li draggable="true">index1</li>
+			<li draggable="true">index2</li>
+			<li draggable="true">index3</li>
+			<li draggable="true">index4</li>
+			<li draggable="true">index5</li>
+		</ul>
+		<ul>
+			<li draggable="true">demo1</li>
+			<li draggable="true">demo2</li>
+			<li draggable="true">demo3</li>
+			<li draggable="true">demo4</li>
+		</ul>
+	</section>
+</body>
+</html>
+<script>
+	var uls = document.querySelectorAll('ul');
+	var lis = document.querySelectorAll('li');
+	var eleDrag = null;
+
+	// 给所有列表项添加ondragstart事件
+	for (var i = lis.length - 1; i >= 0; i--) {
+		lis[i].ondragstart = function (e){
+			// 获取被拖动元素对象
+			eleDrag = e.target;
+		};
+	}
+	for (var i = uls.length - 1; i >= 0; i--) {
+		// 给放置被拖动的数据的区域添加事件
+		uls[i].ondragover = function (e) {
+			// 阻止默认事件
+			e.preventDefault();
+		}
+		// 放置数据时所触发的事件
+		uls[i].ondrop = function (e) {
+			// 阻止默认事件
+			e.preventDefault();
+			//判断是否拖动元素
+			if (eleDrag) {
+				// 删除之前元素被拖动的子元素
+				eleDrag.parentNode.removeChild(eleDrag);
+				//在当前的元素中追加子元素
+				this.appendChild(eleDrag);
+			}	
+		}
+	}
+</script>

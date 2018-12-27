@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Timeline</title>
+	<style>
+		ul,li{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		html{
+			background: #48b379;
+		}
+		body{
+			height: 100%;
+			width: 1200px;
+			margin: 0 auto;
+			color: #fff;			
+		}
+		.timeline{
+			/* min-height: 500px; */
+			margin:50px 0 30px 120px;
+			border-left: 8px #fff solid;
+		}
+		.radio{
+			display: none;
+		}
+		label{
+			font-size: 24px;
+			line-height: 70px;
+			cursor: pointer;
+		}
+		ul li{
+			position: relative;
+			padding-left: 40px;
+			margin: 40px 0;
+		}
+		ul li .content{
+			transition:  all 0.3s;
+		}
+		ul li .content .circle{
+			position: absolute;
+			left: -14px;
+			top: 50%;
+			margin-top: -10px;
+			width: 10px;
+			height: 10px;
+			background: #48b379;
+			border: 5px solid;
+			border-radius: 50%;
+		}
+		ul li .content .date{
+			position: absolute;
+			left: -120px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		ul li .content p{
+			/* display: none; */
+			height: 0;
+			overflow: hidden;
+			opacity: 0;
+			transition: opacity 0.3s ease 0.3s;
+		}
+		.radio:checked ~ .content{
+			
+			padding: 20px;
+			border: #fff 2px solid;
+			border-radius: 5px;
+			/* //transform: translateX(10px); */
+		}
+		.radio:checked ~ .content label{
+			line-height: 30px;
+		}
+		.radio:checked ~ .content .circle{
+			background-color: #f98262;
+		}
+		.radio:checked ~ .content p{
+			display: block;
+			height: auto;
+			opacity: 1;
+			transition: opacity 0.3s ease 0.3s;
+		}
+		.radio:checked ~ .content::before{
+			content: "";
+			position: absolute;
+			left: 8px;
+			top: 50%;
+
+			/* border-right: #fff 20px solid;
+			border-top: transparent 20px solid;
+			border-bottom: transparent 20px solid; */
+			width: 36px;
+			height: 36px;
+			background: #48b379;
+			border: 2px #fff solid;
+			border-right: 0;
+			border-top: 0;
+			transform: rotate(45deg) translateY(-50%);
+		}
+
+	</style>
+</head>
+<body>
+	
+	<h1>CSS3 TIMELINE</h1>
+	<p>Please set the $vertical variable to false to see the horizontal version.</p>
+
+	<div class="timeline">
+		<ul>
+			<li>
+				<input type="radio" name="timeline" id="timeline-1" class="radio" checked>
+				
+				<div class="content">
+				<label for="timeline-1">Lorem ipsum dolor sit amet</label>
+					<div class="circle"></div>
+					<div class="date">12 May 2013</div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus dicta qui est optio rerum.</p>
+				</div>
+			</li>
+			<li>
+				<input type="radio" name="timeline" id="timeline-2" class="radio">
+				
+				<div class="content">
+				<label for="timeline-2">Lorem ipsum dolor sit amet</label>
+					<div class="circle"></div>
+					<div class="date">10 May 2013</div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus dicta qui est optio rerum.</p>
+				</div>
+			</li>
+			<li>
+				<input type="radio" name="timeline" id="timeline-3" class="radio">
+				
+				<div class="content">
+				<label for="timeline-3">Lorem ipsum dolor sit amet</label>
+					<div class="circle"></div>
+					<div class="date">03 May 2013</div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ea necessitatibus quo velit natus cupiditate qui alias possimus ab praesentium nostrum quidem obcaecati nesciunt! Molestiae officiis voluptate excepturi rem veritatis eum aliquam qui laborum non ipsam ullam tempore reprehenderit illum eligendi cumque mollitia temporibus! Natus dicta qui est optio rerum.</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+</body>
+</html>

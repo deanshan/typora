@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>本地数据库</title>
+    <style type="text/css">
+        body{
+            width: 100%;
+            height: 100%;
+            background: #000;
+            clear: both;
+        }
+        fieldset {
+            height: 600px;
+            float: left;
+        }
+        fieldset > legend {
+            color: #fff;
+            font: bold 30px '隶书';
+        }
+        .rain ,.border {
+            height: 510px;
+            width: 400px;
+        }
+        .rain {
+            margin: 0 auto;
+            padding: 10px 20px 20px 10px;
+            box-shadow: 8px 8px 8px rgba(0,0,0,1) inset, -9px -9px 8px rgba(0,0,0,1) inset;
+        }
+        .border {
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .rain ,.border ,.rain .start {
+            background: #3399ff -webkit-linear-gradient(left, #09BA5E 0%, #00C7CE 15%, #3472CF 26%, #00C7CE 48%, #0CCF91 91%, #09BA5E 100%) 0 0 repeat-x;
+        }
+        .rain .end {
+            background-position: -5000px 0;
+            transition: background-position 20s linear;
+        }
+        .border.unfocus{
+            background: #333;
+            box-shadow: 0px 0px 15px rgba(255,255,255,0.2);
+        }
+        .rain.unfocus {
+            background: #000;
+        }
+
+        form, .tableInfo {
+            clear: both;
+            background: #212121;
+            border-radius: 5px;
+            height: 100%;
+            width: 100%;
+            background: -webkit-radial-gradient(50% 50%, closest-corner, #242424 0%, #090909 60% );
+            background: -moz-radial-gradient(50% 50%, closest-corner, #242424 0%, #090909 60% );
+        }
+        form > label {
+            display: block;
+            padding: 10px 10px 5px 15px;
+            font: bold 24px '隶书';
+            color: #777;
+        }
+        form > input {
+            display: block;
+            margin: 5px 10px 10px 15px;
+            width: 85%;
+            background: #111;
+            -moz-box-shadow: 0px 0px 4px #000 inset;
+            -webkit-box-shadow: 0px 0px 4px #000 inset;
+            box-shadow: 0px 0px 4px #000 inset;
+            outline: 1px solid #333;
+            border: 1px solid #000;
+            padding: 5px;
+            color: #444;
+            font: bold 20px '隶书';
+        }
+        form > .sex {
+            width: 85%;
+            padding: 10px 10px 5px 15px;
+            font: bold 24px '隶书';
+            color: #777;
+        }
+        form > .sex > label {
+            margin-right: 40px;
+        }
+        form input:focus {
+            outline: 1px solid #555;
+            color: #FFF;
+        }
+        input[type="radio"]:checked + label{
+            color: #fff;
+        }
+        input[type="button"] {
+            clear: both;
+            width: 88%;
+            color: #999;
+            padding: 5px 10px;
+            float: left;
+            margin-top: 20px;
+            border: 2px solid #000;
+            font-weight: lighter;
+            border-radius: 15px;
+            background: #45484d -webkit-linear-gradient(to right, #222, #111);
+            box-shadow: 1px 1px 1px #000, 1px 1px 0px rgba(255,255,255,0.3) inset;
+            text-shadow: 0.5px 0.5px 1px #fff;  
+        }
+        .tableInfo {
+            font: bold 20px '隶书';
+            overflow: auto;
+            text-align: center;
+            position: relative;
+        }
+        .tableInfo > table {
+            color: #fff;
+            margin: 20px 10px;
+            position: relative;
+        }
+        .tableInfo > table button {
+            cursor: pointer;
+            font: 20px '隶书';
+            background: #3c3939;
+            width: 80px;
+            color: #ccc;
+            padding: 1px 10px;
+            border: 2px solid #000;
+            font-weight: lighter;
+            border-radius: 15px;
+            box-shadow: 1px 1px 1px #000, 1px 1px 0px rgba(255,255,255,0.3) inset;
+            text-shadow: 1px 1px 1px #000; 
+        }
+        .tableInfo > table button:focus {
+            font-weight: bold;
+            color: #fff;
+        }
+        .add_chaxun {
+            width: 60%;
+            margin: 0px auto;
+        }
+        .add_chaxun > #cahxunID {
+            /*margin: 5px 10px 10px 0px;*/
+            width: 200px;
+            background: #111;
+            -moz-box-shadow: 0px 0px 4px #000 inset;
+            -webkit-box-shadow: 0px 0px 4px #000 inset;
+            box-shadow: 0px 0px 4px #000 inset;
+            outline: 1px solid #333;
+            border: 1px solid #000;
+            padding: 5px;
+            color: #fff;
+            font: bold 20px '隶书';
+        }
+        .add_chaxun > button {
+            font: 20px '隶书';
+            background: #3c3939;
+            width: 100px;
+            /*margin-right: 30px;*/
+            color: #ccc;
+            padding: 5px 10px;
+            border: 2px solid #000;
+            font-weight: lighter;
+            border-radius: 15px;
+            box-shadow: 1px 1px 1px #000, 1px 1px 0px rgba(255,255,255,0.3) inset;
+            text-shadow: 1px 1px 1px #000; 
+        }
+        button:focus {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /*弹出层遮罩*/
+        .layer-mask{
+            z-index: 99999;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.5;
+            display: none;
+        }
+        /*弹出层窗体*/
+        .layer-pop{
+            z-index: 100000;
+            position: fixed;
+            top: -30px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background: #000;
+            display: none;
+        }
+        /*弹出层关闭按钮*/
+        .layer-close{
+            float: right;
+            width: 24px;
+            height: 24px;
+            border: 3px solid #fff;
+            text-align: center;
+            line-height: 24px;
+            border-radius: 50%;
+            background: #eee;
+            margin-right: -12px;
+            margin-top: -12px;
+        }
+        .layer-close:hover{
+            cursor: pointer;
+            background: #ccc;
+            color: #fff;
+        }
+    </style>
+    <script  src="jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            $('input').on('focus', function(){
+                $('.rain,.border').addClass('end').removeClass('unfocus start');
+            });
+            $('input').on('blur', function(){
+                $('.rain,.border').addClass('unfocus start').removeClass('end');
+            });
+            $('input').first().delay(800).queue(function() {
+                $(this).focus();
+            });
+            $('table')
+                .on('mouseover', function () {
+                    $('.rain,.border').addClass('end').removeClass('unfocus start');
+                })
+                .on('mouseout', function () {
+                    $('.rain,.border').addClass('unfocus start').removeClass('end');
+                })
+        });
+    </script>
+</head>
+<body>
+    <div id="info">
+        <fieldset style="width: 35%;">
+            <legend>学生信息登记表</legend>
+            <div class="rain" style="height: 540px">
+                <div class="border start" style="height: 540px">
+                    <form action="" method="get">                       
+                        <label for="">学号</label>
+                        <input id="studentID" type="text" name="studentID" placeholder="请输入学号" required/>
+
+                        <label for="">姓名</label>
+                        <input id="name" type="text" name="name" placeholder="请输入姓名" required/>
+                        
+                        <div class="sex">
+                            <label for="">性别</label>
+                            <input type="radio" name="sex" id="male" value="男" required/>
+                            <label for="male">男</label>
+                            <input type="radio" name="sex" id="female" value="女" required/>
+                            <label for="female">女</label>
+                        </div>
+                        
+                        <label for="">出生日期</label>
+                        <input id="birthDate" type="date" name="birthDate" placeholder="请输入出生日期" required/>
+
+                        <label for="">联系电话</label>
+                        <input id="number" type="number" name="number" placeholder="请输入电话号码" required/>
+                        
+                        <input id="save" type="button" value="保存"/>
+                    </form>
+                </div>
+            </div>
+        </fieldset> 
+    </div>
+    
+    <fieldset style="width: 55%;">
+        <legend>学生信息查询界面</legend>
+        <div class="rain" style="width: 700px">
+            <div class="border start" style="width: 700px">
+                <div class="tableInfo">
+                    <table border="1" cellpadding="5">
+                        <thead>
+                            <tr>
+                                <th width="90px">学号</th>
+                                <th width="90px">姓名</th>
+                                <th width="60px">性别</th>
+                                <th width="130px">出生日期</th>
+                                <th width="130px">联系电话</th>
+                                <th width="90px">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="add_chaxun">
+            <button id="addata" type="button">添加</button>
+            <input id="cahxunID" type="text" name="cahxunID" placeholder="请输入要查询的学号">
+            <button id="cahxun" type="button">查询</button>
+        </div>
+    </fieldset>
+    <!--弹出层遮罩层-->
+    <div id="layer-mask" class="layer-mask"></div>
+    <!--弹出层窗体-->
+    <div id="layer-pop" class="layer-pop">
+        <!--弹出层关闭按钮-->
+        <div id="layer-close" class="layer-close">×</div>
+        <!--弹出层内容区域-->
+        <div id="layer-content" class="layer-content"></div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    // $(function () {
+        if (!window.indexedDB) {
+            window.alert("Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available.");
+        }
+
+//----- 创建或打开数据库（如果数据库不存在，则创建一个数据库）
+        var db;//获取操作数据库的DB对象
+        function openDB(dbName, version) { 
+            // 请求连接到数据库，如果数据库不存在，则创建一个数据库
+            // 只返回一个IDBOpenDBRequest对象，而需要得到的DB对象则在其result属性中
+            var request = window.indexedDB.open(dbName, version);
+            
+            // 请求失败事件
+            request.onerror = function (e) {
+                alert('OPen Error!');
+            }
+            // 请求成功,创建或打开数据库成功
+            request.onsuccess = function (e) {
+                // 把request获取的DB对象赋值db变量，就可以使用db来访问创建的indexedDB
+                db = e.target.result;
+                // 打开数据库后，获取并显示数据库已存在的数据
+                getAllData("studentInfo");
+            }
+            // 在版本发生变动时会触发upgradeneeded事件。在该事件里可以创建和删除对象存储空间以及构建和删除索引。
+            request.onupgradeneeded = function (e) {
+            // ----创建一个数据库存储对象，相当于一个数据库表
+                // 调用数据库实例的createObjectStore方法可以创建object store
+                var store = this.result.createObjectStore("studentInfo",{
+                    // 唯一的标识keyPath
+                    keyPath:"studentID",
+                    //自动生成数字键
+                    autoIncrement:true
+                });
+            // ------创建索引
+                // 定义存储对象的数据项
+                store.createIndex('studentID', 'studentID', { unique: true   });
+                store.createIndex('name', 'name');
+                store.createIndex('sex', 'sex');
+                store.createIndex('birthDate', 'birthDate');
+                store.createIndex('number', 'number');
+            }
+        }
+        // 删除指定数据库
+        function deleteDB(dbName) {
+            indexedDB.deleteDatabase(dbName);
+        }
+        // 数据库信息对象
+        var dataBase = {
+            dbName : "student",
+            version : 2
+        }
+        openDB(dataBase.dbName, dataBase.version);
+        // deleteDB(dataBase.dbName);
+        
+        // 使用新数据库前，需要开始一个事务,并获取object store (存储对象)，即表
+        function getStore(storeName) {
+            // 打开一个事务
+           var transaction = db.transaction([storeName], "readwrite");
+           // 获取存储对象
+           var objectStore = transaction.objectStore(storeName); 
+
+           return   objectStore;
+        }
+// -----获取所有数据-----------------------------------------------------------
+        function getAllData(storeName) {
+            var getData = getStore(storeName).getAll();
+
+            getData.onerror = function (e) {console.log("获取失败");}
+
+            getData.onsuccess = function (event) {
+                var stuList = this.result;
+                var tr = "";
+                for (var i = this.result.length - 1; i >= 0; i--) {
+                    tr += '<tr>' +
+                            '<td>' + stuList[i].studentID + '</td>' +
+                            '<td>' + stuList[i].name + '</td>' +
+                            '<td>' + stuList[i].sex + '</td>' +
+                            '<td>' + stuList[i].birthDate + '</td>' +
+                            '<td>' + stuList[i].number + '</td>' +
+                            '<td><button type="button" onclick="deleteData(\''+stuList[i].studentID+'\')">删除</button><button type="button" onclick="updataData(\''+stuList[i].studentID+'\')">修改</button></td>' +
+                        '</tr>';
+                }
+                $('tbody')[0].innerHTML = tr;
+            } 
+        }
+// -----添加/更新数据----------------------------------------
+        function addData(storeName) {
+            var stuInfo = {
+                    studentID: $('#info #studentID').val(),
+                    name:      $('#info #name').val(),
+                    sex:       $('#info input:checked').val(),
+                    birthDate: $('#info #birthDate').val(),
+                    number:    $('#info #number').val()
+            };
+            var request = getStore(storeName).put(stuInfo);
+
+            request.onerror = function (e) {console.log("添加失败");}
+
+            request.onsuccess = function (e) {
+                console.log(e);
+                getAllData(storeName);
+            }
+        }
+        $('#save').on('click', function () { 
+            addData("studentInfo");
+            $('form')[0].reset();
+
+        })
+// -----删除数据---------------------------------------------
+        function deleteData(studentID) {
+            var request = getStore("studentInfo").delete(studentID);
+            request.onerror = function () {
+                alert("删除失败");
+            }
+            request.onsuccess = function (e) {
+                getAllData("studentInfo");
+                alert("删除成功！");
+            }
+        }
+// -----修改数据---------------------------------------------
+    function updataData(studentID) {
+        showLayer();
+        var request = getStore("studentInfo").get(studentID);
+
+        request.onerror = function () {
+            alert("更新失败");
+        }
+
+        request.onsuccess = function (e) {
+            $('#layer-content #studentID').val(this.result.studentID);
+            $('#layer-content #name').val(this.result.name);
+            $('#layer-content input').checked;
+            $('#layer-content #birthDate').val(this.result.birthDate);
+            $('#layer-content #number').val(this.result.number);
+            $('#layer-content #save').on('click', function () { 
+                var stuInfo = {
+                        studentID: $('#layer-content #studentID').val(),
+                        name:      $('#layer-content #name').val(),
+                        sex:       $('#layer-content input:checked').val(),
+                        birthDate: $('#layer-content #birthDate').val(),
+                        number:    $('#layer-content #number').val()
+                };
+                var request = getStore("studentInfo").put(stuInfo);
+
+                request.onerror = function (e) {console.log("添加失败");}
+
+                request.onsuccess = function (e) {
+                    console.log(e);
+                    getAllData("studentInfo");
+                }
+                closeLayer();
+            })
+        }
+    }
+// -----添加数据---------------------------------------------
+    $('#addata').on('click', function () {
+        showLayer();
+        
+        $('#layer-content #save').on('click', function () {
+            var stuInfo = {
+                    studentID: $('#layer-content #studentID').val(),
+                    name:      $('#layer-content #name').val(),
+                    sex:       $('#layer-content input:checked').val(),
+                    birthDate: $('#layer-content #birthDate').val(),
+                    number:    $('#layer-content #number').val()
+            };
+            var request = getStore("studentInfo").put(stuInfo);
+
+            request.onerror = function (e) {console.log("添加失败");}
+
+            request.onsuccess = function (e) {
+                console.log(e);
+                getAllData("studentInfo");
+            }
+            closeLayer();
+        }) 
+    })
+// -----查询数据---------------------------------------------
+    function chaxunData() {
+        showLayer();
+        var request = getStore("studentInfo").get($('#cahxunID').val());
+        request.onerror = function () {
+            alert("更新失败");
+        }
+
+        request.onsuccess = function (e) {
+            $('#layer-content #studentID').val(this.result.studentID);
+            $('#layer-content #name').val(this.result.name);
+            $('#layer-content input').checked;
+            $('#layer-content #birthDate').val(this.result.birthDate);
+            $('#layer-content #number').val(this.result.number);
+            $('#layer-content #save').on('click', function () { 
+                closeLayer();
+            })
+        }
+    }
+    $('#cahxun').on('click', function () {
+        chaxunData();
+    })
+    //弹出层
+    function showLayer(){
+        //显示弹出层遮罩
+        $('#layer-mask').show();
+        //显示弹出层窗体
+        $('#layer-pop').show();
+        //设置弹出层窗体样式
+        $('#layer-pop').css({
+            width : "500px",
+            height : "600px"
+        });
+        //填充弹出层窗体内容
+        $('#layer-content').html($('#info').html());
+        //弹出层关闭按钮绑定事件
+        $('#layer-close').click(function(){
+            //弹出层关闭
+            closeLayer();
+            //关闭的回调函数
+            $('.error-msg').html('');
+        });   
+    }
+    function closeLayer() {
+        $('#layer-mask').hide();
+        $('#layer-pop').hide();
+    }
+</script>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .stage_area {
+        width: 900px;
+        min-height: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 100px 50px;
+        background-color: #f0f0f0;
+        box-shadow: inset 0 0 3px rgba(0, 0, 0, .35);
+        -webkit-perspective: 800px;
+        -moz-perspective: 800px;
+        perspective: 800px;
+        -webkit-transition: top .5s;
+        position: relative;
+        top: 0;
+
+    }
+    
+    .container {
+        width: 128px;
+        height: 100px;
+        margin-left: -64px;
+        -webkit-transition: -webkit-transform 1s;
+        -moz-transition: -moz-transform 1s;
+        transition: transform 1s;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        position: absolute;
+        left: 50%;
+        transform: rotateY(40deg);
+
+    }
+    
+    .piece {
+        width: 128px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+        -webkit-transition: opacity 1s, -webkit-transform 1s;
+        -moz-transition: opacity 1s, -moz-transform 1s;
+        transition: opacity 1s, transform 1s;
+        position: absolute;
+        bottom: 0;
+        /* backface-visibility: hidden; */
+    }
+    
+    .remind {
+        position: absolute;
+        left: 1em;
+        top: 1em;
+    }
+    
+    .chrome_fix {
+        position: absolute;
+        left: 1em;
+        top: 3em;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="stage" class="stage_area">
+        <div id="container" class="container" ><img id="piece1" src="images/mm1.jpg" class="piece" style="transform: rotateY(0deg) translateZ(195.839px);"><img id="piece8" src="images/mm8.jpg" class="piece" style="transform: rotateY(40deg) translateZ(195.839px);"><img id="piece3" src="images/mm3.jpg" class="piece" style="transform: rotateY(80deg) translateZ(195.839px);"><img id="piece4" src="images/mm4.jpg" class="piece" style="transform: rotateY(120deg) translateZ(195.839px);"><img id="piece6" src="images/mm6.jpg" class="piece" style="transform: rotateY(160deg) translateZ(195.839px);"><img id="piece7" src="images/mm7.jpg" class="piece" style="transform: rotateY(200deg) translateZ(195.839px);"><img id="piece10" src="images/mm10.jpg" class="piece" style="transform: rotateY(240deg) translateZ(195.839px);"><img id="piece13" src="images/mm13.jpg" class="piece" style="transform: rotateY(280deg) translateZ(195.839px);"><img id="piece15" src="images/mm15.jpg" class="piece" style="transform: rotateY(320deg) translateZ(195.839px);"></div>
+    </div>
+</body>
+
+</html>

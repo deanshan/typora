@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.flip3d{
+		width:240px;height: 200px;
+		margin: 10px;
+		float: left;
+		transform-style:flat;
+
+	}
+	
+	.flip3d > .front{
+		position: absolute;
+		transform: perspective(600px) rotateY(0deg);
+		background: #fc0;
+		width:240px;
+		height: 200px;
+		border-radius: 7px;
+		backface-visibility: hidden;
+		transition: transform 0.5s linear 0s ;
+	}
+	.flip3d > .back{
+		position: absolute;
+		transform: perspective(600px) rotateY(180deg);
+		background: #fcc;
+		width:240px;
+		height: 200px;
+		border-radius: 7px;
+		backface-visibility: hidden;
+		transition: transform 0.5s linear 0s ;
+	}
+	.flip3d:hover > .front{
+		transform: perspective(600px) rotateY(-180deg);
+	}
+	.flip3d:hover > .back{
+		transform: perspective(600px) rotateY(0deg);
+	}
+</style>
+<body>
+
+<div class="flip3d">
+	<div class="back">Box -1 - Back</div>
+	<div class="front">Box -1 - Front</div>
+</div>
+
+<div class="flip3d">
+	<div class="back">Box -2 - Back</div>
+	<div class="front">Box -2 - Front</div>
+</div>
+
+<div class="flip3d">
+	<div class="back">Box -3 - Back</div>
+	<div class="front">Box -3 - Front</div>
+</div>	
+</body>
+</html>

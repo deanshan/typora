@@ -1,0 +1,163 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>3D立方体</title>
+<style type="text/css">
+	body{
+		padding:0;
+		margin:0;
+		
+	}
+	.cube{
+		margin-top:200px;
+		margin-left:300px;
+		width:300px;
+		height:300px;
+		/*position:relative;*/
+		/*transform:rotateX(-60deg) rotateY(30deg);*/
+		transform-style:preserve-3d;
+		/* animation:rotate 10s infinite linear; */
+		transform-origin: 80% 70%;
+	}
+	
+	@keyframes rotate{
+		0%{
+			transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+		}
+		100%{
+			transform:rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+		}
+	}
+	.cube div{
+		width:100%;
+		height:100%;
+		font-size:50px;
+		position: absolute;
+		left:0;
+		top:0;
+		text-align:center;
+		padding-top:150px;
+		box-sizing:border-box;
+		opacity:0.9;
+		transition: transform 0.2s;
+		background-size:300px 300px;
+		/* border-radius: 50px;
+		backface-visibility:hidden; */
+		
+		
+	}
+	.cube span{
+		width:50%;
+		height:50%;
+		font-size:50px;
+		position: absolute;
+		margin:75px;
+		padding-top:75px;
+		text-align:center;
+		box-sizing:border-box;
+		opacity:1;
+		transition: transform 0.2s;
+		background-size:150px 150px;
+		
+	}
+	.front{
+		background:url(Images/1.jpg) no-repeat center;
+		-webkit-transform: translateZ(150px);
+	}
+	.back{
+		background:url(Images/2.jpg) no-repeat center;
+		-webkit-transform: translateZ(-150px);
+		}
+	.left{
+		background:url(Images/3.jpg) no-repeat center;
+		-webkit-transform:rotateY(90deg) translateZ(-150px);
+	}
+	.right{
+		background:url(Images/4.jpg) no-repeat center;
+		-webkit-transform:rotateY(90deg) translateZ(150px);
+	}
+	.top{
+		background:url(Images/5.jpg) no-repeat center;
+		-webkit-transform:rotateX(90deg)  translateZ(150px);
+	}
+	.bottom{
+		background:url(Images/6.jpg) no-repeat center;
+		-webkit-transform:rotateX(90deg)  translateZ(-150px);
+	}
+	
+	.cube:hover .front{
+		
+		background-color:red;
+		-webkit-transform: translateZ(300px);
+	}
+	.cube:hover .back{
+		background-color:orange;
+		-webkit-transform: translateZ(-300px);
+		}
+	.cube:hover .left{
+		background-color:pink;
+		-webkit-transform:rotateY(90deg) translateZ(-300px);
+	}
+	.cube:hover .right{
+		background-color:green;
+		-webkit-transform:rotateY(90deg) translateZ(300px);
+	}
+	.cube:hover .top{
+		background-color:blue;
+		-webkit-transform:rotateX(90deg)  translateZ(300px);
+	}
+	.cube:hover .bottom{
+		background-color: yellow;
+		-webkit-transform:rotateX(90deg)  translateZ(-300px);
+	}
+	
+	.front1{
+		background:url(Images/6.jpg) no-repeat center;
+		-webkit-transform: translateZ(75px);
+	}
+	.back1{
+		background: url(Images/1.jpg) no-repeat center;
+		-webkit-transform: translateZ(-75px);
+		}
+	.left1{
+		background: url(Images/2.jpg) no-repeat center;
+		-webkit-transform:rotateY(90deg) translateZ(-75px);
+	}
+	.right1{
+		background: url(Images/3.jpg) no-repeat center;
+		-webkit-transform:rotateY(90deg) translateZ(75px);
+	}
+	.top1{
+		background: url(Images/4.jpg) no-repeat center;
+		-webkit-transform:rotateX(90deg)  translateZ(75px);
+	}
+	.bottom1{
+		background: url(Images/5.jpg) no-repeat center;
+		-webkit-transform:rotateX(90deg)  translateZ(-75px);
+	}
+	
+	
+</style>
+</head>
+
+<body>
+
+<div class="cube">
+    <div class="front"></div>
+    <div class="back"></div>
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="top"></div>
+    <div class="bottom"></div>
+    
+    <span class="front1"></span>
+    <span class="back1"></span>
+    <span class="left1"></span>
+    <span class="right1"></span>
+    <span class="top1"></span>
+    <span class="bottom1"></span>
+</div>
+
+</body>
+</html>

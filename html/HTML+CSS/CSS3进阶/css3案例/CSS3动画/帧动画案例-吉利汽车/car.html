@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>利用background-attachment属性实现滚动视差 </title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		html,body{
+			height: 100%;
+		}
+		.bg{
+			width: 100%;
+			background: url(pic/enjoy_bg.jpg) no-repeat;
+			background-size: 100% auto;
+			background-attachment: fixed;
+		}
+		.tit{
+			width: 392px;
+			height: 180px;
+			background: url(pic/enjoy_tit.png) ;
+			position: fixed;
+			left: 50%;
+			top: 20px;
+			margin-left: -191px;
+			z-index: 3;
+			transform: scale(0);
+			animation: ws 1s 2s forwards;
+		}
+		@keyframes ws{
+			0%{ transform: scale(0); }
+			100%{transform: scale(1);}
+		}
+		/* .container{
+			background: url(pic/enjoy_tit.png) 50% 20px no-repeat ;
+			background-attachment: fixed;
+		} */
+		.car{
+			position: relative;
+			padding-top: 200px;
+		}
+		.car img{
+			display: block;
+			margin: 0 auto;
+			width: 100%;
+		}
+
+		.x3{
+			position: absolute;
+		    bottom: 60px;
+		    width: 1440px;
+		    height: 396px;
+		    left: 50%;
+		    margin-left: -720px;
+		    background: url(pic/a3.png) no-repeat 0px -4356px;
+
+		    animation: xu3 1.3s steps(11) infinite;
+		    transform:scale(1.32153);
+		}
+
+		@keyframes xu3{
+			0% { background-position:0px 0px;}
+			100%{ background-position:0px -4356px;}
+		}
+	</style>
+</head>
+<body>
+
+	<div class="bg">		
+		<div class="tit"></div>
+		<div class="car">
+			<img src="pic/enjoy_car.png" alt="">
+			<div class="x3 nxu3"></div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  	<style>
+  		div.animated2{
+  			width: 200px;
+  			height: 200px;
+  			margin: 200px;
+  			background-color: #f00;
+
+			  /* animation-duration: 3s;
+			  animation-delay: 2s;
+			  animation-iteration-count: infinite; */
+
+  		}
+      /* @keyframes zoomIn{
+        
+      } */
+  	</style>
+    <script src="../run/js/jquery-1.7.2.min.js"></script>
+    <script>
+      $(function(){
+        $("#btn").on("click",function(){
+          console.log("btn");
+          $(".animated2").addClass("animated zoomIn");
+          // setTimeout(function(){
+          //   $(".animated2").removeClass("animated zoomIn");
+          // }, 2000);
+          $(".animated2").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(){
+            $(".animated2").removeClass("animated zoomIn");
+          });
+        });
+      })
+
+    </script>
+</head>
+<body>
+	<div class="animated2 zoomIn"></div>
+  <div id="btn">点击播放动画</div>
+</body>
+</html>

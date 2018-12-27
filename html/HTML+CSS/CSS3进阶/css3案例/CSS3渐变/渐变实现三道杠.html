@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>渐变实现三道杠</title>
+	<style>
+		.three-bar{
+			width: 100px;
+			height: 100px;
+			/*  */
+			background: linear-gradient( black 20px, transparent 20px ,transparent 40px, black 40px, black 60px, transparent 60px, transparent 80px, black 80px);
+			
+
+			/* 渐变配合background-size */
+			background: linear-gradient(black 20px ,transparent 0);
+			/* background-size: 100% 40px; */
+
+
+			/* repeating-linear-gradient */
+			/* background: repeating-linear-gradient(black 0,black 20px,transparent 20px, transparent 40px); */
+		}
+	</style>
+</head>
+<body>
+	<div class="three-bar"></div>
+</body>
+</html>

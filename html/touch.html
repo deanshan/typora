@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端布局</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            var dpr = window.devicePixelRatio || 1;
+            var scale = 1 / dpr;
+            document.querySelector('meta[name="viewport"]').setAttribute('content',
+                'width=device-width, user-scalable=no, initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' +
+                scale);
+
+            var layout = document.documentElement.clientWidth || document.body.clientWidth;
+            document.querySelector('html').style.fontSize = layout / 7.5 + 'px';
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --v: 7.5;
+        }
+
+        body,
+        html {
+            height: 100vh;
+        }
+
+        body {
+            display: -webkit-flex;
+            display: flex;
+            flex-direction: column;
+            font-size: 14px !important;
+            /*初始化*/
+        }
+
+        header a,
+        footer {
+            width: 100vw;
+            height: calc(100vmin / var(--v));
+            background: red;
+            font-size: 0.5rem;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        main {
+            display: -webkit-flex;
+            display: flex;
+            flex: 1;
+            overflow-y: scroll;
+        }
+
+        /* ::-webkit-scrollbar {
+            display: none;
+        } */
+
+        nav {
+            /*flex: 0 0 calc(100vmin / var(--v));*/
+            display: block;
+            background: yellow;
+            height: 100%;
+            overflow-y: scroll;
+        }
+
+        nav a {
+            height: calc(300vmin / var(--v));
+            font-size: 0.3rem;
+            border-bottom: 2px solid #ccc;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        section {
+            display: block;
+            flex: 1;
+            background: pink;
+            height: 100%;
+            overflow-y: scroll;
+        }
+
+        section>div {
+            border-bottom: 2px solid #000;
+        }
+
+        section li {
+            display: inline-block;
+        }
+
+        section a {
+            display: inline-block;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="#">首页</a>
+    </header>
+    <main>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">热门推荐</a>
+                </li>
+                <li>
+                    <a href="#">手机数码</a>
+                </li>
+                <li>
+                    <a href="#">家用电器</a>
+                </li>
+                <li>
+                    <a href="#">电脑办公</a>
+                </li>
+                <li>
+                    <a href="#">汽车用品</a>
+                </li>
+            </ul>
+        </nav>
+        <section>
+            <div>
+                <ul>
+                    <li>
+                        <a href="#">aaa</a>
+                    </li>
+                    <li>
+                        <a href="#">bbb</a>
+                    </li>
+                    <li>
+                        <a href="#">ccc</a>
+                    </li>
+                    <li>
+                        <a href="#">ddd</a>
+                    </li>
+                    <li>
+                        <a href="#">eee</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <ul>
+                    <li>
+                        <a href="#">aaa</a>
+                    </li>
+                    <li>
+                        <a href="#">bbb</a>
+                    </li>
+                    <li>
+                        <a href="#">ccc</a>
+                    </li>
+                    <li>
+                        <a href="#">ddd</a>
+                    </li>
+                    <li>
+                        <a href="#">eee</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <ul>
+                    <li>
+                        <a href="#">aaa</a>
+                    </li>
+                    <li>
+                        <a href="#">bbb</a>
+                    </li>
+                    <li>
+                        <a href="#">ccc</a>
+                    </li>
+                    <li>
+                        <a href="#">ddd</a>
+                    </li>
+                    <li>
+                        <a href="#">eee</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <ul>
+                    <li>
+                        <a href="#">aaa</a>
+                    </li>
+                    <li>
+                        <a href="#">bbb</a>
+                    </li>
+                    <li>
+                        <a href="#">ccc</a>
+                    </li>
+                    <li>
+                        <a href="#">ddd</a>
+                    </li>
+                    <li>
+                        <a href="#">eee</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <ul>
+                    <li>
+                        <a href="#">aaa</a>
+                    </li>
+                    <li>
+                        <a href="#">bbb</a>
+                    </li>
+                    <li>
+                        <a href="#">ccc</a>
+                    </li>
+                    <li>
+                        <a href="#">ddd</a>
+                    </li>
+                    <li>
+                        <a href="#">eee</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>底部</footer>
+</body>
+
+</html>
+<script>
+
+    var body = document.querySelector('body');
+    var footer = document.querySelector('footer');
+    var startX, startY;
+    body.addEventListener('touchstart', function(e) {
+
+        startX = e.touches[0].clientX
+        startY = e.touches[0].clientY
+
+    })
+
+    body.addEventListener('touchmove', function(e) {
+
+        var moveX = e.touches[0].clientX
+        var moveY = e.touches[0].clientY
+        var x = startX - moveX
+        var y = startY - moveY
+        if (Math.abs(x) < Math.abs(y)) {
+            if (y > 0) {
+                footer.innerHTML = '正在向上滑动';
+            } else {
+                footer.innerHTML = '正在向下滑动';
+            }
+        } else {
+            if (x > 0) {
+                footer.innerHTML = '正在向左滑动';
+            } else {
+                footer.innerHTML = '正在向右滑动';
+            }
+        }
+    })
+
+    body.addEventListener('touchend', function(e) {
+
+        var endX = e.changedTouches[0].clientX;
+        var endY = e.changedTouches[0].clientY;
+        var x = startX - endX;
+        var y = startY - endY;
+        if (Math.abs(x) < Math.abs(y)) {
+            if (y > 0) {
+                footer.innerHTML = '向上滑动了' + parseInt(Math.abs(y)) + 'px';
+            } else {
+                footer.innerHTML = '向下滑动了' + parseInt(Math.abs(y)) + 'px';
+            }
+        } else {
+            if (x > 0) {
+                footer.innerHTML = '向左滑动了' + parseInt(Math.abs(x)) + 'px';
+            } else {
+                footer.innerHTML = '向右滑动了' + parseInt(Math.abs(x)) + 'px';
+            }
+        }
+    })
+</script>

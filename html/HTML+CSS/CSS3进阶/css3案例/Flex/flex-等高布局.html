@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/* CSS2.1 等高布局 */
+		/* .container {
+			overflow: hidden;
+		}
+		.container .col{
+			float: left;
+			width: 33%;			
+			background-color: #ddd;
+			padding-bottom: 99999px;
+			margin-bottom: -99999px;
+		} */
+
+		.container{
+			display: flex;
+			align-items: stretch;
+		}
+		.container .col{
+			background-color: #ddd;
+			/* width: 33%; */
+			/* flex: 1 1 0% 的简写 */
+			flex: 1;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="col">
+			<h2>泛艺学苑</h2>
+			<p>
+				As an extension to CSS, Less is not only backwards compatible with CSS, but the extra features it adds use existing CSS syntax. This makes learning Less a breeze, and if in doubt, lets you fall back to vanilla CSS
+			</p>
+		</div>
+		<div class="col">
+			<h2>泛艺学苑2</h2>
+			<p>
+				As an extension to CSS, Less is not only backwards compatible with CSS, but the extra
+			</p>
+		</div>
+		<div class="col">
+			<h2>泛艺学苑3</h2>
+			<p>
+				As an extension to CSS, Less is not only backwards compatible with CSS, but the extra features it adds use existing CSS syntax. This makes learning  Less a breeze, and if in doubt, lets you fall back to vanilla CSS Less a breeze, and if in doubt, lets you fall back to vanilla CSS
+			</p>
+		</div>
+	</div>
+	
+</body>
+</html>

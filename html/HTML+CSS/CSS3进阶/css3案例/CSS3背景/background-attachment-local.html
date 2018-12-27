@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>演示</title>
+	<style>
+	div{
+		height: 500px;
+		background: url(images/1.jpg) no-repeat;
+		overflow: scroll;
+		line-height: 500px;
+		/* 默认scroll 图片在元素的右下角 而local在内容的右下角 */
+		background-position: right bottom;
+
+		background-size: 100px 100px;
+	}
+		.scroll{
+			background-attachment: scroll
+		}
+		.fixed{
+			background-attachment: fixed
+		}
+		.local{
+			background-attachment: local
+		}
+	</style>
+</head>
+<body>
+	<div class="scroll">
+	<!-- <img src="images/1.jpg" alt=""><br> -->
+		background-attachment: scroll <br>background-attachment: scroll <br>background-attachment: scroll <br>background-attachment: scroll <br>background-attachment: scroll <br>background-attachment: scroll <br>	
+	</div>
+	<div class="fixed">
+		background-attachment: fixed <br>
+		background-attachment: fixed <br>
+		background-attachment: fixed <br>
+		background-attachment: fixed <br>background-attachment: fixed <br>background-attachment: fixed <br>
+		background-attachment: fixed <br>
+
+	</div>
+	<div class="local">
+		background-attachment: local <br>background-attachment: local <br>background-attachment: local <br>background-attachment: local <br>background-attachment: local <br>background-attachment: local <br>background-attachment: local <br>background-attachment: local <br>
+
+	</div>
+</body>
+</html>

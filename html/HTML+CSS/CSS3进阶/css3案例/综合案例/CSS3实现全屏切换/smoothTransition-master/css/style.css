@@ -1,0 +1,520 @@
+@font-face {
+	font-family: "Raphaelicons";
+	src:url("fonts/raphaelicons-webfont.eot") format('eot'),
+	    url("fonts/raphaelicons-webfont.woff") format('woff'),
+	    url("fonts/raphaelicons-webfont.ttf") format('truetype'),
+	    url("fonts/raphaelicons-webfont.svg") format('svg');
+    font-weight:normal;
+    font-style: normal;
+}
+
+body{
+	font-family: Georgia,serif;
+	background: #ddd;
+	font-weight: 400;
+	/*font-size: 15px;*/  /*body设了字号，前后不一致，后面transition all会加入过渡效果。*/ 
+	color: #333;
+	overflow: hidden;
+	-webkit-font-smoothing:antialiased;
+	   -moz-font-smoothing:antialiased;
+	    -ms-font-smoothing:antialiased;
+	     -o-font-smoothing:antialiased;
+	        font-smoothing:antialiased;
+	/*
+	↑用于设置字体的抗锯齿或者说光滑度的属性。
+    语法：font-smoothing：subpixel-antialiased|none|antialiased
+    none用于小像素的文本，s-a是浏览器默认状态，antialiased则是反锯齿。
+	*/
+}
+a{
+	text-decoration: none;
+	color: #555;
+}
+.clr{   /*清除浮动用.clr*/
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	clear: both;
+	padding: 0;	
+	margin: 0;
+}
+.st-container{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	font-family: "Josefin Slab","Myriad Pro",Arial,sans-serif;
+}
+
+.st-container>input, .st-container>a {
+	width: 20%;
+	height: 68px;
+	line-height: 68px;
+	position: fixed;
+	bottom: 0;
+	cursor: pointer;  /* hover时，鼠标变成手指*/
+}
+.st-container>input {
+    opacity: 0;            /* 	display: none;透明不占位，隐藏了就不存在了，*/
+    z-index:1000;                /*position: absolute，left: -99999;同样隐藏了就不存在了，
+                     /*而opacity,透明了仍然在，visibility同理*/
+}
+.st-container>a{
+	z-index: 10;
+	font-weight: 900;
+	font-size: 25px;
+	background-color: #e23a6e;
+	text-align: center;
+	color: #fff;
+	-webkit-transition: background-color 0.2s linear;
+	   -moz-transition: background-color 0.2s linear;
+	    -ms-transition: background-color 0.2s linear;
+	     -o-transition: background-color 0.2s linear;
+	        transition: background-color 0.2s linear;   /*鼠标离开时颜色也渐变*/
+	-webkit-text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
+	   -moz-text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
+        -ms-text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
+         -o-text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
+}
+
+#st-control-1, #st-control-1 + a {
+	left: 0%;
+}
+#st-control-2, #st-control-2 + a {
+	left: 20%;
+}
+#st-control-3, #st-control-3 + a {
+	left: 40%;
+}
+#st-control-4, #st-control-4 + a {
+	left: 60%;
+}
+#st-control-5, #st-control-5 + a {
+	left: 80%;
+}
+.st-container input:checked + a, 
+.st-container input:checked:hover + a{ /*checked定位被选中的*/
+	background-color: #ad244f;
+} 
+
+.st-container input + a:after {
+    content: "";
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border-width: 34px;
+    border-style:solid; /*注意三角形写法*/
+    border-color: transparent;
+    border-bottom-color: transparent; 
+    position: absolute;
+    z-index: -5;
+    bottom: 0%;/*放低一些防止未点击时，悬停在空白部分出现超链接鼠标指针。*/
+    left: 50%;
+    margin-left: -34px;
+    -webkit-transition: bottom 0.2s linear, border-bottom-color 0.1s linear;
+       -moz-transition: bottom 0.2s linear, border-bottom-color 0.1s linear;
+        -ms-transition: bottom 0.2s linear, border-bottom-color 0.1s linear;
+         -o-transition: bottom 0.2s linear, border-bottom-color 0.1s linear;
+            transition: bottom 0.2s linear, border-bottom-color 0.1s linear;
+            /*离开该页时，如果颜色变化较慢，三角形下移消失会因为色差而可见。
+              速度调快些就看不出来，但仍然不是最优的解决方案 。
+            */
+}
+
+.st-container input:checked + a:after {
+    content: "";
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border-width: 34px;
+    border-style: solid; 
+    border-color: transparent;
+    border-bottom-color: #ad244f; 
+    position: absolute;
+    z-index: -5;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -34px;
+    cursor: default;
+    /*border绘制的三角形，鼠标移动至其透明区域时也会出现pointer指针，这里改为默认样式投机取巧*/
+    -webkit-transition: bottom 0.2s linear 0.05s, border-bottom-color 0.2s linear 0.05s;
+       -moz-transition: bottom 0.2s linear 0.05s, border-bottom-color 0.2s linear 0.05s;
+        -ms-transition: bottom 0.2s linear 0.05s, border-bottom-color 0.2s linear 0.05s;
+         -o-transition: bottom 0.2s linear 0.05s, border-bottom-color 0.2s linear 0.05s;
+            transition: bottom 0.2s linear 0.05s, border-bottom-color 0.2s linear 0.05s;
+}
+
+.st-container input:hover + a {
+	background: #ad244f;
+	-webkit-transition: background-color 0.2s linear;
+	   -moz-transition: background-color 0.2s linear;
+	    -ms-transition: background-color 0.2s linear;
+	     -o-transition: background-color 0.2s linear;
+	        transition: background-color 0.2s linear; /*鼠标悬停时颜色渐变*/
+}
+
+
+
+/* content area =============================*/
+h2,p{
+	font-size: 2em;
+}
+.st-scroll, .st-panel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.st-scroll{
+	left: 0;
+	top: 0;
+	-webkit-transform: translate3d(0,0,0);
+	   -moz-transform: translate3d(0,0,0);
+	    -ms-transform: translate3d(0,0,0);
+	     -o-transform: translate3d(0,0,0);
+	        transform: translate3d(0,0,0);    /*尽量用3d的转化，可以让移动端开启GPU硬件加速。*/
+	-webkit-backface-visibility: hidden;
+	   -moz-backface-visibility: hidden;
+	    -ms-backface-visibility: hidden;
+	     -o-backface-visibility: hidden;
+	        backface-visibility: hidden;        
+    -webkit-transition: all 0.6s ease-in-out;
+       -moz-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+         -o-transition: all 0.6s ease-in-out;
+            transition: all 0.6s ease-in-out;
+/* backface-visibility定义当元素不面向屏幕时是否可见。
+visible背面是可见的，hidden不可见。	        */
+}
+.st-panel{
+	background: #fff;
+	overflow: hidden;
+}
+
+#st-control-1:checked ~ .st-scroll {
+	-webkit-transform:translateY(0%);
+	   -moz-transform:translateY(0%);
+	    -ms-transform:translateY(0%);
+	     -o-transform:translateY(0%);
+	        transform:translateY(0%);
+}
+#st-control-2:checked ~ .st-scroll {
+	-webkit-transform:translateY(-100%);
+	   -moz-transform:translateY(-100%);
+	    -ms-transform:translateY(-100%);
+	     -o-transform:translateY(-100%);
+	        transform:translateY(-100%);
+}
+#st-control-3:checked ~ .st-scroll {
+	-webkit-transform:translateY(-200%);
+	   -moz-transform:translateY(-200%);
+	    -ms-transform:translateY(-200%);
+	     -o-transform:translateY(-200%);
+	        transform:translateY(-200%);
+}
+#st-control-4:checked ~ .st-scroll {
+	-webkit-transform:translateY(-300%);
+	   -moz-transform:translateY(-300%);
+	    -ms-transform:translateY(-300%);
+	     -o-transform:translateY(-300%);
+	        transform:translateY(-300%);
+}
+#st-control-5:checked ~ .st-scroll {
+	-webkit-transform:translateY(-400%);
+	   -moz-transform:translateY(-400%);
+	    -ms-transform:translateY(-400%);
+	     -o-transform:translateY(-400%);
+	        transform:translateY(-400%);
+}
+
+.st-desc{
+	width: 300px;
+	height: 300px;
+	background: #fa96b5;
+	position: absolute;
+	left: 50%;
+	top: 0;
+	margin-left: -150px;
+	-webkit-transform:translateY(-50%) rotate(45deg);
+	   -moz-transform:translateY(-50%) rotate(45deg);
+	    -ms-transform:translateY(-50%) rotate(45deg);
+	     -o-transform:translateY(-50%) rotate(45deg);
+	        transform:translateY(-50%) rotate(45deg);
+}
+
+/*属性选择器要放在[]里*/
+[data-icon]:after{
+	content: attr(data-icon);
+	width: 300px;
+	height: 300px;
+	color: #fff;
+	font-size: 120px;
+	text-align:center;
+	line-height: 200px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -100px 0 0 -100px;
+	-webkit-transform: rotate(-45deg) translateY(20%);
+	   -moz-transform: rotate(-45deg) translateY(20%);
+	    -ms-transform: rotate(-45deg) translateY(20%);
+	     -o-transform: rotate(-45deg) translateY(20%);
+	        transform: rotate(-45deg) translateY(20%);
+    font-family: 'Raphaelicons';
+    text-shadow: 5px 5px 5px rgba(151,24,64,0.5);
+}
+
+/*定义H2样式*/
+.st-panel h2 {
+	color: #e23a6e;
+	font-size: 90px;
+	line-height: 50px;
+	text-align: center;
+	font-weight: 900;
+	width: 80%;
+	position: absolute;
+	left: 10%;
+	top: 44%;
+	margin-top: -120px;
+	text-shadow: 2px 2px 2px rgba(151,24,64,0.5);
+	-webkit-backface-visibility:hidden;
+       -moz-backface-visibility:hidden;
+        -ms-backface-visibility:hidden;
+         -o-backface-visibility:hidden;
+            backface-visibility:hidden;
+}
+
+/*定义h2的动画，
+纯CSS下，transition需要事件触发，而animation不需要
+antimation: name duration timing-function delay iteration-count(反复次数) direction;
+@keyframes animationName 用于由当前样式逐渐改为新样式的动画效果。
+*/
+#st-control-1:checked ~ .st-scroll #st-panel-1 h2,
+#st-control-2:checked ~ .st-scroll #st-panel-2 h2,
+#st-control-3:checked ~ .st-scroll #st-panel-3 h2,
+#st-control-4:checked ~ .st-scroll #st-panel-4 h2,
+#st-control-5:checked ~ .st-scroll #st-panel-5 h2 {
+	-webkit-animation: moveDown 0.6s ease-in-out 0.2s backwards;
+	   -moz-animation: moveDown 0.6s ease-in-out 0.2s backwards;
+	    -ms-animation: moveDown 0.6s ease-in-out 0.2s backwards;
+	     -o-animation: moveDown 0.6s ease-in-out 0.2s backwards;
+	        animation: moveDown 0.6s ease-in-out 0.2s backwards; /*backwards动画在播放之前，处于开始状态*/
+}
+@-webkit-keyframes moveDown{
+	0%{
+		-webkit-transform:translateY(-40px);
+		opacity: 0;
+	}
+	100%{
+		-webkit-transform:translateY(0px);
+		opacity: 1;
+	}
+}
+@-moz-keyframes moveDown{
+	0%{
+		-moz-transform:translateY(-40px);
+		opacity: 0;
+	}
+	100%{
+		-moz-transform:translateY(0px);
+		opacity: 1;
+	}
+}
+@-ms-keyframes moveDown{
+	0%{
+		-ms-transform:translateY(-40px);
+		opacity: 0;
+	}
+	100%{
+		-ms-transform:translateY(0px);
+		opacity: 1;
+	}
+}
+@-o-keyframes moveDown{
+	0%{
+		-o-transform:translateY(-40px);
+		opacity: 0;
+	}
+	100%{
+		-o-transform:translateY(0px);
+		opacity: 1;
+	}
+}
+@keyframes moveDown{
+	0%{
+		transform:translateY(-40px);
+		opacity: 0;
+	}
+	100%{
+		transform:translateY(0px);
+		opacity: 1;
+	}
+}
+
+/*定义p样式*/
+.st-panel p {
+	position: absolute;
+	width: 50%;
+	left: 25%;
+	top: 44%;
+	line-height: 30px;
+	padding: 0;
+	font-weight: bold;
+	text-align: center;
+	-webkit-backface-visibility: hidden;
+	   -moz-backface-visibility: hidden;
+	    -ms-backface-visibility: hidden;
+	     -o-backface-visibility: hidden;
+	        backface-visibility: hidden;
+	color: #8b8b8b;
+	margin-top: 10px;
+	-webkit-text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+	   -moz-text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+        -ms-text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+         -o-text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+}
+/*定义p动画*/
+#st-control-1:checked ~ .st-scroll #st-panel-1 p,
+#st-control-2:checked ~ .st-scroll #st-panel-2 p,
+#st-control-3:checked ~ .st-scroll #st-panel-3 p,
+#st-control-4:checked ~ .st-scroll #st-panel-4 p,
+#st-control-5:checked ~ .st-scroll #st-panel-5 p{
+	-webkit-animation: moveUp 0.6s ease-in-out 0.2s backwards;
+       -moz-animation: moveUp 0.6s ease-in-out 0.2s backwards;
+        -ms-animation: moveUp 0.6s ease-in-out 0.2s backwards;
+         -o-animation: moveUp 0.6s ease-in-out 0.2s backwards;
+            animation: moveUp 0.6s ease-in-out 0.2s backwards;
+}
+@-webkit-keyframes moveUp{
+	0%{
+		-webkit-transform:translateY(40px);
+		opacity: 0;
+	}
+	100%{
+		-webkit-transform:translateY(0px);
+		opacity: 1;
+	}
+}
+@-moz-keyframes moveUp{
+	0%{
+		-moz-transform:translateY(40px);
+		opacity: 0;
+	}
+	100%{
+		-moz-transform:translateY(0px);
+		opacity: 1;
+	}
+}
+@-ms-keyframes moveUp{
+	0%{
+		-ms-transform:translateY(40px);
+		opacity: 0;
+	}
+	100%{
+		-ms-transform:translateY(0px);
+		opacity: 1;
+	}
+}
+@-o-keyframes moveUp{
+	0%{
+		-o-transform:translateY(40px);
+		opacity: 0;
+	}
+	100%{
+		-o-transform:translateY(0px);
+		opacity: 1;
+	}
+}
+@keyframes moveUp{
+	0%{
+		transform:translateY(40px);
+		opacity: 0;
+	}
+	100%{
+		transform:translateY(0px);
+		opacity: 1;
+	}
+}
+
+/*偶数页样式更改*/
+.st-color {
+	background-color: #fa96b5;
+}
+.st-color .st-desc {
+	background: #fff;
+}
+.st-color [data-icon]:after {
+	color: #fa96b5;
+}
+.st-color h2 {
+	color: #fff;
+}
+.st-color p {
+	color: rgba(255,255,255,0.8);
+	-webkit-text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+	   -moz-text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+	    -ms-text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+	     -o-text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+	        text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+}
+
+/*自适应设置=====================*/
+@media screen and (max-width: 520px){
+    .st-panel h2 {
+    	font-size: 42px;
+    }
+    .st-panel p {
+    	width: 90%;
+    	left: 5%;
+    	right: 5%;
+    	margin-top: 0;
+    	font-size: 24px;
+    }
+    .st-container a {
+    	font-size: 14px;
+    }
+    .st-desc {
+    	width: 150px;
+    	height: 150px;
+    	margin-left: -75px;
+    }
+    [data-icon]:after {
+    	font-size: 70px;
+    	-webkit-transform: rotate(-45deg) translateY(8%);
+		   -moz-transform: rotate(-45deg) translateY(8%);
+		    -ms-transform: rotate(-45deg) translateY(8%);
+		     -o-transform: rotate(-45deg) translateY(8%);
+		        transform: rotate(-45deg) translateY(8%);
+    }
+}
+@media screen and (max-width: 361px){
+    .st-panel h2 {
+    	font-size: 32px;
+    }
+    .st-panel p {
+    	width: 90%;
+    	left: 5%;
+    	right: 5%;
+    	margin-top: 0;
+    	font-size: 22px;
+    }
+    .st-container a {
+    	font-size: 12px;
+    }
+        .st-desc {
+    	width: 150px;
+    	height: 150px;
+    	margin-left: -75px;
+    }
+    [data-icon]:after {
+    	font-size: 70px;
+    	-webkit-transform: rotate(-45deg) translateY(8%);
+		   -moz-transform: rotate(-45deg) translateY(8%);
+		    -ms-transform: rotate(-45deg) translateY(8%);
+		     -o-transform: rotate(-45deg) translateY(8%);
+		        transform: rotate(-45deg) translateY(8%);
+    }
+}

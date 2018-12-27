@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animation-delay 演示</title>
+	<style>
+		.box-1{
+			width: 100px;
+			height: 100px;
+			background: #f00;
+			animation: move 3s ease 2s; 
+			/* animation-delay: 2s; */
+		}
+		@keyframes move {
+			0{margin-left: 0}
+			100%{margin-left:500px;}
+		}
+	</style>
+</head>
+<body>
+
+	<div class="box-1"></div>
+	
+</body>
+</html>

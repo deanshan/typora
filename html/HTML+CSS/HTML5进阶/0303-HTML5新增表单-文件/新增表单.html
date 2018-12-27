@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>新增表单</title>
+	<style>
+		h3 {
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+
+	<details>
+		<summary><h3>input 新增类型</h3></summary>
+		<form action="http://www.w3school.com.cn/example/html5/demo_form.asp">
+			<!-- url类型 定义用于 URL 的文本字段。 -->
+			url:<input type="url" name=url ><br/><br/>
+			<!-- email类型  定义用于 e-mail 地址的文本字段-->
+			email:<input type="email" name=email ><br/><br/>
+			<!-- number类型 -->
+			number:<input type="number" name=num min=-5 max=5 step=2><br/><br/>
+			<!-- range类型 定义带有 slider 控件的数字字段。 -->
+			range:<input type="range" name=range min=-5 max=5 step=2><br/><br/>
+			<!-- search搜索框，关键字 定义用于搜索的文本字段。 -->
+			search:<input type="search" name=search><br/><br/>
+			<!-- color类型 定义拾色器 -->
+			color:<input type="color" name=color onchange="document.body.style.backgroundColor = this.value"><br/><br/>
+			<!-- date/time类型 -->
+		    date:<input type="date" name=date><input type="time" name=time><br/><br/>
+			<!-- datetime类型 浏览器不支持 -->
+		    datetime:<input type="datetime" name=dt><br/><br/>
+			<!-- datetime-local类型 -->
+		    datetime-local:<input type="datetime-local" name=dl><br/><br/>
+			<!-- month类型 -->
+		    month:<input type="month" name=month><br/><br/>
+			<!-- week类型 -->
+			week:<input type="week" name=month><br/><br/>
+			tel:<input type="tel" name="tel"><br/><br/>
+			<input type="submit">
+		</form>
+	</details>
+	<details>
+		<summary><h3>From属性</h3></summary>
+		<!-- 浏览器会自动记录之前输入的字段，再次输入部分时即可关联到之前输入的字段，如果关闭自动完成功能，就不会出现关联字段 -->
+		<h4>1、autocomplete： 规定表单是否应该启用自动完成功能, 应该显示出在字段中填写的选项,
+			autocomplete: off(默认，打开)|on 关闭</h4>
+		<form action="" method="get" autocomplete="on">
+		    账号: <input type="text" name="user" required /><br />
+		    密码: <input type="password" name="pwd"/><br />
+		    <input type="submit" />
+		</from>
+
+		<!-- 如果作用于form标签时，form下的所有标签均不验证 -->
+		<h4>2、novalidate： 表单提交时不进行验证 出现该属性表示对表单不进行验证</h4>
+		<form action="" method=get novalidate>
+			…
+			Email:<input type="email" name="user_email" required /><br />
+		    <input type="submit" />
+		</form>
+	</details>
+	<details>
+		<summary><h3>Input 属性</h3></summary>
+		<h4>1、autofocus: 加载时是否获得焦点</h4>
+		<form action="">
+		    账号: <input type="text" autofocus/>
+			…
+		</from>
+
+		<h4>2、required: 必输项</h4>
+		<form action="">
+		    账号: <input type="text" name="user" required/><br />
+			…
+		</from>
+
+		<h4>3、placeholder： 提示用户</h4>
+		<form action="">
+		    账号: <input type="text" name="user" required placeholder="请输入用户名" /><br />
+			…
+		</from>
+
+		<h4>4、pattern： 规定用户输入规则（需要用正则表达式，验证输入的信息）</h4>
+		<input type="text" name="" pattern="[A-z|0-9]{6}" title="请输入六个个字符" />
+
+		<h4 style="color:red">5、multiple：可选一个或多个值（适用于类型：file或email(逗号分隔)）</h4>
+		<input type="file" name="" multiple />
+
+		<h4>6、form： input所属表单，表单必须有ID （没效果网页多刷新几次）</h4>
+		<form action="" method="get" id="form1">
+			账号: <input type="text" name="user" /><br />
+				  <input type="submit" value="提交" />
+		</form><br />
+		<!-- 如果需要关联标签不在form内，需在该标签添加属性form，属性值为form的id值 -->
+		密码: <input type="password" name="pwd"     form="form1"       />
+
+		<h4>7、list： 结合datalist使用（list这是HTML5新属性，datalist 是新标签）</h4>
+		<input type="url" list="url_list" name="link" />
+		<datalist id="url_list">
+			<option label="百度" value="http://www.baidu.com " />
+			<option label="谷歌" value="http://www.google.com" />
+			<option label="淘宝" value="http://www.taobao.com" />
+		</datalist>
+
+	</details>
+	<details>
+		<summary><h3>表单重定向</h3></summary>
+		<h4>1、formaction/frommethod/formenctype: 覆盖from表单的action/method/enctype属性</h4>
+		<from method="get">
+		    …
+		    <!-- 修改表单提交的方法、地址等 -->
+			<input type="submit" value="提交"
+		        frommethod=post
+		        formenctype="text/plain" 将空格转为+号，共有三个值
+		 		formaction="action地址"
+		 		formtarget ="_self"
+		 		/>
+		</from>
+
+		<h4>2、fromentype的三个参数</h4>
+		<p>application/x-www-form-urlencoded	在发送前对所有字符进行编码（默认）。</p>
+		multipart/form-data	不对字符编码。当使用有文件上传控件的表单时，该值是必需的。</p>
+		text/plain	将空格转换为 "+" 符号，但不编码特殊字符。</p>
+
+		<h4>3、formtarget:提交后展现方式，覆盖target属性（submit或image,_blank、_self、_parent…）</h4>
+	</details>
+</body>
+</html>

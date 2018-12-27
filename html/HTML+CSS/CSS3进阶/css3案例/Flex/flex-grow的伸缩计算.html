@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.container{
+			display: flex;
+			align-items: stretch;
+			width: 1200px;
+			height: 300px;
+		}
+		.container>div{
+			/* flex: 1 1 200px; */
+			flex-basis: 200px;
+			display: flex;
+			/* flex-flow: row nowrap;			 */
+			justify-content: center;
+			align-items: center;
+			font-size: 50px;			
+		}
+		.div-1{
+			flex-grow: 1;
+			background: #484281;
+		}
+		.div-2{
+			flex-grow: 0;
+			background: #5248af
+		}
+		.div-3{
+			flex-grow: 6;
+			background: #786bfa
+		}
+		.div-4{
+			flex-grow: 1;
+			background: #aba3f9
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="div-1">1</div>
+		<div class="div-2">2</div>
+		<div class="div-3">3</div>
+		<div class="div-4">4</div>
+	</div>
+</body>
+</html>

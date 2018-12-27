@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>几张有意思的图片---CSS3 实现滚动视差 演示</title>
+    <style>
+    .bigc {
+        width: 120px;
+        height: 90px;
+        overflow: hidden
+    }
+    
+    .container {
+        position: relative;
+        width: 120px;
+        height: 90px;
+    }
+    
+    .layer1 {
+        position: absolute;
+        left: 0px;
+        z-index: 1;
+        width: 240px;
+        height: 90px;
+        background: url(1.png);
+        animation: myfirst 10s linear infinite;
+        -webkit-animation: myfirst 10s linear infinite;
+    }
+    
+    .layer2 {
+        position: absolute;
+        left: 0px;
+        z-index: 2;
+        width: 240px;
+        height: 90px;
+        background: url(2.png);
+        animation: myfirst 5s linear infinite;
+        -webkit-animation: myfirst 5s linear infinite;
+    }
+    
+    .layer3 {
+        position: absolute;
+        left: 0px;
+        z-index: 3;
+        width: 240px;
+        height: 90px;
+        background: url(3.png);
+        animation: myfirst 2s linear infinite;
+        -webkit-animation: myfirst 2s linear infinite;
+    }
+    
+    @keyframes myfirst {
+        0% {
+            left: 0;
+        }
+        25% {
+            left: -30px;
+        }
+        50% {
+            left: -60px;
+        }
+        75% {
+            left: -90px;
+        }
+        100% {
+            left: -120px;
+        }
+    }
+    
+    @-webkit-keyframes myfirst {
+        0% {
+            left: 0;
+        }
+        25% {
+            left: -30px;
+        }
+        50% {
+            left: -60px;
+        }
+        75% {
+            left: -90px;
+        }
+        100% {
+            left: -120px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <h2>这是三张图片</h2>
+    <div><img src=1.png /></div>
+    <div><img src=2.png /></div>
+    <div><img src=3.png /></div>
+    <h2>如果把他们一起滚动，滚动的速度不一样，就会产生神奇的效果:视差滚动</h2>
+    <div class="bigc">
+        <div class="container">
+            <div class="layer1" id="l1"></div>
+            <div class="layer2" id="l2"></div>
+            <div class="layer3" id="l3"></div>
+        </div>
+    </div>
+</body>
+
+</html>

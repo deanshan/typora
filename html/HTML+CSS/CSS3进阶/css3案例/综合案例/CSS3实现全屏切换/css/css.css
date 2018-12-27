@@ -1,0 +1,297 @@
+@font-face {
+    font-family: "Raphaelicons";
+    src: url("fonts/raphaelicons-webfont.eot") format('eot'), url("fonts/raphaelicons-webfont.woff") format('woff'), url("fonts/raphaelicons-webfont.ttf") format('truetype'), url("fonts/raphaelicons-webfont.svg") format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: "Josefin Slab", "Myriad Pro", Arial, sans-serif;
+    background: #ddd;
+    font-weight: 400;
+    color: #333;
+    overflow: hidden;
+}
+
+.st-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+}
+
+.st-container input {
+    position: fixed;
+    z-index: 9999;
+    opacity: 0;
+    width: 20%;
+    height: 68px;
+    line-height: 68px;
+    bottom: 0;
+    cursor: pointer;
+    /* hover时，鼠标变成手指*/
+}
+
+.st-container > a {
+    position: fixed;
+    bottom: 0;
+    width: 20%;
+    height: 68px;
+    line-height: 68px;
+    background-color: #e23a6e;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+
+}
+
+#st-control-1,
+#st-control-1 + a {
+    left: 0%;
+}
+
+#st-control-2,
+#st-control-2 + a {
+    left: 20%;
+}
+
+#st-control-3,
+#st-control-3 + a {
+    left: 40%;
+}
+
+#st-control-4,
+#st-control-4 + a {
+    left: 60%;
+}
+
+#st-control-5,
+#st-control-5 + a {
+    left: 80%;
+}
+
+.st-container .st-scroll {
+    width: 100%;
+    height: 100%;
+    transform: translateY(-100%);
+    transition: all 0.3s;
+}
+
+.st-container .st-scroll .st-panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    
+    transition: all 0.3s;
+}
+
+.st-container .st-scroll .st-panel .st-desc {
+    width: 300px;
+    height: 300px;
+    
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-left: -150px;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.st-container .st-scroll .st-panel [data-icon]:after {
+    content: attr(data-icon);
+    width: 300px;
+    height: 300px;
+    /* color: #fff; */
+    font-size: 120px;
+    text-align: center;
+    line-height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -100px 0 0 -100px;
+    transform: rotate(-45deg) translateY(20%);
+    font-family: 'Raphaelicons';
+    text-shadow: 5px 5px 5px rgba(151, 24, 64, 0.5);
+}
+
+.st-panel h2 {
+    position: absolute;
+    left: 10%;
+    top: 44%;
+    width: 80%;
+    margin-top: -120px;
+    color: #e23a6e;
+    font-size: 90px;
+    line-height: 50px;
+    text-align: center;
+    font-weight: 900;
+    text-shadow: 2px 2px 2px rgba(151, 24, 64, 0.5);
+}
+
+#st-control-1:checked ~ .st-scroll {
+    transform: translateY(0%);
+}
+
+#st-control-2:checked ~ .st-scroll {
+    transform: translateY(-100%);
+}
+
+#st-control-3:checked ~ .st-scroll {
+    transform: translateY(-200%);
+}
+
+#st-control-4:checked ~ .st-scroll {
+    transform: translateY(-300%);
+}
+
+#st-control-5:checked ~ .st-scroll {
+    transform: translateY(-400%);
+}
+.st-container input:checked + a
+{
+	background:#ad244f
+}
+.st-container input:checked + a:after {
+    content: "";
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border-width: 34px;
+    border-style: solid;
+    border-color: transparent;
+    border-bottom-color: #ad244f;
+    position: absolute;
+    z-index: -5;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -34px;
+    cursor: default;
+    /* transition: all 0.3s; */
+    animation:  bottom 0.2s ease-in-out 0.05s backwards;
+}
+@keyframes bottom{
+	0%{bottom:0;}
+	100%{bottom:100%;}
+}
+
+.st-panel p {
+    position: absolute;
+    width: 50%;
+    left: 25%;
+    top: 44%;
+    line-height: 30px;
+    padding: 0;
+    font-weight: bold;
+    text-align: center;    
+    backface-visibility: hidden;
+    color: #8b8b8b;
+    margin-top: 10px;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+h2, p {
+    font-size: 2em;
+}
+
+
+/*定义p动画*/
+#st-control-1:checked ~ .st-scroll #st-panel-1 p,
+#st-control-2:checked ~ .st-scroll #st-panel-2 p,
+#st-control-3:checked ~ .st-scroll #st-panel-3 p,
+#st-control-4:checked ~ .st-scroll #st-panel-4 p,
+#st-control-5:checked ~ .st-scroll #st-panel-5 p{	
+    animation: moveup 0.6s ease-in-out 0.2s backwards;
+}
+
+@keyframes moveup{
+	0%{
+		transform:translateY(40px);
+		opacity: 0;
+	}
+	100%{
+		transform:translateY(0px);
+		opacity: 1;
+	}
+}
+
+
+#st-control-1:checked ~ .st-scroll #st-panel-1 h2,
+#st-control-2:checked ~ .st-scroll #st-panel-2 h2,
+#st-control-3:checked ~ .st-scroll #st-panel-3 h2,
+#st-control-4:checked ~ .st-scroll #st-panel-4 h2,
+#st-control-5:checked ~ .st-scroll #st-panel-5 h2 {
+	animation: movedown 0.6s ease-in-out 0.2s backwards ;
+}
+
+@keyframes movedown{
+	0%{
+		transform:translateY(-40px);
+		opacity: 0;
+	}
+	100%{
+		transform:translateY(0px);
+		opacity: 1;
+	}
+}
+
+/*偶数页样式更改*/
+.st-color {
+	background-color: #fa96b5;
+}
+.st-desc{
+	
+	background-color: #fa96b5;
+}
+.st-color .st-desc {
+
+	background: #fff;
+}
+[data-icon]:after {
+	color: #fff;
+}
+.st-color [data-icon]:after {
+	color: #fa96b5;
+}
+.st-color h2 {
+	color: #fff;
+}
+.st-color p {
+	color: rgba(255,255,255,0.8);
+	text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+}
+
+/* 自适应布局 */
+@media screen and (max-width:640px){
+	.st-container > a{
+		font-size: 16px;
+	}
+	.st-container p{
+		width: 80%;
+		left: 10%;
+		margin-top: 0;
+		font-size: 1.5em;
+	}
+	.st-container h2{
+		font-size: 42px;
+	}
+	.st-container .st-scroll .st-panel .st-desc {
+    	width: 150px;
+    	height: 150px;
+    	margin-left: -75px;
+    }
+    .st-container .st-scroll .st-panel [data-icon]:after {
+    	font-size: 70px;
+    	transform: rotate(-45deg) translateY(8%);
+    }
+    .st-container input:checked + a:after{
+    	border-width: 16px;
+    	margin-left: -16px;
+    }
+
+}

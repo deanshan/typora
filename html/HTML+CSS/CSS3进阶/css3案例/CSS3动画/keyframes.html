@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>@keyframes规则</title>
+	<style>
+		.box-1{
+			width: 100px;
+			height: 100px;
+			background: #f00;
+			animation: move 3s ease 0s forwards; 
+			/* animation-delay: 2s; */
+		}
+		@keyframes move {
+			0%,49%{
+				margin-left: 100px;
+				background-color: #0f0;
+			}
+			50%,99%{
+				margin-left: 200px;
+				background-color: #f0f;
+			}
+			100%{
+				margin-left:500px;
+				background-color: #00f;
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<div class="box-1"></div>
+	
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>画布 Canvas</title>
+	<style>
+		summary {background: #8fd0e0;padding-left: 20px;margin-bottom: 5px;}
+		h2 {display: inline-block;margin-left: 10px;}
+		/*h3 {font: bold 30px/1.8 '隶书';color: #fff;background: #1f7b9b;}*/
+		h4 {font: bold 24px/1.0 '隶书';text-indent: 10px;}
+		p { font: bold 18px/1.8 '隶书';text-indent: 30px;}
+		a { font: bold 20px/1.8 '隶书';margin-left: 30px;}
+	</style>
+</head>
+<body>
+	<h1>Canvas</h1>
+
+	<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API">Canvas API</a>
+	<a href="http://www.runoob.com/tags/ref-canvas.html">菜鸟参考地址</a>
+
+	<h4>判断浏览器是否支持,能够打印出 ctx 对象说明能够支持</h4>
+	<p> function draw(){
+			var canvas = document.getElementById('canvas');
+			if(canvas.getContext){
+				var ctx = canvas.getContext('2d');
+				alert(ctx)
+			}else{
+				alert('不支持')
+			}
+		}
+	</p>
+
+	
+	<details>
+		<summary><h2>绘制矩形</h2></summary>
+		<h4>方法</h4>
+			<p> rect(x,y,width,height)：创建矩形但它不会将矩形画出,只能调用stroke()或fill()后才会真正作用于画布</p>
+			<p> fillRect(x,y,width,height)： 绘制一个矩形</p>
+			<p> strokeRect(x,y,width,height)： 绘制一个矩形的边框</p>
+			<p> clearRect(x,y,width,height)： 清除指定矩形区域，该区域完全透明</p>
+	</details>
+	
+	<details>
+		<summary><h2>样式(样式、颜色、阴影)：要在绘制之前添加</h2></summary>
+		<h4>属性</h4>
+			<p> fillStyle：    设置图形的填充颜色</p>
+			<p> strokeStyle：  设置图形轮廓的颜色</p>
+			<p> globalAlpha：  设置图形的透明度，值：0.0~1.0(完全不透明)</p>
+			<p> globalCompositeOperation：设置或返回新图像如何绘制到已有的图像上</p>
+			<p> lineWidth：    设置线条宽度</p>
+			<p> lineCap：      设置线条末端样式，属性值：butt(默认)、round、square</p>
+			<p> lineJoin：     设置线条与线条连接处样式属性值：miter(默认)、round、bevel</p>
+			<p> miterLimit：   设置或返回最大斜接长度</p>
+			<p> shadowColor：  阴影的颜色(默认是全透明的黑色)</p>
+			<p> shadowBlur：   阴影的模糊度(默认为 0)</p>
+			<p> shadowOffsetX：设置或返回阴影与形状的水平距离(默认为 0)</p>
+			<p> shadowOffsetY：设置或返回阴影与形状的垂直距离(默认为 0)</p>
+
+		<h4>方法</h4>
+			<p> setLineDash(arr)  在画布上画一条虚线（arr 表示的是一个数组集合，里面的参数可以有多个）</p>
+			<p> createLinearGradient(x0,y0,x1,y1)：创建线性渐变</p>
+			<p> createPattern(image,"repeat|repeat-x|repeat-y|no-repeat")：在指定的方向上重复指定的元素</p>
+			<p> createRadialGradient(x0,y0,r0,x1,y1,r1)：创建放射状/环形的渐变</p>
+			<p> addColorStop(stop,color)： 规定渐变对象中的颜色和停止位置
+										  （stop介于 0.0 与 1.0 之间的值，表示渐变中开始与结束之间的位置）
+			</p>
+	</details>
+	
+	<details>
+		<summary><h2>路径的绘制</h2></summary>
+		<h4>方法</h4>
+			<p> beginPath()： 新建一条路径，绘制命令被指向到该路径生成路径</p>
+			<p> closePath()： 闭合路径</p>
+			<p> stroke()：    通过线条来绘制图形轮廓</p>
+			<p> fill()： 	  通过填充路径的内容区域生成实心的图形</p>
+			<p> clip()：	  从原始画布剪切任意形状和尺寸的区域</p>
+			<p> moveTo(x,y)： 将笔触(笔尖)移动到指定的X和Y轴上</p>
+			<p> lineTo(x,y)： 绘制一条笔触到指定X和Y轴的直线</p>
+			<p> arc(x,y,r,sAngle,eAngle,方向)： 创建弧/曲线（用于创建圆形或部分圆）方向(默认为false:顺时针)</p>
+			<p> arcTo(x1,y1,x2,y2,r)：创建两切线之间的弧/曲线</p>
+			<p> quadraticCurveTo()：  创建二次贝塞尔曲线</p>
+			<p> bezierCurveTo()：	  创建三次贝塞尔曲线</p>
+	</details>
+	
+	<details>
+		<summary><h2>文本</h2></summary>
+		<h4>属性</h4>
+		<p> font：		 设置或返回文本内容的当前字体属性</p>
+		<p> textAlign：	 文本对齐选项. 可选的值包括：start, end, left, right or center. 默认值start</p>
+		<p>textBaseline：基线对齐选项.可选的值包括：top,hanging,middle,alphabetic,ideographic,bottom默认值是alphabetic</p>
+		<h4>方法</h4>
+		<p> fillText()：	在指定的(x,y)位置填充指定的文本</p>
+		<p> strokeText()：	在指定的(x,y)位置绘制文本边框</p>
+		<p> measureText()：	返回包含指定文本宽度的对象</p>
+	</details>	
+
+	
+	<details>
+		<summary><h2>图片的处理</h2></summary>
+
+		<h4>方法</h4>
+		<p> drawImage(img,x,y)： img为图片地址，x和y是图片起始位置 </p>
+		<p> drawImage(img,x,y,w,h)： 缩放 w和h设置图片的宽高 </p>
+		<p> drawImage(img,sx,sy,sw,sh,dx,dy,dw,dh)： 切片 sx,sh设置源图片的位置和大小，dx,dh设置切片的位置和大小</p>
+	</details>	
+	
+	<details>
+		<summary><h2>变换（变换是指画布进行变换）</h2></summary>
+		<h4>方法</h4>
+			<p> scale(sw,sh)：	缩放当前绘图至更大或更小</p>
+			<p> rotate(deg)：	旋转当前绘图</p>
+			<p> translate(x,y)：让绘制出来的元素进行平移</p>
+			<p> transform(a,b,c,d,e,f)：	替换绘图的当前转换矩阵</p>
+			<p> setTransform(a,b,c,d,e,f)：	将当前转换重置为单位矩阵然后运行 transform()</p>
+	</details>
+
+	
+	<details>
+		<summary><h2>像素操作</h2></summary>
+		<h4>属性</h4>
+			<p> width：	返回 ImageData 对象的宽度</p>
+			<p> height：返回 ImageData 对象的高度</p>
+			<p> data：	返回一个对象，其包含指定的 ImageData 对象的图像数据</p>
+
+		<h4>方法</h4>
+			<p> createImageData()： 创建新的、空白的 ImageData 对象</p>
+			<p> getImageData()：	返回 ImageData 对象，该对象为画布上指定的矩形复制像素数据</p>
+			<p> putImageData()：	把图像数据（从指定的 ImageData 对象）放回画布上</p>
+	</details>	
+		
+	<details>
+		<summary><h2>其他</h2></summary>
+		<h4>方法</h4>
+			<p> save()：	保存当前环境的状态</p>
+			<p> restore()：	返回之前保存过的路径状态和属性</p>
+			<p> createEvent()	 </p>
+			<p> getContext()	 </p>
+			<p> toDataURL() </p>
+	</details>
+	
+	<details>
+		<summary><h2>canvas 动画</h2></summary>
+		<h4>方法</h4>
+			<p> setInterval()</p>
+			<p> setTimeout()</p>
+			<p> requestAnimationFrame(callback)</p>
+
+		<h4>requestAnimationFrame(callback)</h4>
+			<p> 一个指定函数的参数，该函数在下次重新绘制动画时调用。这个回调函数只有一个传参
+				requestAnimationFrame()方法是浏览器的内置对象，IE9以下不兼容。可以做图形的匀速运动，而不是跳动
+				可以使用cancelAnimationFrame(globalID)方法暂停动画</p> 
+			<p>优点：</p>
+			<p>1、经过浏览器优化，动画更流畅</p>
+			<p>2、窗口没激活时，动画将停止，省计算资源</p>
+			<p>3、更省电，尤其是对移动终端</p>
+			<p>如果你要取消该次动画，需要用到 window.cancelAnimationFrame(stop)</p>
+	</details>
+	
+	<details>
+		<summary>
+			<h2>百度Echarts 插件的使用</h2>
+			<a href="http://echarts.baidu.com/download.html">参考地址</a>
+		</summary>
+	</details>	
+</body>
+</html>

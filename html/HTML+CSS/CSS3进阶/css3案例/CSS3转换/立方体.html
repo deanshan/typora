@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>立方体</title>
+	<style>
+		body{
+			perspective: 1000px;	
+			/* perspective-origin: 0% 100%; */
+		}
+		.cubebox{
+			position: relative;
+			width: 300px;
+			height: 300px;
+			margin: 200px auto;
+			transform-style: preserve-3d;
+			transform:  rotateX(60deg) rotateY(30deg) ;	
+			
+		}
+		.cubebox .plane{
+			position: absolute;
+			width: 300px;
+			height: 300px;			
+			text-align: center;
+			font: bolder 30px/300px "微软雅黑";
+			opacity: 0.3;
+			backface-visibility: hidden;
+		}
+		.plane-1{
+			background: #f00;
+			transform: translateZ(150px);
+		}
+		.plane-2{
+			transform: rotateY(-90deg) translateZ(150px);
+			background: #0f0;
+		}
+		.plane-3{
+			transform: rotateX(90deg) translateZ(150px);
+			background: #00f;
+		}
+		.plane-4{
+			transform: rotateX(-90deg) translateZ(150px);
+			background: #ff0;
+		}
+		.plane-5{
+			transform: rotateY(90deg) translateZ(150px);
+			background: #0ff;
+		}
+		.plane-6{
+			transform: rotateY(180deg) translateZ(150px);
+			background: #f0f;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="cubebox">
+		<div class="plane-1 plane">1</div>
+		<div class="plane-2 plane">2</div>
+		<div class="plane-3 plane">3</div>
+		<div class="plane-4 plane">4</div>
+		<div class="plane-5 plane">5</div>
+		<div class="plane-6 plane">6</div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.haorooms {
+		    position:relative;
+		    display:inline-block;
+		    font-size:80px; /*  任何宽度都可以 */
+		    color: black; /* 任何颜色，或透明 */
+		    overflow:hidden;		    
+		}
+		.haorooms::before {
+		    /* display:block; */
+		    z-index:1;
+		    position:absolute;
+		    top:0;
+		    left:0;
+		    width: 55%;
+		    content: attr(data-content); /* 伪元素的动态获取内容 */
+		    overflow:hidden;
+		    color: #f00;
+		    text-shadow: 0px 0px 3px  #000;
+		}
+		
+		p a[href $=".pdf"]::after {
+		    content:url(icon_pdf.png);
+		}
+		p a[rel = "external"]::after {
+		    content:url(icon_link.png);
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<span class="haorooms" data-content="泛">泛</span>
+		<span class="haorooms" data-content="艺">艺</span>
+		<span class="haorooms" data-content="学">学</span>
+		<span class="haorooms" data-content="苑">苑</span>
+	</div>
+
+	<p>
+		<p>您可以查看此PDF文件：<a href="/sample.pdf">web站点的性能优化.pdf</a>，或是在线查看视频，<a href="http://www.fydesigner.com/wordpress/" rel="external">点击这里</a>。</p>
+	</p>
+</body>
+</html>

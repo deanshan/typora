@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 300px;
+			height: 300px;
+			margin: 100px;
+			border-radius: 50%;
+		}
+		.circle-1{
+			border: #f00 20px solid;
+			padding: 20px;
+			background: #00f;
+			background-clip: content-box;
+		}
+		.circle-2{
+			border: #f00 20px solid;
+			
+			box-shadow: 0 0 0 20px #fff inset,0 0 0 40px #00f inset,0 0 0 20px #fff ,0 0 0 40px #00f ;
+		}
+		.circle-3{
+			border: #f00 20px solid;
+			padding: 20px;
+			background: repeating-radial-gradient(blue 0,blue 20px,#fff 0,#fff 40px,red 0, red 60px,#fff 0,#fff 80px );
+
+		}
+	</style>
+</head>
+<body>
+	<div class="circle-1">
+		
+	</div>
+	<div class="circle-2">
+		
+	</div>
+	<div class="circle-3">
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS页面卷边效果</title>
+    <style>
+    body {
+        background: #272822;
+    }
+    
+    .page {
+        background: #fff;
+        width: 250px;
+        height: 330px;
+        margin: 50px;
+        background: linear-gradient(to top, #ffffff 0%, #e5e5e5 100%);
+        /* W3C */
+    }
+    
+    .page h2 {
+        padding: 85px 0 0 20px;
+        font: 400 35px/1.5 'Lilita One', Helvetica, sans-serif;
+    }
+    
+    .page p {
+        padding: 10px 20px;
+        font: 12px/1.5 Helvetica, sans-serif;
+        color: #4b4b4b;
+    }
+    
+    .foldtl {
+        position: relative;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
+    }
+    
+   /*  .foldtl::before {
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 0px;
+    height: 0px;
+    border-bottom: 70px solid #eee;
+    border-left: 70px solid transparent;
+    box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
+    }
+    
+   
+   .foldtl::after {
+     content: "";
+     position: absolute;
+     top: 0%;
+     left: 0%;
+     width: 0px;
+     height: 0px;
+     border-top: 69px solid #272822; 
+     border-right: 69px solid transparent;
+   } */
+ .foldtl::before {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 0px;
+  height: 0px;
+  border-bottom: 70px solid #eee;
+  border-left: 70px solid #272822; /* Set to background color, not transparent! */
+  box-shadow: 7px 7px 7px rgba(0,0,0,0.3);
+ } 
+    </style>
+</head>
+
+<body>
+    <div class="page foldtl">
+        <h2>Headline</h2>
+        <p>Lorem ipsum dolor sit amet...Lorem ipsum dolor sit amet...Lorem ipsum dolor sit amet...Lorem ipsum dolor sit amet...Lorem ipsum dolor sit amet...Lorem ipsum dolor sit amet...</p>
+    </div>
+</body>
+
+</html>

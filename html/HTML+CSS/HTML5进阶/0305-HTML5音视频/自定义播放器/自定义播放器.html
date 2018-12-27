@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义播放器</title>
+	<style>
+		#player {
+			width: 800px;
+			background: red;
+			margin: 50px auto;
+			position: relative;
+			overflow: hidden;
+		}
+		/*视频样式*/
+		#player > #video {
+			margin: 0;
+			padding: 0;
+			vertical-align: middle;
+			width: 100%;
+			height: 100%;
+			/*background: url("pic2.jpg") 50% 50% no-repeat;
+			background-size: cover;*/
+			cursor: pointer;
+		}
+		/*视频控件样式*/
+		#player > #controls {
+			width: 100%;
+			height: 30px;
+			background: rgba(255,255,255,0.5);
+			position: absolute;
+			left: 0;
+			bottom: -30px;
+		}
+		#player:hover #controls {
+			bottom: 0;
+			transition: bottom 0.2s linear;
+		}
+		/*视频进度条*/
+		#controls > .v-progress {
+			width: 100%;
+			height: 5px;
+			background: #fff;
+			cursor: pointer;
+			position: absolute;
+			top: -3px;
+			left: 0;
+		}
+		#controls > .v-progress:hover {
+			height: 15px;
+			top: -15px;
+			transition: height 0.5s linear,top 0.5s linear;
+		}
+		#controls .v-pro-bar{
+			height: 100%;
+			background-color: rgba(0,0,0,0.5);
+			width: 100%;
+			border-radius: 5px;
+			position: relative;
+		}
+		#controls .v-pro-thumb{
+			height: 100%;
+			background: linear-gradient(to right,#57a900,#97ff00 80%,#dee2da);
+			display: inline-block;
+			width: 0%;
+			position: absolute;
+			left: 0;
+			top: 0px;
+			border-radius: 5px;
+		}
+		/*视频控制菜单*/
+		#controls > .ctl-menu {
+			width: 100%;
+			height: 22px;
+			padding: 5px;
+		}
+		#controls > .ctl-menu > div {
+			display: inline-block;
+			margin-right: 20px;
+			margin-left: 10px;
+		}
+		/*控件背景图片*/
+		#controls .icon-btn {
+			width: 15px;
+			height: 14px;
+			background: url("icon.png") no-repeat;
+			cursor: pointer;
+		}
+		/*播放按钮*/
+		#controls .v-btn {
+			background-position: -30px -14px;
+		}
+		#controls .v-btn:hover {
+			background-position: -46px -14px;
+		}
+		/*播放时按钮的样式*/
+		#controls .v-clickBtn {
+			background-position: -108px -14px;
+		}
+		#controls .v-clickBtn:hover {
+			background-position: -94px -14px;
+		}
+		/*视频播放时长*/
+		#controls .v-time:hover {
+			color: #fff;
+		}
+		/*视频声音设置*/
+		#controls .v-volume-icon {
+			display: inline-block;
+			background-position: 0px -14px;
+		}
+		#controls .v-volume-icon:hover {
+			background-position: -15px -14px;
+		}
+		/*静音时声音图标背景*/
+		#controls .v-mute {
+			background-position: -30px 0px;
+		}
+		#controls .v-mute:hover {
+			background-position: -46px 0px;
+		}
+		/*音量控件*/
+		/*1、移除默认样式*/
+		input[type=range] {
+			-webkit-appearance: none;/*移除系统默认样式*/
+			width: 115px;
+			border-radius: 5px; /*这个属性设置使填充进度条时的图形为圆角*/
+			position: relative;
+			top: -5px;
+			cursor: pointer;
+		}
+		input[type=range]::-webkit-slider-thumb {
+		    -webkit-appearance: none;/*移除滑块thumb默认样式*/
+		}
+		/*2、给滑动轨道(track)添加样式*/
+		input[type=range]::-webkit-slider-runnable-track {
+		    height: 5px;
+		    border-radius: 10px; /*将轨道设为圆角的*/
+		    box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; /*轨道内置阴影效果*/
+		}
+		input[type=range]::-moz-range-track {
+		    height: 5px;
+		    border-radius: 10px; /*将轨道设为圆角的*/
+		    box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; /*轨道内置阴影效果*/
+		}
+		/*原始的控件获取到焦点时，会显示包裹整个控件的边框，所以还需要把边框取消。*/
+		input[type=range]:focus {
+		    outline: none;
+		}
+		/*3、给滑块(thumb)添加样式*/
+		input[type=range]::-webkit-slider-thumb {
+		    -webkit-appearance: none;
+		    height: 15px;
+		    width: 15px;
+		    margin-top: -5px; /*使滑块超出轨道部分的偏移量相等*/
+		    background: #ffffff;
+		    border-radius: 50%; /*外观设置为圆形*/
+		    border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
+		    box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
+		}
+		input[type=range]::-moz-range-thumb {
+		    -webkit-appearance: none;
+		    height: 12px;
+		    width: 12px;
+		    margin-top: -5px; /*使滑块超出轨道部分的偏移量相等*/
+		    background: #ffffff;
+		    border-radius: 50%; /*外观设置为圆形*/
+		    border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
+		    box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
+		}
+		/*快放*/
+		#controls > .ctl-menu > .v-slow {
+			background-position: -15px 0px;
+			margin-left: 150px;
+			margin-right: 10px;
+		}
+		#controls > .ctl-menu > .v-slow:hover {
+			background-position: 0px 0px;
+		}
+		/*慢放*/
+		#controls > .ctl-menu > .v-fast  {
+			background-position: -63px 0px;
+		}
+		#controls > .ctl-menu > .v-fast:hover {
+			background-position: -77px 0px;
+		}
+		/*全屏*/
+		#controls > .ctl-menu > .v-fullscreen {
+			background-position: -108px 0px;
+			margin-left: 10px;
+		}
+		#controls > .ctl-menu > .v-fullscreen:hover {
+			background-position: -93px 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="player">
+		<video id="video" src="Wildlife.mp4" poster="pic2.jpg">浏览器不支持该属性！</video>
+		<div id="controls">
+		<!-- 视频进度条 -->
+			<div class="v-progress" id="v-progress">
+				<div class="v-pro-bar">
+					<div class="v-pro-thumb"></div>
+				</div>
+			</div>
+		<!-- 视频控制菜单 -->
+			<div class="ctl-menu">
+			<!-- 播放按钮 -->
+				<div class="v-btn icon-btn" id="v-btn"></div>
+			<!-- 视频播放时长 -->
+				<div class="v-time" id="v-time"><i>00:00:00</i>/<em>00:00:00</em></div>
+			<!-- 视频声音设置 -->
+				<div class="v-volume">
+					<span id="v-volume-icon" class="v-volume-icon icon-btn"></span>
+					<input type="range" name="range" id="v-range" min="0" max="100" value="">
+					<span style="display: inline-block;width: 50px">50%</span>
+				</div>
+			<!-- 慢放 -->
+				<div class="v-slow icon-btn" id="v-slow"></div>
+			<!-- 快放 -->
+				<div class="v-fast icon-btn" id="v-fast"></div>
+			<!-- 全屏 -->
+				<div class="v-fullscreen icon-btn" id="v-fullscreen"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var player = document.querySelector('#player');
+	var video = document.querySelector('#video');
+	var vProBar = document.querySelector('#v-progress > .v-pro-bar');
+	var vProThumb = document.querySelector('#v-progress .v-pro-thumb');
+	var vBtn = document.querySelector('#v-btn');
+	var vPlayTime = document.querySelector('#v-time > i');
+	var vTotalTime = document.querySelector('#v-time > em');
+	var vVolumeIcon = document.querySelector('#v-volume-icon');
+	var vRange = document.querySelector('#v-range');
+	var vFast = document.querySelector('#v-fast');
+	var vSlow = document.querySelector('#v-slow');
+	var vFullscreen = document.querySelector('#v-fullscreen');
+
+	// 创建视频对象，用于存储视频方法调用
+	function Video() {
+
+		// 播放器的大小同步父级
+		this.setWidth = player.offsetWidth;
+		// 播放按钮控件
+		this.getPlay = function (isPlay) {
+			isPlay ? video.play() : video.pause();
+		}
+		// 声音控件--是否静音
+		this.getVolume = function (isMuted) {
+			return !isMuted;
+		}
+		// 返回当前音频/视频的长度
+		this.getTime = function (time) {
+			var h = parseInt(time / 3600),
+				m = parseInt(time % 3600 / 60),
+				s = parseInt(time % 60);
+			h = h < 10 ? "0" + h : h;
+	        m = m < 10 ? "0" + m : m;
+	        s = s < 10 ? "0" + s : s;
+	        return h + ":" + m + ":" + s;
+		}
+		// 视频快放或慢放
+		this.getPlaySpeed = function (speed) {
+			return speed;
+		}
+	}
+	// 实例化Video对象
+	var v = new Video();
+	// video.poster = "pic2.jpg";
+	// 播放器的大小
+	video.width = v.setWidth;
+	// 播放按钮控件
+	function playBtn() {
+		// 给播放按钮控件添加类
+		if (video.paused) {
+			vBtn.classList.add('v-clickBtn');
+		}else{
+			vBtn.classList.remove('v-clickBtn');
+		}
+		// paused设置或返回音频/视频是否暂停
+		v.getPlay(video.paused);
+	}
+	// 点击视频或按钮控件播放视频
+	vBtn.onclick = playBtn;
+	video.onclick = playBtn;
+
+	// 声音控件
+	video.volume = 0.5;//设置或返回音频/视频的音量,必须是介于 0.0 与 1.0 之间的数字
+	var vol;//存储音量值
+	// 音量控件事件
+	vRange.onchange = function () {
+		vol = this.value / 100;
+		video.volume = vol;
+		if (video.volume == 0) {
+			vVolumeIcon.classList.add('v-mute');
+		}else{
+			vVolumeIcon.classList.remove('v-mute');
+		}
+		this.nextElementSibling.innerHTML = this.value + "%";
+	}
+	// 音量图标事件
+	vVolumeIcon.onclick = function () {
+		// defaultMuted设置或返回音频/视频默认是否静音 默认返回值false
+		video.defaultMuted = v.getVolume(video.defaultMuted);
+
+		if (video.defaultMuted) {
+			video.volume = 0;
+			vRange.value = 0;
+			this.classList.add('v-mute');
+			vRange.nextElementSibling.innerHTML = vRange.value + "%";
+		}else{
+			video.volume = vol;
+			vRange.value = vol * 100;
+			this.classList.remove('v-mute');
+			vRange.nextElementSibling.innerHTML = vRange.value + "%";
+		}
+	}
+
+	// canplay当浏览器可以开始播放音频/视频时触发
+	video.oncanplay = function () {
+		// duration	返回当前音频/视频的长度（以秒计）
+		// 获取并设置总时长
+		vTotalTime.innerHTML = v.getTime(this.duration);
+	}
+	// timeupdate	当目前的播放位置已更改时触发
+	video.ontimeupdate = function () {
+		// currentTime	设置或返回音频/视频中的当前播放位置（以秒计）
+		// 获取当前播放位置和视频总时长
+		var curTime = this.currentTime,
+			durTime = this.duration;
+		// 设置视频播放进度时间
+		vPlayTime.innerHTML = v.getTime(curTime);
+// ----------------------------------------------
+		// 显示进度
+		vProThumb.style.width = curTime/durTime * 100 +"%";
+
+		//跳跃播放
+		vProBar.onclick = function(e){
+			var event = e || window.event;
+			console.log(111)
+			video.currentTime = (event.offsetX / this.offsetWidth) * video.duration;
+		}
+
+		//播放完毕 播放按钮回到 点击播放状态
+		if(curTime == durTime){
+			// vBtn.classList.remove("v-clickBtn");
+			// 	重新加载音频/视频元素
+			video.load();
+		}
+// ---------------------------------------------------
+	}
+
+	// playbackRate设置或返回音频/视频播放的速度  1.0 正常速度 0.5 半速（更慢）2.0 倍速（更快）
+	//快放和慢放控件
+	var playSpeed = 1.0;//存储播放速度值
+	vFast.onclick = function () {
+		playSpeed *= 2;
+		if (playSpeed >= 8) {
+			playSpeed = 8;
+		}
+		video.playbackRate = v.getPlaySpeed(playSpeed);
+		console.log(playSpeed)
+	}
+	vSlow.onclick = function () {
+		playSpeed /= 2;
+		if (playSpeed <= 0.125) {
+			playSpeed = 0.125;
+		}
+		video.playbackRate = v.getPlaySpeed(playSpeed);
+		console.log(playSpeed)
+	}
+	// 全屏
+	vFullscreen.onclick = function () {
+		// video.webkitRequestFullScreen();
+		// video.mozRequestFullScreen();
+		requestFullscreen(video);
+		exitFullscreen();
+	}
+	// 进入全屏模式
+	function requestFullscreen( element ) {
+	    if (element.requestFullscreen) {
+	        element.requestFullscreen();
+	    }
+	    else if (element.webkitRequestFullScreen) {
+	        // 对 Chrome 特殊处理，
+	        // 参数 Element.ALLOW_KEYBOARD_INPUT 使全屏状态中可以键盘输入。
+	        if ( window.navigator.userAgent.toUpperCase().indexOf( 'CHROME' ) >= 0 ) {
+	            element.webkitRequestFullScreen( Element.ALLOW_KEYBOARD_INPUT );
+	        }
+	        // Safari 浏览器中，如果方法内有参数，则 Fullscreen 功能不可用。
+	        else {
+	            element.webkitRequestFullScreen();
+	        }
+	    }
+	    else if (element.mozRequestFullScreen) {
+	        element.mozRequestFullScreen();
+	    }
+	}
+	// 退出全屏模式
+	function exitFullscreen() {
+	    if (document.exitFullscreen) {
+	        document.exitFullscreen();
+	    }
+	    else if (document.webkitCancelFullScreen) {
+	        document.webkitCancelFullScreen();
+	    }
+	    else if (document.mozCancelFullScreen) {
+	        document.mozCancelFullScreen();
+	    }
+	}
+</script>

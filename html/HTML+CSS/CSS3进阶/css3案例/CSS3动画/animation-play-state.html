@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animation-play-state 演示</title>
+	<style>
+		.box-1{
+			width: 100px;
+			height: 100px;
+			background-color: #f00;
+			animation: move 3s ease 3s 1 alternate backwards ;
+			animation-play-state: paused;
+			
+		}
+		@keyframes move {
+			0%{
+				margin-left: 100px;
+				background-color: #00f;
+			}
+			100%{
+				margin-left:500px;
+				background-color: #0f0;
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<div class="box-1"></div>
+	
+</body>
+</html>

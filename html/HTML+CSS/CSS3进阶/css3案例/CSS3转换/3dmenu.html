@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3d Menu</title>
+	<style type="text/css">
+		.nav{
+			width:900px;
+			margin: 300px auto;
+			border:#ccc 1px solid;
+		}
+		.nav::after{
+			content: "";
+			display: block;
+			clear:both;
+			overflow: hidden;
+		}
+		.nav .item{
+			width:200px;
+			float: left;
+			height: 100px;
+			border-right:2px #fff solid;
+			perspective:4000px;
+		}
+		.nav .item a{
+			display: block;
+			height: 100px;
+			position: relative;
+			text-decoration:none;
+			color: #fff;
+			transform-style: preserve-3d;
+			transition: all 0.5s;
+			 transform: rotateX(20deg) rotateY(20deg) rotateZ(20deg); 
+		}
+		.nav .item a p{
+			margin: 0;
+			line-height: 100px;
+			text-align: center;
+			font-size: 36px;
+			transition: all 0.5s;
+			position: absolute;
+			width:200px;
+			height: 100px;
+			left: 0;top: 0;
+
+		}
+		.nav .item a p:first-child{
+			background: #090;
+			
+			transform: translateZ(50px);
+		}
+		.nav .item a p:last-child{
+			background: #009;
+			
+			transform: rotateX(-90deg) translateZ(50px);
+			
+		}
+		.nav .item:hover a{
+			/* transform-origin: center bottom; */
+
+			transform: rotateX(90deg);
+		}
+	</style>
+</head>
+<body>
+
+<div class="nav">
+	<div class="item"><a href="">
+		<p>首页</p>
+		<p>Home</p>
+	</a></div>
+	<div class="item"><a href="">
+		<p>关于</p>
+		<p>About</p>
+	</a></div>
+	<div class="item"><a href="">
+		<p>联系</p>
+		<p>Contact</p>
+	</a></div>
+</div>
+	
+</body>
+</html>

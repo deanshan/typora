@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>七星瓢虫</title>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="1000" style="background: url(coordinate.png) no-repeat;"></canvas>
+
+	<script>
+		var canvas = document.querySelector('#canvas');
+		var ctx = canvas.getContext("2d");
+		// 头
+		ctx.beginPath();
+		ctx.fillStyle = "#bae1e3";
+		ctx.lineWidth = "5";
+		ctx.arc(400,150,110,0,Math.PI*2);
+		ctx.stroke();
+		ctx.fill();
+
+		// 眼
+		for (var i = 0; i < 2; i++) {
+			ctx.beginPath();
+			ctx.fillStyle = "#000";
+			ctx.arc(330+i*140,110,20,0,Math.PI*2);
+			ctx.stroke();
+			ctx.fill();
+		}
+		// 身体
+		ctx.beginPath();
+		ctx.fillStyle = "#bae1e3";
+		ctx.arc(400,491,230,0,Math.PI*2);
+		ctx.stroke();
+		ctx.fill();
+
+		ctx.beginPath();
+		ctx.fillStyle = "#ff01fd";
+		ctx.fillRect(380,280,45,420);
+		ctx.strokeRect(380,280,45,420);
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.fillStyle = "#333499";
+		ctx.arc(400,440,36,0,Math.PI*2);
+		ctx.stroke();
+		ctx.fill();
+
+		for (var i = 0; i < 2; i++) {
+			ctx.beginPath();
+			ctx.fillStyle = "#333499";
+			ctx.arc(300+i*200,360,50,0,Math.PI*2);
+			ctx.stroke();
+			ctx.fill();
+
+			ctx.beginPath();
+			ctx.fillStyle = "#333499";
+			ctx.arc(320+i*165,520,45,0,Math.PI*2);
+			ctx.stroke();
+			ctx.fill();
+
+			ctx.beginPath();
+			ctx.fillStyle = "#333499";
+			ctx.arc(280+i*240,640,32,0,Math.PI*2);
+			ctx.stroke();
+			ctx.fill();
+		}
+		// 左上翅膀
+		ctx.beginPath();
+		ctx.moveTo(120,300);
+		ctx.lineTo(280,300);
+		ctx.lineTo(120,400);
+		ctx.closePath();//在绘制后闭合将不能完全闭合，需要在绘制前闭合
+		ctx.lineWidth = "5";
+		ctx.strokeStyle = "#161200";
+		ctx.stroke();
+		// ctx.closePath();
+		ctx.fillStyle = "#ffff00";
+		ctx.fill();
+
+		// 右上翅膀
+		ctx.beginPath();
+		ctx.moveTo(534,300);
+		ctx.lineTo(695,300);
+		ctx.lineTo(695,390);
+		ctx.closePath();
+		ctx.lineWidth = "5";
+		ctx.strokeStyle = "#161200";
+		ctx.stroke();
+		ctx.fillStyle = "#ffff00";
+		ctx.fill();
+
+		// 左下翅膀
+		ctx.beginPath();
+		ctx.moveTo(120,670);
+		ctx.lineTo(245,670);
+		ctx.lineTo(120,735);
+		ctx.closePath();
+		ctx.lineWidth = "5";
+		ctx.strokeStyle = "#161200";
+		ctx.stroke();
+		ctx.fillStyle = "#ffff00";
+		ctx.fill();
+
+		// 右下翅膀
+		ctx.beginPath();
+		ctx.moveTo(540,680);
+		ctx.lineTo(665,680);
+		ctx.lineTo(665,745);
+		ctx.closePath();
+		ctx.lineWidth = "5";
+		ctx.strokeStyle = "#161200";
+		ctx.stroke();
+		ctx.fillStyle = "#ffff00";
+		ctx.fill();
+
+		// 尾巴
+		ctx.beginPath();
+		ctx.moveTo(370,723);
+		ctx.lineTo(435,723);
+		ctx.lineTo(400,793);
+		ctx.closePath();
+		ctx.lineWidth = "5";
+		ctx.strokeStyle = "#161200";
+		ctx.stroke();
+		ctx.fillStyle = "#ffff00";
+		ctx.fill();
+	</script>
+</body>
+</html>

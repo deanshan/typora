@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  	<script src="../run/js/jquery-1.7.2.min.js"></script>
+  	
+  	<script>
+
+
+  		$(function(){
+  			$.fn.extend({
+  			    animateCss: function (animationName) {
+  			        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+  			        this.addClass('animated ' + animationName).one(animationEnd, function() {
+  			            $(this).removeClass('animated ' + animationName);
+  			        });
+  			        return this;
+  			    }
+  			});
+			/*console.log($);*/
+      $("#btn").on("click",function(){
+        $(".div1").animateCss("zoomIn");
+      });
+			
+  		});
+
+
+  	</script>
+  	<style>
+
+  		.div1{
+  			width: 200px;
+  			height: 200px;
+  			margin: 200px;
+  			background-color: #f00;
+  		}
+  	</style>
+</head>
+<body>
+
+	<div class="div1" >
+		
+	</div>
+	<div id="btn">点击播放动画</div>
+</body>
+</html>

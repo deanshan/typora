@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  	<script src="../run/js/jquery-1.7.2.min.js"></script>
+  	<script src="jquery.appear.js"></script>
+  	<script>
+
+
+  	// 	$(function(){
+  	// 		$.fn.extend({
+  	// 		    animateCss: function (animationName) {
+  	// 		        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+  	// 		        this.addClass('animated ' + animationName).one(animationEnd, function() {
+  	// 		            $(this).removeClass('animated ' + animationName);
+  	// 		        });
+  	// 		        return this;
+  	// 		    }
+  	// 		});
+			// /*console.log($);*/
+			// $(".div1").animateCss("zoomIn");
+  	// 	});
+$(function() {
+	$.fn.extend({
+	    animateCss: function(animationName) {
+	        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+	        $(this).addClass('animated ' + animationName).one(animationEnd, function() {
+	            $(this).removeClass('animated ' + animationName);
+	        });
+	    }
+	});
+})
+
+$(function() {
+	$('*[data-animation]').addClass('animated');
+	//$('.animated').css("visibility","visible");
+	//alert("erer");
+
+	$(".animated").appear(function() {
+	    //alert("ere");
+	    var elem = $(this);
+	    // 获取自定义属性的动画名称
+	    var animation = elem.data('animation');
+	    if (!elem.hasClass('visible')) {
+	        var animationDelay = elem.data('animation-delay');
+	        if (animationDelay) {
+	        	//elem.css("animation-delay",animationDelay +"ms");
+
+	            setTimeout(function() {
+	                //elem.addClass(animation + " visible");
+	                $(elem).addClass("visible").animateCss(animation);
+	            }, animationDelay);
+	        } else {
+	            //elem.addClass(animation + " visible");
+	            $(elem).addClass("visible").animateCss(animation);
+	        }
+	    }
+	});
+});
+
+
+
+
+$(function(){
+	$(".animate-1").appear(function(){
+		$(".animate-1").animateCss("fadeInRightBig");
+	});
+})
+  	</script>
+  	<style>
+
+  		.div1{
+  			width: 200px;
+  			height: 200px;
+  			margin: 200px;
+  			background-color: #f00;
+  		}
+
+  		.animated{
+  			visibility: hidden;
+  		}
+  		.visible{
+  			visibility: visible;
+  		}
+  	</style>
+</head>
+<body>
+	
+
+	<div class="div1" data-animation="zoomIn" animation-delay="1000">
+		
+	</div>
+	<div class="div1" data-animation="fadeInDown" animation-delay="1000">
+		
+	</div>
+	<div class="div1" data-animation="bounceInUp" animation-delay="1000">
+		
+	</div>
+	<div class="div1" data-animation="flash" animation-delay="1000">
+		
+	</div>
+	<div class="div1" data-animation="flipInX" animation-delay="1000">
+		
+	</div>
+	<div class="div1" data-animation="rotateIn" animation-delay="1000">
+		
+	</div>
+	<div class="div1" data-animation="rotateInUpLeft" animation-delay="1000">
+		
+	</div>
+
+	<div class="animate-1" style="font-size: 50px; margin-bottom: 300px;">
+		testestesrt
+	</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        #wrapper{
+            width:1024px;
+            margin:0 auto;
+        }
+        .progress-bar{
+            height:40px;
+            width:40px;
+            background-color: #69c;
+        }
+        .progress-bar:hover{
+            width:960px;
+        }
+
+        #bar1{
+            transition: width 5s linear;
+        }
+        #bar2{
+            transition: width 5s ease;
+        }
+        #bar3{
+            transition: width 5s ease-in;
+        }
+        #bar4{
+            transition: width 5s ease-out;
+        }
+        #bar5{
+            transition: width 5s ease-in-out;
+        }
+        #bar6{
+            transition: width 5s cubic-bezier(.54,.89,.93,.07);
+        }
+        /* 在线资源 贝塞尔曲线 http://cubic-bezier.com */
+    </style>
+</head>
+<body>
+
+    <div id="wrapper">
+        <p>linear</p>
+        <div class="progress-bar" id="bar1"></div>
+
+        <p>ease</p>
+        <div class="progress-bar" id="bar2"></div>
+
+        <p>ease-in</p>
+        <div class="progress-bar" id="bar3"></div>
+
+        <p>ease-out</p>
+        <div class="progress-bar" id="bar4"></div>
+
+        <p>ease-in-out</p>
+        <div class="progress-bar" id="bar5"></div>
+
+        <p>cubic-bezier(.54,.89,.93,.07)</p>
+        <div class="progress-bar" id="bar6"></div>
+    </div>
+</body>
+</html>

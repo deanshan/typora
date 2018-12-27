@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>box-shadow与outline</title>
+	<style>
+		
+		.box-shadow{
+			width: 200px;
+			height: 200px;				
+			margin: 50px 200px ;		
+			line-height: 200px;
+			text-align: center;
+			
+			border-radius: 50%;
+			/* 支持任意多个外边框 不能支持虚线*/
+			box-shadow: 0 0 0 10px red, 0 0 0 20px blue, 0 0 0 30px yellow;
+		}
+		.out-line{
+			width: 200px;
+			height: 200px;				
+			margin: 50px 200px ;		
+			line-height: 200px;
+			text-align: center;
+			border-radius: 50%;
+			border: #f00 10px solid;
+			/* 支持虚线，最多实现两~三个外边框 不能完全贴合 border-radius */
+			outline: #00f 10px dotted;
+			/* outline: #00f 10px double; */
+		}
+	</style>
+</head>
+<body>
+
+	<div class="box-shadow">box-shadow</div>
+	<div class="out-line">outline</div>
+	
+</body>
+</html>

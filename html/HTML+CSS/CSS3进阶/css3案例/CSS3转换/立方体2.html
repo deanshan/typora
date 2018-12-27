@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cubic</title>
+	<style type="text/css">
+		.stage{
+			width:500px;
+			height: 500px;
+			margin: 300px auto;
+			perspective: 800px;
+		}
+		.box{
+			position: relative;
+			transform-style: preserve-3d;
+			/* perspective:400px; */
+			transform: rotateX(-60deg) rotateY(60deg) rotateZ(60deg);
+		}
+		.box div{
+			position: absolute;
+			width:200px;
+			height: 200px;
+			
+			text-align: center;
+			line-height: 200px;
+			font-size: 50px;
+			color: #fff;
+			border:#ccc 1px dashed;
+			perspective:600px;
+			transform-style: preserve-3d;
+			backface-visibility: hidden;
+			/* transform-origin: 0 0; */
+		}
+		.flat1{			
+			transform: rotateY(0deg) translateZ(100px);
+			background: #000;
+		}
+		.flat2{			
+			transform: rotateY(-180deg) translateZ(100px);
+			background: #eee;
+		}
+		.flat3{			
+			transform: rotateY(90deg) translateZ(100px);
+			background: #ccc;
+		}
+		.flat4{			
+			transform: rotateY(-90deg) translateZ(100px);
+			background: #aaa;
+		}
+		.flat5{			
+			transform: rotateX(90deg) translateZ(100px);
+			background: #999;
+		}
+		.flat6{			
+			transform: rotateX(-90deg) translateZ(100px);
+			background: #666;
+		}
+	</style>
+</head>
+<body>
+
+<div class="stage">
+	<div class="box">
+		<div class="flat1">1</div>
+		<div class="flat2">2</div>
+		<div class="flat3">3</div>
+		<div class="flat4">4</div>
+		<div class="flat5">5</div>
+		<div class="flat6">6</div>
+	</div>
+</div>
+	
+</body>
+</html>

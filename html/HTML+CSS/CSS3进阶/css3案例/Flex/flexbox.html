@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>演示</title>
+    <style>
+    body{
+    	margin: 0;
+    }
+    ul,
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0
+    }
+
+    .flex {
+		/* width: 1000px; */
+    	/* overflow: hidden; */
+        display: flex;
+        height: 100px;
+        margin-top: 0px;
+        border: #f00 1px solid;
+        /* flex-direction: row;
+        flex-direction: row-reverse; */
+        /* flex-direction: column;
+        flex-direction: column-reverse; */
+        /* flex-wrap: nowrap;
+        flex-wrap: wrap;
+        flex-wrap: wrap-reverse;
+        flex-flow: row-reverse wrap-reverse; */
+
+        /* justify-content: flex-start;
+        justify-content: flex-end;
+        justify-content: center;
+        justify-content: space-between;
+        justify-content: space-around; */
+
+        /* align-items: stretch;
+        align-items:flex-start;
+        align-items: flex-end;         
+        align-items: center;
+        align-items: baseline; */
+		
+		/* align-items: flex-start; */
+        /* flex-wrap: wrap;
+        align-content: stretch;
+        align-content: flex-start; 
+        align-content: flex-end;
+        align-content: center;
+        align-content: space-between;
+        align-content: space-around; */
+
+        /* justify-content: space-around; */
+
+		/* flex-wrap: wrap; */
+        /* align-items: center; */
+        /* align-content: space-around; */
+        /* flex-wrap: wrap; */
+    }
+
+    .flex li {
+		/* flex-grow: 1; */
+		/* flex-shrink: 1; */
+        /* width: 300px;
+        /* width: auto; */
+        /* flex-basis:0; 
+        height: 30px;
+        flex: 0 1 auto;
+        flex: auto; 
+        flex: 1 1 auto;
+        flex: none;
+        flex: 0 0 auto;
+        flex: 0 0 200px; */
+
+       /*  flex-shrink: 1;
+        flex-basis:300px; 
+
+ */
+        /* flex: 1 1 auto;
+        flex: 0 0 auto; */
+
+        /* flex: 2;
+        
+        flex: 2 1 0%; */
+
+        /* flex: 1 2;
+        flex:  1 2 0%; */
+
+        /* flex: 100%;
+        flex: 1 1 100%; */
+
+        /* flex: 3 100px;
+        flex: 3 1 100px; */
+        
+        /* flex-basis: 300px; */
+        /* flex-shrink: 0; */
+        flex: 1;
+        display: flex;
+        text-align: center;
+         justify-content:center;
+         align-items:center;
+
+
+    }
+
+    .flex li:nth-child(1) {
+		/* order: 1; */
+		/* flex-grow: 1; */
+        background: #484281;
+    }
+
+    .flex li:nth-child(2) {
+    	/* height: 80px;
+    	line-height: 80px; */
+    	/* flex-grow: 2; */
+        background: #5248af;
+        /* align-self: flex-end; */
+    }
+
+    .flex li:nth-child(3) {
+    	/* height: 100px;
+    	line-height: 50px; */
+    	/* order: -1; */
+    	/* flex-grow: 5; */
+    	/* flex-grow: 3; */
+        /* flex-shrink: 0; */
+        background: #786bfa;
+    }
+
+    .flex li:nth-child(4) {
+    	/* flex-grow: 4; */
+        background: #aba3f9;
+    }
+    </style>
+</head>
+
+<body>
+    <ul class="flex">
+        <li>a</li>
+        <li>b</li>
+        <li>c<br>test</li>
+        <li>d</li>
+    </ul>
+</body>
+
+</html>

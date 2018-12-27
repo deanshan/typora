@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>jq 楼层滚动效果</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            i {
+                font-style: normal;
+            }
+
+            ul,li, dl,ol{
+                list-style: none;
+            }
+
+            .floorNav {
+                border: 1px solid gray;
+                width: 30px;
+                position: fixed;
+                top: 150px;
+                left: 50px;
+                display: none;
+                /* transform: translate() */
+            }
+
+            .floorNav li {
+                width: 30px;
+                height: 30px;
+                border-bottom: 1px solid gray;
+                line-height: 30px;
+                text-align: center;
+                cursor: pointer;
+                background: yellow;
+            }
+
+            #LoutiNav span {
+                display: none;
+            }
+
+
+            #LoutiNav li:hover span {
+                display: block;
+                font-size: 12px;
+                background: darkred;
+                color: white;
+            }
+
+            #LoutiNav li:hover i {
+                display: none;
+            }
+
+            #goTop {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                background: gray;
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                cursor: pointer;
+                border-radius: 5px;
+                display: none;
+            }
+
+            #goTop:hover {
+                background: darkred;
+                color: white;
+            }
+
+            #goTop:hover span {
+                display: block;
+            }
+
+            #erweima {
+                width: 130px;
+                height: 130px;
+                background: palegreen;
+                display: none;
+                position: absolute;
+                right: 46px;
+                bottom: 5px;
+                line-height: 130px;
+                text-align: center;
+                font-size: 20px;
+                border-radius: 10px;
+            }
+
+            #header {
+                height: 200px;
+                background: palegoldenrod;
+                text-align: center;
+                line-height: 200px;
+                font-size: 72px;
+                margin: 0 auto;
+            }
+
+            .louceng {
+                height: 810px;
+                text-align: center;
+                line-height: 610px;
+                font-size: 120px;
+                margin: 0 auto;
+            }
+            .floorNav .floorActive {
+                background: red;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <ul id="LoutiNav" class="floorNav">
+            <li class="active"><i>1F</i><span>服饰</span></li>
+            <li><i>2F</i><span>美妆</span></li>
+            <li><i>3F</i><span>手机</span></li>
+            <li style="border-bottom: none;"><i>4F</i><span>家电</span></li>
+        </ul>
+        <div id="goTop">
+            <span id="erweima">我是二维码</span> Top
+        </div>
+        <div id="header">头部</div>
+        <div id="main">
+            <div class="louceng floor" style="background: papayawhip;">服饰</div>
+            <div class="louceng floor" style="background: peachpuff;">美妆</div>
+            <div class="louceng floor" style="background: peru;">手机</div>
+            <div class="louceng floor" style="background: pink;">家电</div>
+        </div>
+        <!-- <script src="jquery-1.12.4.min.js"></script> -->
+        <script src="./floor-nav.js"></script>
+    </body>
+</html>

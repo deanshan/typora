@@ -1,0 +1,221 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+	.nav{
+		height:40px;
+		text-align:center;
+		line-height:40px;
+		list-style:none;
+		
+	}
+	li{
+		width:60px;
+		height:40px;
+		position:relative;
+		transition:all 1s;
+		transform-style:preserve-3d;
+		
+	}
+	li span{
+		position:absolute;
+		top:0;
+		left:0;
+		display:block;
+		width:100%;
+		height:100%;
+		box-shadow:50%;
+	}
+	li span:first-child{
+		background-color:green;
+		transform:translateZ(20px);
+		
+	}
+	li span:last-child{
+		background-color: yellow;
+		transform: rotateX(90deg) translateZ(20px);
+	}
+	li:hover{
+		transform: rotateX(-90deg);
+	}
+	
+	
+	
+	
+	
+	
+	.Images{
+		width:965px;
+		height:600px;
+		margin-left:200px;
+		background:url(../Images/bookBg.png) no-repeat center;
+		transform-style:preserve-3d;
+		perspective:2000px;
+		position: relative;
+		left:50px;
+	}
+	.left{
+		width:460px;
+		height:582px;
+		float:left;
+		position:absolute;
+		left:24px;
+		top:9px;
+		background: -webkit-linear-gradient(left, #FBFBFB 92%, #E3DEDE) ;
+		transform-origin:right;
+		transition:all 4s;
+		border:1px solid #C6C6C6;
+		box-sizing:border-box;
+	}
+	.left div{
+		width:100%;
+		height:100%;
+		transform:scale(0.9,1);
+		transition:all 4s;
+		word-wrap:break-word;
+		overflow: hidden;
+	}
+	pre{
+		font-family:"Segoe Print",Segoe Script,"hakuyoxingshu7000";
+	}
+	.Images:hover .left{
+		animation: rotate 4s infinite linear alternate;
+	}
+	
+	.left div:hover {
+		animation: rotate1 4s infinite linear alternate;
+	}
+	@keyframes rotate{
+		0%{
+			transform:rotateY(0deg);
+		}
+		100%{
+			transform:rotateY(180deg);
+		}
+	}
+	@keyframes rotate1{
+		0%{
+			opacity:1;
+		}
+		50%{
+			opacity:0;
+		}
+		100%{
+			opacity:0;
+		}
+	}
+		
+		
+	.right{
+		width:460px;
+		height:582px;
+		position:absolute;
+		left:50%;
+		top:9px;
+		background: -webkit-linear-gradient(right, #FBFBFB 92%, #E3DEDE) ;
+		transform-origin:left;
+		transform: rotateY(-180deg);
+		transition:all 4s;
+		box-sizing:border-box;
+	}
+	.right div{
+		width:100%;
+		height:100%;
+		transform:scale(0.9,1);
+		transition:all 4s;
+		word-wrap:break-word;
+		overflow: hidden;
+	}	
+	.Images:hover .right{
+		animation: rotate2 4s infinite linear alternate;
+	}
+	
+	.Images:hover .right div{
+		animation: rotate3 4s infinite linear alternate;
+	}
+	@keyframes rotate2{
+		0%{
+			transform:rotateY(-180deg);
+		}
+		100%{
+			transform:rotateY(0deg);
+		}
+	}
+	@keyframes rotate3{
+		0%{
+			opacity:0;
+		}
+		50%{
+			opacity:0;
+		}
+		100%{
+			opacity:1;
+		}
+	}
+</style>
+</head>
+
+<body>
+<ul class="nav">
+	<li>
+    	<span>首页</span>
+        <span>HOME</span>
+	</li>
+    <li>
+    	<span>首页</span>
+        <span>HOME</span>
+	</li>
+    <li>
+    	<span>首页</span>
+        <span>HOME</span>
+	</li><li>
+    	<span>首页</span>
+        <span>HOME</span>
+	</li><li>
+    	<span>首页</span>
+        <span>HOME</span>
+	</li><li>
+    	<span>首页</span>
+        <span>HOME</span>
+	</li>
+</ul>
+<div class="Images">
+
+	<div class="left">
+    	<div>
+        <pre>
+        	HTML5 是如何起步的？
+
+HTML5 是 W3C 与 WHATWG 合作的结果,WHATWG 指 Web Hypertext Application Technology Working Group。。
+WHATWG 致力于 web 表单和应用程序，而 W3C 专注于 XHTML 。
+<img src="../Images/3D坐标系.png"/>
+HTML5 中的一些有趣的新特性：
+
+用于绘画的 canvas 元素
+用于媒介回放的 video 和 audio 元素
+对本地离线存储的更好的支持
+
+新的特殊内容元素，比如 article、footer、header、nav、section
+新的表单控件，比如 calendar、date、time、email、url、search
+        </pre>
+        </div>
+    </div>
+    <div class="right">
+    	<div>
+        <pre>
+            WHATWG 致力于 web 表单和应用程序，而 W3C 专注于 XHTML 。
+            HTML5 中的一些有趣的新特性：
+            用于绘画的 canvas 元素
+            用于媒介回放的 video 和 audio 元素
+            对本地离线存储的更好的支持
+            <img src="../Images/6.jpg"/>
+            新的特殊内容元素，比如 article、footer、header、nav、section
+            新的表单控件，比如 calendar、date、time、email、url、search
+        </pre>
+        </div>
+    </div>
+</div>
+</body>
+</html>

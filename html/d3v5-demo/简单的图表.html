@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script>
+  // 创建svg画布
+let svg = d3.select('body')
+            .append('svg')
+            .attr('width', 800)
+            .attr('height', 500)
+            .style('background-color', '#ccc')
+//选择所有节点，绑定数据，进入选择的节点集，添加节点至节点和数据一一对应
+svg.selectAll('rect')
+   .data([100, 500, 200, 400, 150])
+   .enter()
+   .append('rect')
+   .attr('x', 20)
+   .attr('y', function (d, i) {
+     return i * 25
+   })
+   .attr('width', function (d) {
+     return d
+   })
+   .attr('height', 20)
+   .style('fill', function (d, i) {
+     return "hsl(" + Math.random() * 360 + ",100%,50%)";
+   })
+
+</script>

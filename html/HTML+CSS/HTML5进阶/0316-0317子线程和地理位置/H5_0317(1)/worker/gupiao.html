@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table  border="1">
+			<option>当前股价一览表</option>
+			<thead>
+				<tr>
+					<th>证券名称</th>
+					<th>价格</th>
+					<th>时间</th>
+				</tr>
+			</thead>
+			<tbody id="tbody"></tbody>
+		</table>
+		<script type="text/javascript">
+			window.onload = function(){
+				var workers = new Worker('js/gupiao.js');
+				workers.onmessage = function (res){
+					console.log(res.data);
+					tbody.innerHTML += "<tr><td>名称："+event.data.name+"</td><td>价格："+event.data.pri+"</td><td>时间："+event.data.time+"</td></tr>";
+				}
+				
+				var workers = new Worker('js/gupiao1.js');
+				workers.onmessage = function (res){
+					console.log(res.data);
+					tbody.innerHTML += "<tr><td>名称："+event.data.name+"</td><td>价格："+event.data.pri+"</td><td>时间："+event.data.time+"</td></tr>";
+				}
+				
+				var workers = new Worker('js/gupiao2.js');
+				workers.onmessage = function (res){
+					console.log(res.data);
+					tbody.innerHTML += "<tr><td>名称："+event.data.name+"</td><td>价格："+event.data.pri+"</td><td>时间："+event.data.time+"</td></tr>";
+				}
+			}
+		</script>
+	</body>
+</html>

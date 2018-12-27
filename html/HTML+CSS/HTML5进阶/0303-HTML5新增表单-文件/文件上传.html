@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文件上传</title>
+	<style type="text/css">
+		h3 {
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+<!-- 文件操作 -->
+	<details>
+		<summary><h3>文件操作（接口对象、Blob 对象、FileReader 对象...）</h3></summary>
+		<h4>一、接口对象</h4>
+		<p> 1、FileList：是一个类数组，File对象的集合	<br />
+			2、File：单个文件，从Blob接口继承而来，提供了文件的name、size、type等只读文件属性   <br />
+			3、FileReader：异步读取文件的接口   <br />
+			4、Blob：文件对象的二进制原始数据   <br />
+		</p>
+		
+		<h4>二、Blob 对象：Blob对象作为一个装填二进制数据的基本对象，其作用也仅仅是一个容器，而真正的业务功能则需要通		 			过FileReader、URL、Canvas等对象实现</h4>
+		<p><b>方法：</b><br />
+			1、Blob.slice(start ,end ,contentType)：属于Blob对象的一个方法,而File对象是继承Blob对象的,因此File对象也含有slice方法。
+			参数：start--开始索引，默认为0、end--截取结束索引（不包含end）、contentType--新Blob的MIME类型，默认为空字符串
+		</p>
+
+		<h4>三、FileReader 对象</h4>
+		<p><b>方法：</b><br />
+			1、readAsText(file)：将文件读取为文本，并且可以强制选择文件编码   <br />
+			2、readAsDataURL(file)：以DataURL格式读取文件内容    <br />
+			3、readAsArrayBuffer(blob/file)：以ArrayBuffer格式读取文件内容   <br />
+		<s> 4、readAsBinaryString(File|Blob)：将文件读取为二进制编码(已废除)</s>  <br />
+		</p>
+		<p><b>事件</b><br />
+			1、onloadstart ： 读取操作开始时触发    <br />
+			2、onload ： 读取操作成功时触发    <br />
+			3、onloadend ： 读取操作完成时触发(不论成功还是失败)    <br />
+			4、onprogress ： 读取操作过程中触发    <br />
+			5、onabort ： 读取操作被中断时触发    <br />
+			6、onerror ： 读取操作失败时触发    <br />
+			7、result : 读取的结果(二进制、文本或DataURL格式);    <br />
+		</p>
+	</details>
+<!-- 文件拖拽上传 -->
+	<details>
+		<summary><h3>文件拖拽上传</h3></summary>
+		<div id="dragFile" style="width: 300px;height: 100px;background: red">请将文件拖拽到此</div>
+		<p></p>
+		<script>
+			var dragFile = document.querySelector('#dragFile');
+			// 添加监听事件
+			dragFile.addEventListener("dragover",dragFn,false);
+			function dragFn(e) {
+				// 阻止派发事件
+				e.stopPropagation();
+				// 阻止默认处理方式
+				e.preventDefault();
+			}
+			dragFile.addEventListener("drop",dropFn,false);
+			function dropFn(e) {
+				// 阻止派发事件
+				e.stopPropagation();
+				// 阻止默认处理方式
+				e.preventDefault();
+
+				// console.log(e);
+				// 通过拖拽事件下的方法获取该文件fileList组，包含文件名称、文件大小等等
+				var fileList = e.dataTransfer.files;
+				// console.log(fileList);
+				var pHtml1 = "";
+				for (var i = fileList.length - 1; i >= 0; i--) {
+					pHtml1 += "文件名称：" + fileList[i].name + "<br/>";
+					pHtml1 += "文件大小：" + fileList[i].size + "<br/>";
+					pHtml1 += "文件类型：" + fileList[i].type + "<br/>";
+					pHtml1 += "文件修改时间：" + fileList[i].lastModifiedDate + "<br/>";
+				}
+				this.nextElementSibling.innerHTML = pHtml1;
+			}
+		</script>
+	</details>
+<!-- 选择文件上传 -->
+	<details>
+		<summary><h3>选择文件上传</h3></summary>
+		<input type="file" name="file" id="inpFiles" multiple>
+		<p></p>
+
+		<script>
+		 	var inpFiles = document.querySelector('#inpFiles');
+
+		 	inpFiles.onchange = function (e) {
+		 		// console.log(e)
+		 		// console.log(e.target.files);
+		 		// inpFiles == this == e.target 
+		 		// console.log(this.files);
+		 		var fileList = this.files;
+		 		var pHtml2 = "";
+		 		for (var i = fileList.length - 1; i >= 0; i--) {
+					pHtml2 += "文件名称：" + fileList[i].name + "<br/>";
+					pHtml2 += "文件大小：" + fileSize(fileList[i].size) + "<br/>";
+					pHtml2 += "文件类型：" + fileList[i].type + "<br/>";
+					pHtml2 += "文件修改时间：" + fileList[i].lastModifiedDate + "<br/>";
+				}
+				this.nextElementSibling.innerHTML = pHtml2;
+		 	}
+		 	// 转换文件大小单位,默认为B
+		 	function fileSize(num) {
+		 		var kbSize = num/1024;
+		 		var tip = ["KB","MB","GB","TB"];
+		 		for (var i = 0; kbSize > i; kbSize/=1024 ,i++){
+		 			console.log(i
+		 				)
+		 			return	kbSize.toFixed(2) + " " + tip[i];
+		 		}
+		 	}
+		</script>
+	</details>
+<!-- 读取上传文件的内容 -->
+	<details>
+		<summary><h3>读取上传文件的内容</h3></summary>
+
+		<div></div>
+		<input type="file" name="file" id="fileContent" multiple>
+		<p></p>
+
+		<script>
+			var fileContent = document.querySelector('#fileContent');
+
+			fileContent.onchange = function () {
+				var fileList = this.files[0];
+
+				// 实例化 FileReader 对象
+				var fileReader = new FileReader();
+
+				fileReader.onload = function (e) {
+					// console.log(this)
+					// console.log(e.target)
+					// 读取所上传文件的内容
+					fileContent.nextElementSibling.innerHTML = this.result;
+
+					// 显示上传文件内容
+					var img = document.createElement("img");
+					img.style.width = "200px";
+					img.src = this.result;
+					fileContent.previousElementSibling.appendChild(img);
+				}
+				// 将文件读取为文本，并且可以强制选择文件编码
+				// fileReader.readAsText(fileList,'UTF-8');
+				
+				// 以DataURL格式读取文件内容
+				fileReader.readAsDataURL(fileList);
+			}
+		</script>
+	</details>
+<!-- 文件上传监控 -->
+	<details>
+		<summary><h3>文件上传监控</h3></summary>
+
+		<input type="file" id="fileInput">
+		<p></p>
+		<progress min="0" max="100" value="0"></progress>
+
+		<button>上传中断</button>
+
+		<script>
+			var fileInput = document.querySelector('#fileInput');
+			var progress = document.querySelector('progress');
+			var btn = document.querySelector('button');
+
+			fileInput.onchange = function () {
+				// 获取上传的第一个文件
+				var fileList = this.files[0];
+				// 实例化 FileReader() 对象
+				var fileReader = new FileReader();
+				// 开始上传
+				fileReader.onloadstart = function () {
+					if (confirm('确定上传？')) {
+						// 上传过程中触发
+						fileReader.onprogress = function (e) {
+							// 文件大小
+							console.log(e.total);
+							// 文件上传进度
+							console.log(e.loaded);
+							if (e.loaded < e.total) {
+								var num = (e.loaded / e.total)*100;
+								progress.value = num;
+								fileInput.nextElementSibling.innerHTML = num.toFixed(2) + "%";
+							}else{
+								progress.value = 100;
+								fileInput.nextElementSibling.innerHTML = "100%";
+							}
+						}
+					}else{
+						fileInput.nextElementSibling.innerHTML = "已经放弃上传！";
+					}
+				}
+				// 上传发生错误时触发
+				fileReader.onerror = function (e) {
+					console.log("触发错误的代码！");
+				}
+				// 上传中断
+				function stopFileReader(e) {
+					// 中断方法
+					fileReader.abort();
+					fileInput.nextElementSibling.innerHTML = "为止原因，上传中断！";
+				}
+				// 上传意外中断
+				fileReader.onabort = stopFileReader;
+				// 点击事件中断上传
+				btn.onclick = stopFileReader;
+				//3、文件读取为文本流对象
+				fileReader.readAsText(fileList,"utf-8");
+			}
+		</script>
+	</details>
+<!-- 大文件分段上传 -->
+	<details>
+		<summary><h3>大文件分段上传</h3></summary>
+
+		<input type="file" name="file" id="fileBig"><br/><br/>
+		<div style="height: 20px;background: cadetblue;"><div id="pro" style="height: 20px;background: coral;width: 0px;"></div></div>
+
+		<script type="text/javascript">
+			var fileBig = document.querySelector('#fileBig');
+
+			//已经读取的大小
+			var spliceSize = 0;
+			//每次上传的大小   5M
+			var addSize = 5*1025*1024;  
+			//总大小
+			var fileSize;
+			//文件的信息
+			var  file;
+
+			var fileReader = new FileReader();
+			// 获取文件信息及大小
+			fileBig.onchange = function () {
+				file = this.files[0];
+				fileSize = file.size;
+				console.log(file)
+				// console.log(file.slice());
+
+				loadBolb();
+			}
+			function loadBolb() {
+				// File对象是继承Blob对象的,因此File对象也含有slice方法
+				fileReader.readAsDataURL(file.slice(spliceSize ,addSize+spliceSize));
+
+				console.log(file.slice());
+			}
+			fileReader.onload = function(e){
+				spliceSize += e.total;
+				
+				console.log(spliceSize ,addSize+spliceSize)
+				//每次加的大小 除以总大小
+				var num = spliceSize / fileSize;
+				if(num < 1){
+					loadBolb();
+				}else{
+					console.log("上传完成！");
+					num = 1;
+				}
+				// console.log(num);
+				//当前上传的进度
+				num = Math.ceil(num * 100) + "%";
+				pro.innerHTML = num;
+				pro.style.width = num;
+			}
+			
+			function stop(){
+				// 方法终止
+				fileReader.abort();
+				pro.innerHTML = "终止上传！";
+				
+				// 事件终止
+				// fileReader.onabort = function(){
+				// 	pro.innerHTML = "终止上传！";
+				// }
+			}
+		</script>
+	</details>
+</body>
+</html>

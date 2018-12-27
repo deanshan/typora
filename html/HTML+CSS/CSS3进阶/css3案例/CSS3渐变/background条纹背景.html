@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>background条纹背景</title>
+		<style type="text/css">
+			body {
+				width: 1320px;
+				margin: 0 auto;
+				padding: 30px 0 0 0 ;
+			}
+			div {
+				width: 300px;
+				height: 300px;
+				float: left;
+				margin: 15px 15px 45px 15px;
+				position: relative;
+			}
+			#level {
+				background: linear-gradient(#fb3 33.3%,#58a 0,#58a 66.6%,yellowgreen 0);
+				background-size: 100% 100px;
+				
+			}
+			#vertical {
+				background: linear-gradient(to right,#fb3 33.3%,#58a 0,#58a 66.6%,yellowgreen 0);
+				background-size: 100px 100%;
+			}
+			#skew {
+				   /*方法一：45°条纹，单个贴片应有四种颜色，就像瓷砖的设计一样；*/
+				background: linear-gradient(-45deg,#fb3 25%,#58a 0,#58a 50%,#fb3 0,#fb3 75%,#58a 75%,#58a 100%);
+				background-size: 100px 100px;
+				
+				/*	方法二：使用repeat-linner-gradient重复循环*/
+				/*background: repeating-linear-gradient(45deg,#fb3 0,#fb3 25%,#58a 25%,#58a 50%);*/
+				
+			}
+			#skew2 {
+				
+				background: repeating-linear-gradient(60deg,#fb3 0,#fb3 25px,#58a 25px,#58a 50px);
+				
+			}
+			#patterns {
+				background: white;
+				background: linear-gradient(90deg,rgba(200,0,0,.5) 50%,transparent 0),
+				            linear-gradient(rgba(200,0,0,.5) 50%,transparent 0);
+				background-size: 70px 70px;
+			}
+			#subtle {
+				/*background: #00d6ff;*/
+				background: repeating-linear-gradient(30deg,#79b,#79b 30px,#58a 0,#58a 60px);
+			}
+			#ruler {
+				background: #272822;
+				background-image: linear-gradient(white 2px,transparent 0),
+				            linear-gradient(90deg,white 2px,transparent 0),
+				            linear-gradient(hsla(0,0%,100%,.3) 1px,transparent 0),
+				            linear-gradient(90deg,hsla(0,0%,100%,.3) 1px,transparent 0);
+				background-size: 75px 75px,75px 75px,15px 15px,15px 15px;
+			}
+			#polka {
+				background: #655;
+				background-image: radial-gradient(tan 30%,transparent 0),radial-gradient(tan 30%,transparent 0);
+				background-position: 0 0,15px 15px;
+				background-size: 30px 30px;
+			}
+			#qipan {
+				background: #eee;
+				background-image: linear-gradient(45deg,#bbb 25%,transparent 0),
+				                  linear-gradient(45deg,transparent 75%,#bbb 0),
+				                  linear-gradient(45deg,#bbb 25%,transparent 0),
+				                  linear-gradient(45deg,transparent 75%,#bbb 0);
+				background-position: 0 0,30px 30px,-30px -30px,0 0;
+				background-size: 60px 60px;
+			}
+			#pic {
+				box-sizing: border-box;
+				border: 4em solid transparent;
+				padding: 1em 1em;
+				background-image: linear-gradient(transparent,white),url(img/pic2.jpg);
+				background-size: cover;
+				background-clip: padding-box,border-box;
+				background-origin: border-box;
+			}
+			#letter {
+				padding: 1em;
+				border: .8em solid transparent;
+				background: linear-gradient(white,white) padding-box,repeating-linear-gradient(135deg,red 0,red 12.5%,transparent 0,transparent 25%,#58a 0,#58a 37.5%,transparent 0,transparent 50%) ;
+				background-size: 100% 100%,5em 5em;
+				box-sizing: border-box;
+				width: 600px;
+			}
+			#clip {
+				background: orange;
+				background: linear-gradient(225deg,transparent 30px,orange 0) top left;
+			}
+			#shadow_box{
+				position: relative;
+			}
+			#shadow {
+				position: relative;
+				top: 130px;
+				left: 130px;
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				background: red;
+				box-shadow: 0 0 0 20px white,0 0 0 40px black,0 0 0 60px white,0 0 0 80px black,0 0 0 100px white;
+			}
+			p{
+				width: 300px;
+				font: 30px/30px bold;
+				color: blue;
+				position: absolute;
+				text-align: center;
+				bottom: -70px;
+				
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="level">
+			<p>水平条纹效果</p>
+		</div>
+		<div id="vertical">
+			<p>垂直条纹效果</p>
+		</div>
+		<div id="skew">
+			<p>-45°条纹效果</p>
+		</div>
+		<div id="skew2" >
+			<p>60°条纹效果</p>
+		</div>
+		<div id="patterns">
+			<p>网格背景效果</p>
+		</div>
+		<div id="subtle">
+			<p>同色系条纹效果</p>
+		</div>
+		<div id="ruler">
+			<p>标尺网格效果</p>
+		</div>
+		<div id="polka">
+			<p>波点radial效果</p>
+		</div>
+		<div id="qipan">
+			<p>棋盘效果</p>
+		</div>
+		<div id="pic">
+			这是用图片做的相框！这是用图片做的相框！这是用图片做的相框！这是用图片做的相框！这是用图片做的相框！
+			<p style="font: 30px/30px bold;color: blue;position: absolute;bottom: -135px;left:-2em;">连续的图像边框</p>
+		</div>
+		<div id="letter">
+			<p style="font: 30px/30px bold;color: blue;position: absolute;bottom: -75px;left:5em;">老式信封边框</p>
+		</div>
+		<div id="clip">
+			<p>切角效果</p>
+		</div>
+		<div id="shadow_box">
+			<div id="shadow"></div>
+			<p>box-shadow效果</p>
+		</div>
+	</body>
+</html>

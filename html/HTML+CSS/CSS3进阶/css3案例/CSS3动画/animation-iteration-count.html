@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animation-iteration-count 演示</title>
+	<style>
+		.box-1{
+			width: 100px;
+			height: 100px;
+			background: #f00;
+			animation: move 3s ease 2s infinite; 
+			/* animation-iteration-count: infinite; */
+			/* 每次循环动画播放之间没有延迟 */
+			/* 如果每次动画循环 需要延迟怎么办？提示 换种思路 */
+		}
+		@keyframes move {
+			0{margin-left: 0}
+			100%{margin-left:500px;}
+		}
+	</style>
+</head>
+<body>
+
+	<div class="box-1"></div>
+	
+</body>
+</html>

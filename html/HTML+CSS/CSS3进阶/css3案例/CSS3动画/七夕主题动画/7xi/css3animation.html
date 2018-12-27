@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+    html{
+        font-size: 120px;
+    }
+#boy{
+	display: inline-block;
+    position: relative;
+    background-image:url(images/boy-walk.png);    
+    width:1.51rem;
+    height:2.91rem;
+    z-index: 3;
+    left:3%;
+    top:0%;
+    background-size: 400% 100%;
+}
+
+@keyframes boy-walk {
+   0{ background-positon: 0 0;}	
+   0{ background-positon: -100% 0;}	
+   100% { background-position: -300% 0; }
+}
+.boywalk{
+	animation: boy-walk 400ms steps(3,start) infinite  ; 
+}
+.boywalk2{
+	animation: boy-walk 400ms steps(3,start) infinite alternate ; 
+}
+.boywalk3{
+	animation: boy-walk 400ms steps(3,end) infinite  ; 
+}
+.boywalk4{
+	animation: boy-walk 400ms steps(3,end) infinite alternate ; 
+}
+.bird {
+        min-width: 91px;
+        min-height: 71px;
+        top: 10%;
+        position: relative;
+        z-index: 10;
+        background: url(images/bird.png);
+    }
+@keyframes bird-slow {
+        0% {
+            background-position: -182px 0px;
+        }
+        50% {
+            background-position: 0px 0px;
+        }
+        75% {
+            background-position: -91px 0px;
+        }
+        100% {
+            background-position: -182px 0px;
+        }
+}
+
+.birdFly {
+        /*写法1*/
+        /* -webkit-animation: bird-slow 400ms steps(1,start) infinite;
+
+        -webkit-animation-name: bird-slow;
+        -webkit-animation-duration: 400ms;
+        -webkit-animation-timing-function: steps(1);
+        -webkit-animation-iteration-count: infinite; */
+
+        animation: bird-slow 400ms steps(1,start) infinite; 
+}
+	</style>
+</head>
+<body>
+	
+
+	<div class="bird birdFly"></div>
+	<div id="boy" class="boywalk"></div>
+	<div id="boy" class="boywalk2"></div>
+	<div id="boy" class="boywalk3"></div>
+	<div id="boy" class="boywalk4"></div>
+</body>
+</html>

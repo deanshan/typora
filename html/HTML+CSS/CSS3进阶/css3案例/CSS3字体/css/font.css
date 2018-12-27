@@ -1,0 +1,45 @@
+@font-face{
+	font-family: 'Aleo'; 
+	src: url('fonts/aleo-regular-webfont.eot'); /* IE9+ */
+	src: url('fonts/aleo-regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 url('fonts/aleo-regular-webfont.woff') format('woff'), /* 现代浏览器 */
+		 url('fonts/aleo-regular-webfont.woff2') format('woff2'),
+		 url('fonts/aleo-regular-webfont.ttf') format('truetype'),/* Safari, Android, iOS */
+		 url('fonts/aleo-regular-webfont.svg#aleoRegular') format('svg');/* Legacy iOS */
+	font-weight: normal; 
+	font-style: normal;	
+}
+@font-face{
+	font-family: 'Aleo-lightitalic'; 
+	src: url('fonts/aleo-lightitalic-webfont.eot'); /* IE9+ */
+	src: url('fonts/aleo-lightitalic-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 url('fonts/aleo-lightitalic-webfont.woff') format('woff'), /* 现代浏览器 */
+		 url('fonts/aleo-lightitalic-webfont.woff2') format('woff2'),
+		 url('fonts/aleo-lightitalic-webfont.ttf') format('truetype'),/* Safari, Android, iOS */
+		 url('fonts/aleo-lightitalic-webfont.svg#aleoRegular') format('svg');/* Legacy iOS */
+	/* font-weight: lighter; 
+	font-style: italic;	 */
+	font-weight: normal; 
+	font-style: normal;	
+}
+
+ @font-face {
+  font-family: 'iconfont';  project id 75652
+  src: url('//at.alicdn.com/t/font_t809m1nvipzgds4i.eot');
+  src: url('//at.alicdn.com/t/font_t809m1nvipzgds4i.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_t809m1nvipzgds4i.woff') format('woff'),
+  url('//at.alicdn.com/t/font_t809m1nvipzgds4i.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_t809m1nvipzgds4i.svg#iconfont') format('svg');
+} 
+/* @font-face{
+	font-family: 'iconfont'; 
+	src: url('font_1iojstwou87x2yb9/iconfont.eot'); IE9+
+	src: url('font_1iojstwou87x2yb9/iconfont.eot?#iefix') format('embedded-opentype'), IE6-IE8
+		 url('font_1iojstwou87x2yb9/iconfont.woff') format('woff'), 现代浏览器
+		 url('font_1iojstwou87x2yb9/iconfont.woff2') format('woff2'),
+		 url('font_1iojstwou87x2yb9/iconfont.ttf') format('truetype'),Safari, Android, iOS
+		 url('font_1iojstwou87x2yb9/iconfont.svg#aleoRegular') format('svg');Legacy iOS
+	font-weight: normal; 
+	font-style: normal;	
+}
+ */

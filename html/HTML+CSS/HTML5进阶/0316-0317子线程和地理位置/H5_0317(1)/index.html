@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#allmap{
+				height: 500px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="allmap"></div>
+		<script type="text/javascript">
+			function success(res){
+				console.log(res);
+			}
+			function error(res){
+				console.log(res);
+				switch(res.code){
+					//用户选了不允许
+					case 1 : alert(res.message); break;
+			        //连不上GPS卫星，或者网络断了
+					case 2: alert(res.message); break;
+					//超时了 
+				    case 3: alert(res.message); break;
+				    //未知错误，其实是err.code==0的时候 break;
+				    default: alert(res.message);
+				}
+				
+		        
+			}
+			
+			option = {
+				enableHighAccuracy:false,
+				timeOut:5000,
+				maximumAge:0 
+			}
+			
+			if(navigator.geolocation){
+				navigator.geolocation.getCurrentPosition(success,error,option)
+			}
+			
+			//执行回调函数
+			function initalize(){
+				var map = new BMap.Map("allmap"); 
+				var point = new BMap.Point(121.4309835670,31.2503572525);
+				map.centerAndZoom(point,31);
+				
+				var marker = new BMap.Marker(point);
+				map.addOverlay(marker);
+				marker.setAnimation(BMAP_ANIMATION_BOUNCE)
+				
+				
+				//创建地图控件
+				map.addControl(new BMap.NavigationControl());    //地图平移缩放控件PC端默认位于地图左上方，它包含控制地图的平移和缩放的功能。移动端提供缩放控件，默认位于地图右下方。
+	    		map.addControl(new BMap.OverviewMapControl());   //添加缩略地图控件，默认位于地图右下方，是一个可折叠的缩略地图。
+	    		map.addControl(new BMap.ScaleControl());     	//比例尺控件，默认位于地图左下方，显示地图的比例关系。
+	    		map.addControl(new BMap.MapTypeControl());   	//地图类型控件，默认位于地图右上方。
+	    		map.addControl(new BMap.GeolocationControl());   //定位控件，针对移动端开发，默认位于地图左下方。
+	    		map.addControl(new BMap.CopyrightControl());     //版权控件，默认位于地图左下方。
+//				var location = new BMap.Geolocation();
+//				location.getCurrentPosition(function(res){
+//					console.log(res)
+//				})
+				
+				
+			}
+			
+			
+			function loadScript(){
+				var script = document.createElement("script");
+				script.src = "http://api.map.baidu.com/api?v=2.0&ak=DlBAFrcThN8g3kkbfRcfnrHS1pWUwDeS&callback=initalize";
+				document.body.appendChild(script);
+			}
+			
+			window.onload = loadScript;
+		</script>
+	</body>
+</html>

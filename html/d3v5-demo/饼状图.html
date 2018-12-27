@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <p>注：此图基于d3-v5版本</p>
+  <!-- 知识点：
+    1.画弧：弧形生成器
+      d3.arc({
+        innerRadius:0,
+        outRadius:100,
+        startAngle:0,
+        endAngle:Math.PI/2
+      })
+    2.画饼：饼状图生成器
+      d3.pie(data)
+    3.
+      d3.arc().centroid()
+    4.离散色
+      d3.schemeCategory10
+  -->
+</body>
+</html>
+<script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+<script>
+// ------------数据准备---------------
+let width = 960,
+    height = 560,
+    padding = 20 // 画布内边距
+//  创建svg画布
+let svg = d3.select('body')
+            .append('svg')
+            .attr('width', width)
+            .attr('height', height)
+            .style('background', '#ccc')
+// 创建分组<g>来存储图像
+let g = svg.append('g')
+           .attr('transform','translate(' + padding + ',' + padding + ')')
+// 数据集
+let dataset = [10,20,30,23,13,40,27,35,20]
+
+// ----------比例尺(不同色)--------------
+let colorScale = d3.scaleOrdinal()
+                   .domain(d3.range(dataset.length))
+                   .range(d3.schemeCategory10)
+// ----------饼状图-----------------------
+//创建饼状图
+let pie = d3.pie()
+//画弧
+// let innerRadius = 0,//内半径
+//     outerRadius = 400//外半径
+let arcGenerator = d3.arc().innerRadius(0).outerRadius(200)
+//把数据加入图形内
+let pieData = pie(dataset)
+console.log(pieData)
+// ----------绘图---------------------------
+// 为每一个扇形及其对应的文字建立一个分组<g>
+let gs = g.selectAll('.g')
+          .data(pieData)
+          .enter()
+          .append('g')
+          .attr('transform','translate(' + width/2 + ',' + height/2 + ')')
+//绘制扇形
+gs.append('path')
+  .attr('d', function (d, i) {
+    return arcGenerator(d)
+  })
+  .attr('fill', function (d, i) {
+    return colorScale(i)
+  })
+//对应的文字信息
+gs.append('text')
+  .attr('transform', function (d) {
+    return 'translate(' + arcGenerator.centroid(d) + ')'
+  })
+  .attr('text-anchor', 'middle')
+  .text(function (d) {
+    return d.data
+  })
+</script>

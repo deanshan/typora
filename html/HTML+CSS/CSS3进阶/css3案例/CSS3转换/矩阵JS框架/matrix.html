@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="sylvester.js"></script>
+	<script>
+	var D = Matrix.Diagonal([4,3,7]);
+	console.log(D.inspect());
+	var A =Matrix.create([
+  [1,0,0],
+  [0,2,0],
+  [0,0,3]
+]);
+	console.log(A.inspect());
+	var B = D.multiply(A);
+	console.log(B.inspect());
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

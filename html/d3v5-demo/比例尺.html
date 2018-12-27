@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script>
+//
+// 创建svg画布
+let svg = d3.select('body')
+            .append('svg')
+            .attr('width', '800px')
+            .attr('height', '500px')
+            .style('background-color', '#ccc')
+let dataset = [100, 500, 200, 400, 150,100,200,300]
+//序数比例尺
+let ordinal = d3.scaleOrdinal()
+                .domain(d3.range(dataset.length))
+                .range(d3.schemeCategory10)
+//线性比例尺
+
+let linear = d3.scaleLinear()
+              .domain([0, d3.max(dataset)])
+              .range([0, 500])
+svg.selectAll('rect')
+   .data(dataset)
+   .enter()
+   .append('rect')
+   .attr('x', 20)
+   .attr('y', function (d, i) {
+     return i * 25
+   })
+   .attr('width', function (d) {
+     return linear(d) //线性比例尺
+   })
+   .attr('height', 20)
+   .style('fill', function (d, i) {
+     return ordinal(i)  //序数比例尺
+   })
+
+</script>

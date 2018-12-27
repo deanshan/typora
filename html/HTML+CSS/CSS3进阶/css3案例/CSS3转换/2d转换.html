@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2D转换</title>
+	<style>
+		.div1{
+			width: 200px;
+			height: 200px;
+			margin: 200px;
+			background: #f0f;
+			/* transform: translateX(30px) ; */
+			/* transform: rotate(-30deg); */
+			/* transform: translateX(100px) rotate(-30deg); */
+			transform: matrix(1,0,0,1,300,200);  /* matrix(1,0,0,1,x,y) */
+			transform: translate(300px, 200px) ;
+
+			/* transform: matrix(1,0,0,1,300,200);  matrix(1,0,0,1,x,y)
+			transform: translate(300px, 200px) ;
+			
+			
+			*/
+			transform: matrix(0,1,-1,0,100,30);  /* matrix(cosθ,sinθ,-sinθ,cosθ,0,0) */
+			transform: rotate(90deg) translate(100px, 30px);
+
+			transform: scale(0.5);
+			
+			transform:matrix(1,0,1,1,0,0); /* matrix(1,tan(θy),tan(θx),1,0,0) */
+			transform: skew(45deg, 0);
+			
+			transform-origin: right top;
+			transform: rotate(90deg);
+			/* transition: all 0.3s; 演示看到变化过程 */
+
+			/* transform: translateX(30px) ;
+			transform: translateY(30px) ;
+			transform: translate(30px,30px) ;
+			
+			position: absolute;
+			left: 50%;
+			margin-left: -100px;
+			transform: translateX(-50%);
+			top: 50%;
+			margin-top: -100px;
+			transform: translateY(-50%); */
+		}
+	</style>
+</head>
+<body>
+	<div class="div1">2D转换</div>
+	
+</body>
+</html>

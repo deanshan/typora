@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>clock</title>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="800" style="background: url(coordinate.png) no-repeat;">此浏览器不支持该标签</canvas>
+</body>
+</html>
+<script type="text/javascript">
+	var canvas = document.querySelector('#canvas');
+	var ctx = canvas.getContext('2d');
+
+	// 同步时间
+	setInterval(runTime,1000);
+	// runTime();
+	function runTime() {
+		// 清除画布以避免叠加显示
+		ctx.clearRect(0,0,canvas.width,canvas.height);
+		// 钟框
+		ctx.save();
+		ctx.beginPath();
+		ctx.lineWidth = "20";
+		ctx.shadowColor = "red";
+		ctx.shadowBlur = 20;
+		ctx.globalAlpha = "0.8";
+		ctx.arc(400,300,200,0,Math.PI*2);
+		var bgColor = ctx.createRadialGradient(400,300,0,400,300,50);
+		bgColor.addColorStop(0 , "rgb(48, 209, 219)");
+		bgColor.addColorStop(1 , "rgb(30, 231, 116)");
+		ctx.fillStyle = bgColor;
+		ctx.closePath();
+		ctx.fill();
+		ctx.stroke();
+		ctx.restore();
+
+		// 钟框内的时间点
+		var n = 0;
+		for (var i = 0; i < 60; i++) {
+			if (i % 5 ==0) {
+				ctx.save();
+				ctx.beginPath();
+				ctx.fillStyle = "red";
+				ctx.shadowColor = "yellow";
+				ctx.shadowBlur = 20;
+				ctx.globalAlpha = "0.9";
+				ctx.translate(400,300);
+				ctx.arc(180*(Math.cos(Math.PI/180*6*i)),180*(Math.sin(Math.PI/180*6*i)),6,0,Math.PI*2);
+				ctx.closePath();
+				ctx.fill();
+				ctx.stroke();
+				ctx.restore();
+
+				// 数字
+				n += 1;
+				ctx.save();
+				ctx.translate(400,300);
+				ctx.font = "30px Arial";
+				ctx.textAlign = "center";
+				ctx.textBaseline = "middle";
+				ctx.fillStyle = "#fff";
+				ctx.shadowColor = "#000";
+				ctx.shadowOffsetX = 2;
+				ctx.shadowOffsetY = 2;
+				ctx.fillText(n,155*(Math.sin(Math.PI-Math.PI/180*30*n)),155*(Math.cos(Math.PI-Math.PI/180*30*n)));
+				ctx.restore();
+
+				
+			}else{
+				ctx.save();
+				ctx.beginPath();
+				ctx.fillStyle = "#000";
+				ctx.shadowColor = "yellow";
+				ctx.shadowBlur = 20;
+				ctx.globalAlpha = "0.6";
+				ctx.translate(400,300);
+				ctx.arc(180*(Math.sin(Math.PI/180*6*i)),180*(Math.cos(Math.PI/180*6*i)),6,0,Math.PI*2);
+				ctx.closePath();
+				ctx.stroke();
+				ctx.fill();
+				ctx.restore();
+			}
+		}
+		
+		//获取本地时间时值
+		var time = new Date();
+		var h = time.getHours(),
+			m = time.getMinutes(),
+			s = time.getSeconds();
+		h = h > 12 ? h-12 : h;
+
+		var hh=(-90 + h * 30 + m / 2) * Math.PI/180;//根据获得的时间值计算出时针的弧度
+        var mm=(-90 + m * 6) * Math.PI/180;//根据获得的时间值计算出分针的弧度
+        var ss=(-90 + s * 6) * Math.PI/180;//根据获得的时间值计算出秒针的弧度
+
+		// 时针60
+		ctx.save();
+		ctx.beginPath();
+		ctx.translate(400,300);
+		// ctx.rotate(h * Math.PI/6 + m * Math.PI/360);每60分走30度
+		ctx.rotate(hh + mm * Math.PI/360);
+		ctx.strokeStyle = "black";
+		ctx.lineCap = "round";
+		ctx.lineWidth = 12;
+		ctx.moveTo(-10,0);
+		ctx.lineTo(60,0);
+		ctx.stroke();
+		ctx.restore();
+
+		// 分钟90
+		ctx.save();
+		ctx.beginPath();
+		ctx.translate(400,300);
+		// ctx.rotate(m * Math.PI/30 + s * Math.PI/1800);每60秒走6度
+		ctx.rotate(mm + ss * Math.PI/1800);
+		ctx.strokeStyle = "yellow";
+		ctx.lineCap = "round";
+		ctx.lineWidth = 8;
+		ctx.moveTo(-20,0);
+		ctx.lineTo(90,0);
+		ctx.stroke();
+		ctx.restore();
+
+		// 秒钟130
+		ctx.save();
+		ctx.beginPath();
+		ctx.translate(400,300);
+		// ctx.rotate(s * Math.PI/30);每秒走6度
+		ctx.rotate(ss);
+		ctx.strokeStyle = "red";
+		ctx.lineCap = "round";
+		ctx.lineWidth = 5;
+		ctx.moveTo(-30,0);
+		ctx.lineTo(130,0);
+		ctx.stroke();
+		ctx.restore();
+
+		// 指针基点
+		ctx.save();
+		ctx.beginPath();
+		ctx.fillStyle = "#fff";
+		ctx.strokeStyle = "#fff";
+		ctx.globalAlpha = "0.8";
+		ctx.arc(400,300,8,0,Math.PI*2);
+		ctx.closePath();
+		ctx.fill();
+		ctx.stroke();
+		ctx.restore();
+	}
+</script>
