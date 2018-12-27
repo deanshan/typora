@@ -1,3 +1,3 @@
-*.js linguist-language=typora
-*.css linguist-language=typora
-*.html linguist-language=typora
+*.js linguist-language=HTML
+*.css linguist-language=HTML
+*.html linguist-language=HTML
