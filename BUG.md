@@ -1,4 +1,25 @@
-关于同步请求，浏览器假死状态下，js进程阻塞GUI进程示例中的未解决问题，示例如下
+
+
+==谷歌浏览器设置字体大小小于浏览器默认的最小字体（12px）==
+
+```css
+.small-font{ 
+    font-size: 12px; 
+    -webkit-transform-origin-x: 0;   //X方向上缩放的中心点
+    -webkit-transform: scale(0.9); 
+    transform: scale(0.9); 
+}
+```
+
+==相邻的span元素之间默认间距(换行或空格都会产生间距)==
+
+```css
+span {
+    float: left;
+}
+```
+
+==关于同步请求，浏览器假死状态下，js进程阻塞GUI进程示例中的未解决问题，示例如下==
 
 ```html
 <style>
