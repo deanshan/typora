@@ -16,23 +16,23 @@
 			float: left;
 		}
 	</style>
-	<script type="text/javascript" src="js/echarts.js"></script>
+
 </head>
 <body>
 	<div id="myChart1"></div>
-	<div id="myChart2"></div>	
+	<div id="myChart2"></div>
 	<div id="myChart3"></div>
 	<div id="myChart4"></div>
 </body>
 </html>
-
+<script type="text/javascript" src="js/echarts.js"></script>
 <script type="text/javascript" src="js/east.js"></script>
 <script type="text/javascript" src="js/west.js"></script>
 <script type="text/javascript" src="js/south.js"></script>
 <script type="text/javascript" src="js/north.js"></script>
 
 <script type="text/javascript">
-	window.onload = function () {
+	// window.onload = function () {
 		var arr1=[],date1=[],
 			arr2=[],date2=[],
 			arr3=[],date3=[],
@@ -43,7 +43,7 @@
 			date1[res.data[1]] = res.data[2];
 			east(arr1,date1,res.data[3]);
 			console.log(res.data);
-			
+
 		}
 		workers.onerror = function (res) {
 			console.log(res);
@@ -55,7 +55,7 @@
 			date2[res.data[1]] = res.data[2];
 			west(arr2,date2,res.data[3]);
 			console.log(res.data);
-			
+
 		}
 		workers.onerror = function (res) {
 			console.log(res);
@@ -67,7 +67,7 @@
 			date3[res.data[1]] = res.data[2];
 			south(arr3,date3,res.data[3]);
 			console.log(res.data);
-			
+
 		}
 		workers.onerror = function (res) {
 			console.log(res);
@@ -79,11 +79,10 @@
 			date4[res.data[1]] = res.data[2];
 			north(arr4,date4,res.data[3]);
 			console.log(res.data);
-			
+
 		}
 		workers.onerror = function (res) {
 			console.log(res);
 		}
-	}
-	
+
 </script>
