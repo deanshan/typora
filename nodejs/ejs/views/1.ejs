@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 直接输出某个值 -->
+  <div><%= name %></div>
+  <!-- 输出一个变量 -->
+  <div><%= json.arr[0].user %></div>
+  <!-- 循环输出 -->
+  <% for(let i = 0; i < json.arr.length; i++) { %>
+    <div>
+      用户名：<%= json.arr[i].user %>
+      密码： <%= json.arr[i].pass %>
+    </div>
+  <% } %>
+  <!-- 输出一个数字 -->
+  <div><%= 12+5 %></div>
+  <!-- 输出一个字符串 -->
+  <div><%= 'asdfasdf' %></div>
+
+  <%
+    var str="<div>000</div>";
+  %>
+<!-- 等号是转译输出，减号是不转译输出 -->
+  <%- str %>
+
+<!-- 输出文件的内容 -->
+  <% for(let i = 0; i < 5; i++) { %>
+    <% include ../a.txt %>
+  <% } %>
+
+<!-- 多个文件时，输出指定文件 -->
+<% if(type === 'admin') { %>
+  <% include ../admin.css %>
+<% } else { %>
+  <% include ../user.css %>
+<% } %>
+
+</body>
+</html>
