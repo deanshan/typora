@@ -1,0 +1,49 @@
+<svg width="527px" height="150px" viewBox="0 0 527 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<filter x="-110.9%" y="-110.9%" width="321.8%" height="321.8%" filterUnits="objectBoundingBox" id="filter-1">
+			<feGaussianBlur stdDeviation="10" in="SourceGraphic"></feGaussianBlur>
+		</filter>
+		<filter x="-122.0%" y="-31.6%" width="344.0%" height="163.2%" filterUnits="objectBoundingBox" id="filter-2">
+			<feGaussianBlur stdDeviation="10" in="SourceGraphic"></feGaussianBlur>
+		</filter>
+		<filter x="-356.8%" y="-71.5%" width="813.5%" height="242.9%" filterUnits="objectBoundingBox" id="filter-3">
+			<feGaussianBlur stdDeviation="10" in="SourceGraphic"></feGaussianBlur>
+		</filter>
+		<filter x="-122.0%" y="-31.6%" width="344.0%" height="163.2%" filterUnits="objectBoundingBox" id="filter-4">
+			<feGaussianBlur stdDeviation="10" in="SourceGraphic"></feGaussianBlur>
+		</filter>
+		<filter x="-356.8%" y="-71.5%" width="813.5%" height="242.9%" filterUnits="objectBoundingBox" id="filter-5">
+			<feGaussianBlur stdDeviation="10" in="SourceGraphic"></feGaussianBlur>
+		</filter>
+	</defs>
+	<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+		<g id="L1" transform="translate(-148.000000, -558.000000)">
+			<g id="ariaL1" transform="translate(118.000000, 142.000000)">
+				<g id="selectL1" transform="translate(54.000000, 203.000000)">
+					<g id="hover" transform="translate(0.000000, 237.000000)">
+						<g id="anchor" transform="translate(451.000000, 37.000000)" fill="#F6BB42">
+							<path d="M3.15541753,10.4222912 L22.2111456,0.894427191 C24.1870596,-0.0935298038 26.5897518,0.707367583 27.5777088,2.68328157 C27.8554196,3.23870331 28,3.85115557 28,4.47213595 L28,23.527864 C28,25.737003 26.209139,27.527864 24,27.527864 C23.3790196,27.527864 22.7665674,27.3832837 22.2111456,27.1055728 L3.15541753,17.5777088 C1.17950354,16.5897518 0.378606151,14.1870596 1.36656315,12.2111456 C1.75361795,11.437036 2.38130792,10.809346 3.15541753,10.4222912 Z" id="Triangle"></path>
+							<path d="M3.15541753,10.4222912 L22.2111456,0.894427191 C24.1870596,-0.0935298038 26.5897518,0.707367583 27.5777088,2.68328157 C27.8554196,3.23870331 28,3.85115557 28,4.47213595 L28,23.527864 C28,25.737003 26.209139,27.527864 24,27.527864 C23.3790196,27.527864 22.7665674,27.3832837 22.2111456,27.1055728 L3.15541753,17.5777088 C1.17950354,16.5897518 0.378606151,14.1870596 1.36656315,12.2111456 C1.75361795,11.437036 2.38130792,10.809346 3.15541753,10.4222912 Z" id="Triangle-Copy" filter="url(#filter-1)"></path>
+						</g>
+						<g id="select_left" stroke="#4FC1E9" stroke-width="4">
+							<g id="shadow">
+								<polyline id="Path-44-Copy-3" filter="url(#filter-2)" points="39.3493893 0.333824897 34.0818892 0.333824897 13.1172385 50.9758779 34.0818892 101.529595 39.3493893 101.529595"></polyline>
+								<polyline id="Path-45-Copy-3" filter="url(#filter-3)" points="9.28028045 28.544161 0.310744188 51.6752012 9.28028045 73.3247801"></polyline>
+							</g>
+							<polyline id="Path-44" points="39.3493893 0.333824897 34.0818892 0.333824897 13.1172385 50.9758779 34.0818892 101.529595 39.3493893 101.529595"></polyline>
+							<polyline id="Path-45" points="9.28028045 28.544161 0.310744188 51.6752012 9.28028045 73.3247801"></polyline>
+						</g>
+						<g id="select_right" transform="translate(403.000000, 0.000000)" stroke="#4FC1E9" stroke-width="4">
+							<g id="shadow">
+								<polyline id="Path-44-Copy-2" filter="url(#filter-4)" transform="translate(13.116075, 50.597885) rotate(-180.000000) translate(-13.116075, -50.597885) " points="26.2321509 0 20.9646507 0 0 50.642053 20.9646507 101.19577 26.2321509 101.19577"></polyline>
+								<polyline id="Path-45-Copy-2" filter="url(#filter-5)" transform="translate(34.553877, 50.561738) rotate(-180.000000) translate(-34.553877, -50.561738) " points="39.0386452 28.1714286 30.0691089 51.3024688 39.0386452 72.9520476"></polyline>
+							</g>
+							<polyline id="Path-44-Copy" transform="translate(13.116075, 50.597885) rotate(-180.000000) translate(-13.116075, -50.597885) " points="26.2321509 0 20.9646507 0 0 50.642053 20.9646507 101.19577 26.2321509 101.19577"></polyline>
+							<polyline id="Path-45-Copy" transform="translate(34.553877, 50.561738) rotate(-180.000000) translate(-34.553877, -50.561738) " points="39.0386452 28.1714286 30.0691089 51.3024688 39.0386452 72.9520476"></polyline>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>

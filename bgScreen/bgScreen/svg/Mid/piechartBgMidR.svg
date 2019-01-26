@@ -1,0 +1,34 @@
+<svg width="559px" height="368px" viewBox="0 0 559 368" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+	<defs>
+		<filter x="-8.9%" y="-10.2%" width="117.9%" height="120.4%" filterUnits="objectBoundingBox" id="filter-1">
+			<feGaussianBlur stdDeviation="10" in="SourceGraphic"></feGaussianBlur>
+		</filter>
+		<filter x="-8.9%" y="-10.2%" width="117.9%" height="120.4%" filterUnits="objectBoundingBox" id="filter-2">
+			<feGaussianBlur stdDeviation="10" in="SourceGraphic"></feGaussianBlur>
+		</filter>
+	</defs>
+	<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+		<g id="Mid" transform="translate(-566.000000, -407.000000)">
+			<g id="areaMid" transform="translate(0.000000, -298.000000)">
+				<g id="chartCR1" transform="translate(105.000000, 439.000000)">
+					<g id="Group-2" transform="translate(3.000000, 134.000000)">
+						<g id="pchart_ot" transform="translate(458.000000, 157.000000)">
+							<g id="frm_ot">
+								<g id="shadow" transform="translate(174.000000, 1.000000)" stroke="#51C1E9" stroke-width="4">
+									<polygon id="Path-27" filter="url(#filter-1)" points="0.0558688559 19.2743266 0.0558688559 278.034898 33.1728119 314.479102 303.762004 314.479102 357.829262 253.81209 357.829262 36.7020379 323.494024 0.746689595 18.1045756 0.746689595"></polygon>
+									<polygon id="Path-27-Copy-2" filter="url(#filter-2)" points="0.0558688559 19.2743266 0.0558688559 278.034898 33.1728119 314.479102 303.762004 314.479102 357.829262 253.81209 357.829262 36.7020379 323.494024 0.746689595 18.1045756 0.746689595"></polygon>
+								</g>
+								<polygon id="Path-27-Copy" stroke="#51C1E9" stroke-width="6" fill-opacity="0.1" fill="#52C2E9" points="174.055869 20.2743266 174.055869 279.034898 207.172812 315.479102 477.762004 315.479102 531.829262 254.81209 531.829262 37.7020379 497.494024 1.7466896 192.104576 1.7466896"></polygon>
+								<polyline id="Path-28" stroke="#4FC1E9" stroke-width="14" points="171.100191 55.2641846 171.100191 20.1062824 192.932594 0.387059243 287.95306 0.387059243"></polyline>
+								<polygon id="Path-29" fill="#B7ECFF" points="533.422496 270.226879 493 314.306052 514.095697 314.306052 533.422496 292.266465"></polygon>
+								<polyline id="Path-30" stroke="#4FC1E9" stroke-width="4" points="174.055869 14.793038 78.4833163 14.793038 6.32299027 93.6907506"></polyline>
+								<ellipse id="Oval-2" fill="#52C2E9" cx="7.37652588" cy="93.4651036" rx="7.37652588" ry="7.39651899"></ellipse>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>
