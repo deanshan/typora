@@ -185,7 +185,7 @@ function linechartR2() {
 				fontFamily: 'RTWSYueGoTrial-Regular',
 				fontWeight: 'bold',
 				fontSize: 30,
-				margin:20
+				margin: 20
 
 			},
 			axisLine: {
@@ -215,7 +215,7 @@ function linechartR2() {
 				fontFamily: 'RTWSYueGoTrial-Regular',
 				fontWeight: 'bold',
 				fontSize: '30',
-				margin:20
+				margin: 20
 			},
 			axisLine: {
 				lineStyle: {

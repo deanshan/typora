@@ -184,6 +184,7 @@ body {
 	margin: 640px 0px 0px 420px;
 	z-index: 99;
 	text-shadow: 0 0 20px #4FC1E9;
+	white-space: nowrap;
 }
 
 .piechartCircleMid {
@@ -346,6 +347,7 @@ body {
 	font-weight: bold;
 	opacity: 0.3;
 	z-index: 3;
+	cursor: pointer;
 }
 
 .sideButton_show {
@@ -773,7 +775,7 @@ td {
 	color: #4FC1E9;
 	height: auto;
 	width: 282px;
-	margin-top: -320px;
+	margin-top: -170px;
 	text-align: center;
 	text-shadow: 0 0 20px #4FC1E9;
 }
@@ -784,7 +786,7 @@ td {
 	font-weight: bold;
 	color: #4FC1E9;
 	width: 282px;
-	margin-top: 220px;
+	margin-top: 160px;
 	text-align: center;
 	text-shadow: 0 0 20px #4FC1E9;
 }

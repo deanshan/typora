@@ -1,0 +1,74 @@
+<body background="img/bg/L1.jpg">
+    <!--title-->
+    <div class=" title titleL1">
+        [ 资源使用情况 Resource Usage1 ]
+    </div>
+    <!--sideButton-->
+    <div class="pos sideButtonGroupL1">
+        <div class="pos sideButton sideButton_show">863数据中心</div>
+        <div class="sideHover_show"></div>
+        <div class="pos sideButton">北艾数据中心A</div>
+        <div class="sideHover"></div>
+        <div class="pos sideButton">北艾数据中心B</div>
+        <div class="sideHover"></div>
+        <div class="pos sideButton">北京数据中心A</div>
+        <div class="sideHover"></div>
+        <div class="pos sideButton">北京数据中心B</div>
+        <div class="sideHover"></div>
+    </div>
+    <!--frame-->
+    <div class="pos frameL1"> </div>
+
+    <!--border-->
+    <div class="pos borderL1"></div>
+
+    <div class="pos sideButtonDomL1">
+        <!--piechartL1-->
+        <div class="pos pchartL1">
+            <div id="wave" class="pos wave"><span></span></div>
+            <div id="piechartDomL1" class="pos piechartL1">
+            </div>
+            <div class="pchartBorderL1"></div>
+        </div>
+        <!--subframe-->
+        <div class="pos subframeBorderL1">
+            <div class="subframeBorderL1_frame">
+                <p class="subframeBorder_numBg">88888</p>
+                <p class="subframeBorder_numCt">234</p>
+                <p class="subframeBorder_word">设备总数</p>
+            </div>
+            <div class="subframeBorderL1_frame">
+                <p class="subframeBorder_numBg">88888</p>
+                <p class="subframeBorder_numCt">163</p>
+                <p class="subframeBorder_word">在线总数</p>
+            </div>
+            <div class="subframeBorderL1_frame">
+                <p class="subframeBorder_numBg">88888</p>
+                <p class="subframeBorder_numCt">71</p>
+                <p class="subframeBorder_word">待激活总数</p>
+            </div>
+        </div>
+        <!--barchartL1-->
+        <div id="barchartDomL1" class="pos barchartL1"></div>
+        <div class="pos bchartBorderL1"></div>
+    </div>
+    <script type="text/javascript">
+        $.getScript("js/left1.js");
+        $(".sideButton").on("click", function() {
+            $(".sideButton").each(function(key, value) {
+                $(this)
+                    .removeClass("sideButton_show")
+                    .next()
+                    .removeClass("sideHover_show")
+                    .addClass("sideHover");
+            })
+            $(this)
+                .addClass("sideButton_show")
+                .next()
+                .addClass("sideHover_show")
+                .removeClass("sideHover");
+
+            $("#wave").children().text(parseInt(Math.random() * 100) + "%");
+        })
+    </script>
+</body>

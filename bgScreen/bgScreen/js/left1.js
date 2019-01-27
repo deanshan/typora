@@ -2,7 +2,6 @@ piechartL1();
 barchartL1();
 piechartWave();
 
-//<< <!--piechart-- >
 function piechartL1() {
 
 	var dom = document.getElementById("piechartDomL1");
@@ -45,16 +44,6 @@ function barchartL1() {
 	var myChart = echarts.init(dom);
 
 	option = {
-		dataset: {
-			source: [
-				['machineNo.', 'machineUsage'],
-				['SH1_R04-01-07', '57'],
-				['SH1_R02-01-02', '60'],
-				['SH1_R01-04-03', '60'],
-				['SH1_R04-05-11', '65'],
-				['SH1_R03-03-06', '69'],
-			]
-		},
 		tooltip: {
 			trigger: 'axis',
 			position: 'top',
@@ -72,10 +61,9 @@ function barchartL1() {
 			bottom: '3%',
 			containLabel: true
 		},
-		itemStyle: {
-			color: '#4FC1E9'
-		},
 		xAxis: {
+			type: 'value',
+			boundaryGap: [0, 0.01],
 			max: 100,
 			axisLine: {
 				show: false,
@@ -95,6 +83,7 @@ function barchartL1() {
 		},
 		yAxis: {
 			type: 'category',
+			data: ['SH1_R04-01-7', 'SH1_R01-04-3', 'SH1_R02-01-2', 'SH1_R04-05-11', 'SH1_R03-03-6', ],
 			axisLine: {
 				show: false,
 			},
@@ -110,21 +99,21 @@ function barchartL1() {
 				fontWeight: 'bold',
 				fontSize: '20',
 			}
+
 		},
 		series: [{
 			type: 'bar',
-			encode: {
-				x: 'machineUsage',
-				y: 'machineNo.'
-			},
 			barCategoryGap: 46,
+			data: [57, 60, 60, 65, 69, ],
+			itemStyle: {
+				color: '#4FC1E9'
+			}
 		}, ]
-	};;
+	};
 	if(option && typeof option === "object") {
 		myChart.setOption(option, true);
 	}
 };
-
 //<<!--wave -->
 function piechartWave() {
 	var wave = (function() {
@@ -162,9 +151,7 @@ function piechartWave() {
 				window.mozRequestAnimationFrame ||
 				window.webkitRequestAnimationFrame ||
 				window.msRequestAnimationFrame ||
-				function(callback) {
-					window.setTimeout(callback, 1000 / 60);
-				};
+				function(callback) { window.setTimeout(callback, 1000 / 60); };
 
 			function loop() {
 				ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -198,10 +185,7 @@ function piechartWave() {
 		function stop() {
 			needAnimate = false;
 		}
-		return {
-			start: start,
-			stop: stop
-		};
+		return { start: start, stop: stop };
 	}());
 	wave.start();
 };
