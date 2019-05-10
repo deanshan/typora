@@ -1,0 +1,344 @@
+{% extends "./common/layout.html" %}
+
+{% block title %}Checkbox, Radio buttons, Toggle buttons / Universe Admin{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <h2 class="content-heading">Checkbox, Radio buttons, Toggle buttons</h2>
+  <div class="main-container">
+    <div class="row">
+      <div class="col-3">
+        <h3>Checkbox</h3>
+
+        <div>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Inactive</span>
+          </label>
+        </div>
+        <div>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" checked>
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Active</span>
+          </label>
+        </div>
+        <div>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" disabled>
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Disabled</span>
+          </label>
+        </div>
+        <div>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" checked disabled>
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Checked and Disabled</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-3">
+        <h3>Radio buttons</h3>
+        <div>
+          <label class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" name="radio">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Inactive</span>
+          </label>
+        </div>
+        <div>
+          <label class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" name="radio" checked>
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Active</span>
+          </label>
+        </div>
+        <div>
+          <label class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" name="radio" disabled>
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Disabled</span>
+          </label>
+        </div>
+        <div>
+          <label class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" name="radio" checked disabled>
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Active</span>
+          </label>
+        </div>
+
+        <div>
+          <label class="custom-control custom-radio custom-radio-simple">
+            <input type="radio" class="custom-control-input" name="radio">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Active</span>
+          </label>
+        </div>
+        <div>
+          <label class="custom-control custom-radio custom-radio-simple custom-radio-simple--secondary">
+            <input type="radio" class="custom-control-input" name="radio">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Active</span>
+          </label>
+        </div>
+        <div>
+          <label class="custom-control custom-radio custom-radio-simple custom-radio-simple--info">
+            <input type="radio" class="custom-control-input" name="radio">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Active</span>
+          </label>
+        </div>
+        <div>
+          <label class="custom-control custom-radio custom-radio-simple custom-radio-simple--danger">
+            <input type="radio" class="custom-control-input" name="radio">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Active</span>
+          </label>
+        </div>
+        <div>
+          <label class="custom-control custom-radio custom-radio-simple custom-radio-simple--success">
+            <input type="radio" class="custom-control-input" name="radio">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Active</span>
+          </label>
+        </div>
+        <div>
+          <label class="custom-control custom-radio custom-radio-simple custom-radio-simple--warning">
+            <input type="radio" class="custom-control-input" name="radio">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Active</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-3">
+        <h3>Toggle buttons</h3>
+        <p>
+          <label class="switch">
+            <input type="checkbox">
+              <span class="switch-slider">
+                <span class="switch-slider__on"></span>
+                <span class="switch-slider__off"></span>
+              </span>
+          </label>
+        </p>
+        <p>
+          <label class="switch">
+            <input type="checkbox" checked>
+                <span class="switch-slider">
+                  <span class="switch-slider__on"></span>
+                  <span class="switch-slider__off"></span>
+                </span>
+          </label>
+        </p>
+        <p>
+          <label class="switch">
+            <input type="checkbox" disabled>
+                <span class="switch-slider">
+                  <span class="switch-slider__on"></span>
+                  <span class="switch-slider__off"></span>
+                </span>
+          </label>
+        </p>
+        <p>
+          <label class="switch">
+            <input type="checkbox" checked disabled>
+                <span class="switch-slider">
+                  <span class="switch-slider__on"></span>
+                  <span class="switch-slider__off"></span>
+                </span>
+          </label>
+        </p>
+
+        <p>
+          <label class="switch-inline">
+            <span class="switch">
+              <input type="checkbox">
+                <span class="switch-slider">
+                  <span class="switch-slider__on"></span>
+                  <span class="switch-slider__off"></span>
+                </span>
+              </span>
+              <span class="switch-inline__text">Enable or disable option</span>
+          </label>
+        </p>
+
+        <p>
+          <label class="switch-inline is-disabled">
+            <span class="switch">
+              <input type="checkbox" disabled checked>
+                <span class="switch-slider">
+                  <span class="switch-slider__on"></span>
+                  <span class="switch-slider__off"></span>
+                </span>
+              </span>
+            <span class="switch-inline__text">Enable or disable option</span>
+          </label>
+        </p>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-6">
+        <h3>Color Checkbox</h3>
+
+        <label class="color-checkbox">
+          <input type="checkbox">
+          <span class="color-checkbox__color color-checkbox__color--primary"></span>
+          <span class="color-checkbox__text">primary</span>
+        </label>
+        <label class="color-checkbox">
+          <input type="checkbox">
+          <span class="color-checkbox__color color-checkbox__color--success"></span>
+          <span class="color-checkbox__text">success</span>
+        </label>
+        <label class="color-checkbox">
+          <input type="checkbox">
+          <span class="color-checkbox__color color-checkbox__color--info"></span>
+          <span class="color-checkbox__text">info</span>
+        </label>
+        <label class="color-checkbox">
+          <input type="checkbox">
+          <span class="color-checkbox__color color-checkbox__color--warning"></span>
+          <span class="color-checkbox__text">warning</span>
+        </label>
+        <label class="color-checkbox">
+          <input type="checkbox">
+          <span class="color-checkbox__color color-checkbox__color--danger"></span>
+          <span class="color-checkbox__text">danger</span>
+        </label>
+        <label class="color-checkbox is-checked">
+          <input type="checkbox" checked>
+          <span class="color-checkbox__color"></span>
+          <span class="color-checkbox__text">#1</span>
+        </label>
+        <label class="color-checkbox">
+          <input type="checkbox">
+          <span class="color-checkbox__color color-checkbox__color--river-bad"></span>
+          <span class="color-checkbox__text">#2</span>
+        </label>
+        <label class="color-checkbox">
+          <input type="checkbox">
+          <span class="color-checkbox__color color-checkbox__color--deep-cerulean"></span>
+          <span class="color-checkbox__text">#3</span>
+        </label>
+        <label class="color-checkbox">
+          <input type="checkbox">
+          <span class="color-checkbox__color color-checkbox__color--bermuda-gray"></span>
+          <span class="color-checkbox__text">#4</span>
+        </label>
+        <label class="color-checkbox">
+          <input type="checkbox">
+          <span class="color-checkbox__color color-checkbox__color--sun-juan"></span>
+          <span class="color-checkbox__text">#5</span>
+        </label>
+        <label class="color-checkbox">
+          <input type="checkbox">
+          <span class="color-checkbox__color color-checkbox__color--big-stone"></span>
+          <span class="color-checkbox__text">#6</span>
+        </label>
+        <label class="color-checkbox">
+          <input type="checkbox">
+          <span class="color-checkbox__color color-checkbox__color--kabul"></span>
+          <span class="color-checkbox__text">#7</span>
+        </label>
+        <label class="color-checkbox">
+          <input type="checkbox">
+          <span class="color-checkbox__color color-checkbox__color--wine-berry"></span>
+          <span class="color-checkbox__text">#8</span>
+        </label>
+        <label class="color-checkbox">
+          <input type="checkbox">
+          <span class="color-checkbox__color color-checkbox__color--killarney"></span>
+          <span class="color-checkbox__text">#9</span>
+        </label>
+        <label class="color-checkbox">
+          <input type="checkbox">
+          <span class="color-checkbox__color color-checkbox__color--deep-sea"></span>
+          <span class="color-checkbox__text">#10</span>
+        </label>
+      </div>
+      <div class="col-lg-6">
+        <h3>Color Radio</h3>
+
+        <label class="color-radio">
+          <input type="radio" name="radio">
+          <span class="color-radio__color color-radio__color--primary"></span>
+          <span class="color-radio__text">primary</span>
+        </label>
+        <label class="color-radio">
+          <input type="radio" name="radio">
+          <span class="color-radio__color color-radio__color--success"></span>
+          <span class="color-radio__text">success</span>
+        </label>
+        <label class="color-radio">
+          <input type="radio" name="radio">
+          <span class="color-radio__color color-radio__color--info"></span>
+          <span class="color-radio__text">info</span>
+        </label>
+        <label class="color-radio">
+          <input type="radio" name="radio">
+          <span class="color-radio__color color-radio__color--warning"></span>
+          <span class="color-radio__text">warning</span>
+        </label>
+        <label class="color-radio">
+          <input type="radio" name="radio">
+          <span class="color-radio__color color-radio__color--danger"></span>
+          <span class="color-radio__text">danger</span>
+        </label>
+        <label class="color-radio is-checked">
+          <input type="radio" name="radio" checked>
+          <span class="color-radio__color"></span>
+          <span class="color-radio__text">#1</span>
+        </label>
+        <label class="color-radio">
+          <input type="radio" name="radio">
+          <span class="color-radio__color color-radio__color--river-bad"></span>
+          <span class="color-radio__text">#2</span>
+        </label>
+        <label class="color-radio">
+          <input type="radio" name="radio">
+          <span class="color-radio__color color-radio__color--deep-cerulean"></span>
+          <span class="color-radio__text">#3</span>
+        </label>
+        <label class="color-radio">
+          <input type="radio" name="radio">
+          <span class="color-radio__color color-radio__color--bermuda-gray"></span>
+          <span class="color-radio__text">#4</span>
+        </label>
+        <label class="color-radio">
+          <input type="radio" name="radio">
+          <span class="color-radio__color color-radio__color--sun-juan"></span>
+          <span class="color-radio__text">#5</span>
+        </label>
+        <label class="color-radio">
+          <input type="radio" name="radio">
+          <span class="color-radio__color color-radio__color--big-stone"></span>
+          <span class="color-radio__text">#6</span>
+        </label>
+        <label class="color-radio">
+          <input type="radio" name="radio">
+          <span class="color-radio__color color-radio__color--kabul"></span>
+          <span class="color-radio__text">#7</span>
+        </label>
+        <label class="color-radio">
+          <input type="radio" name="radio">
+          <span class="color-radio__color color-radio__color--wine-berry"></span>
+          <span class="color-radio__text">#8</span>
+        </label>
+        <label class="color-radio">
+          <input type="radio" name="radio">
+          <span class="color-radio__color color-radio__color--killarney"></span>
+          <span class="color-radio__text">#9</span>
+        </label>
+        <label class="color-radio">
+          <input type="radio" name="radio">
+          <span class="color-radio__color color-radio__color--deep-sea"></span>
+          <span class="color-radio__text">#10</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

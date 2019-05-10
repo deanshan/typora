@@ -1,0 +1,44 @@
+@import "variables";
+
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin mqh($height, $type: min) {
+  @if map_has_key($media-breakpoints-height, $height) {
+    $height: map_get($media-height-breakpoints, $height);
+    @if $type == $height {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-height: $height) {
+      @content;
+    }
+  }
+}
+
+@mixin pseudo-preloader($width: 30px, $height: 30px, $bgc: #000, $animation-duration: 1.2s, $animation-delay: 0s) {
+  content: '';
+  width: $width;
+  height: $height;
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  background-color: $bgc;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  transform: scale(0);
+  animation-name: preloading;
+  animation-duration: $animation-duration;
+  animation-delay: $animation-delay;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve"><g transform="translate(0, 0)">  <polygon points="9 0 7 0 7 7 5 7 5 9 7 9 7 16 9 16 9 14 11 14 11 12 9 12 9 4 11 4 11 2 9 2 9 0" fill="#444444" data-color="color-2"></polygon>
+  <rect x="12" y="1" width="4" height="4" rx="1" ry="1" fill="#444444"></rect>
+  <rect x="12" y="11" width="4" height="4" rx="1" ry="1" fill="#444444"></rect>
+  <rect y="6" width="4" height="4" rx="1" ry="1" fill="#444444"></rect>
+</g></svg>

@@ -1,0 +1,343 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link href="css/shop.css" type="text/css" rel="stylesheet" />
+<link href="css/Sellerber.css" type="text/css"  rel="stylesheet" />
+<link href="css/bkg_ui.css" type="text/css"  rel="stylesheet" />
+<link href="font/css/font-awesome.min.css"  rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.9.1.min.js" type="text/javascript" ></script>
+<script src="js/dist/echarts.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script src="js/Sellerber.js" type="text/javascript"></script>
+<script src="js/shopFrame.js" type="text/javascript"></script>
+
+<script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZQVKW0dvz0tgMy6ZytmY5RxZ"></script>
+<!-- 加载百度地图样式信息窗口 -->
+<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+<!-- 加载城市列表 -->
+<script type="text/javascript" src="http://api.map.baidu.com/library/CityList/1.2/src/CityList_min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js" type="text/javascript"></script>
+<script src="js/respond.min.js"></script>
+<script src="js/css3-mediaqueries.js"  type="text/javascript"></script>
+  <![endif]-->
+<title>首页</title>
+</head>
+
+<body>
+<!---->
+<div class="display_layer"><i class="fa fa-angle-left"></i></div>
+<div class="Introduction_Box">
+  <div class="close_layer"><i class="fa fa-close"></i></div>
+<div id="main" style=""  class="data_sheets"></div>   
+</div>
+<div id="l-map" class="map_style"></div>
+	<div id="result">
+	  <div class="box_inset">
+		 <dl>
+    	<dt>基本操作</dt>
+        <dd>
+                <div class="search_style">
+                 <form action="#" method="get" class="sidebar_form">
+		           <div class="input-group">
+			       <input type="text" name="q" id="jiansuo1" class="form-control" title="请输入关键字进行查询">
+			       <span class="input-group-btn"><a class="btn_flat" href="javascript:" id="open1" onclick="refresh()" ><i class="fa fa-search"></i></a></span>
+		         </div>
+                 </form>
+                </div>
+        </dd>
+        <dd>
+        	<div class="area-text">
+                        <b class="animation-line1"></b>
+                        <h4>口径说明：</h4>
+                         <p class="text_container">
+                            <script>var s = '（当日VLR登记用户数、昨日VLR登记用户数、上月平均值当日语音网络接通率、昨日语音网络接通'; var con = $('.text_container'); var index = 0; var length = s.length; var tId = null; function start(){ con.text(''); tId=setInterval(function(){ con.append(s.charAt(index)); if(index++ === length){ clearInterval(tId); index = 0; start() } },100); } start();</script>
+                        </p>
+                        <b class="animation-line2"></b>
+                    </div>
+        	
+        </dd>
+		  </dl>
+	</div>
+	</div>
+	<!--城市列表-->
+	<input type="text" id="jiansuo" value="">
+	<div class="sel_container"><div class="city_select"><strong id="curCity">北京市</strong> [<a id="curCityText" href="javascript:void(0)">更换城市</a>]</div></div>
+	<div class="map_popup" id="cityList" style="display:none;">
+		<div class="popup_main">
+			<div class="title">城市列表</div>
+			<div class="cityList" id="citylist_container"></div>
+			<button id="popup_close"></button>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	//隐藏显示
+$(function(){
+	var oWidth=$(".Introduction_Box").width();
+	$(".display_layer").click(function(){
+		$(".Introduction_Box").animate({
+			left:50 +'%',
+			marginLeft:-oWidth/2-13,
+		},900);
+		$(this).hide();
+	});
+	$(".close_layer").click(function(){
+		$(".Introduction_Box").animate({
+			left:100 + '%',
+			marginLeft:'',
+		},900);
+		$(".display_layer").show();
+	});
+});
+//初始化宽度、高度  
+$(".map_style").height($(window).height());
+	$(".map_style").width($(window).width());
+	$(".Introduction_Box").width($(window).width()-20);
+  //当文档窗口发生改变时 触发  
+    $(window).resize(function(){
+	 $(".map_style").height($(window).height());
+		$(".map_style").width($(window).width());
+		$(".Introduction_Box").width($(window).width()-20);
+})	
+ require.config({
+            paths: {
+                echarts: './js/dist'
+            }
+        });
+        require(
+            [
+                'echarts',
+				'echarts/theme/macarons',
+                'echarts/chart/line',   // 按需加载所需图表，如需动态类型切换功能，别忘了同时加载相应图表
+                'echarts/chart/bar'
+            ],
+            function (ec,theme) {
+                var myChart = ec.init(document.getElementById('main'),theme);
+               option = {
+    title : {
+        text: '月购买订单交易记录',
+        subtext: '实时获取用户订单购买记录'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['所有订单','待付款','已付款','代发货']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'所有订单',
+            type:'bar',
+            data:[120, 49, 70, 232, 256, 767, 1356, 1622, 326, 200,164, 133],
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            }           
+        },
+        {
+            name:'待付款',
+            type:'bar',
+            data:[26, 59, 30, 84, 27, 77, 176, 1182, 487, 188, 60, 23],
+            markPoint : {
+                data : [
+                    {name : '年最高', value : 1182, xAxis: 7, yAxis: 1182, symbolSize:18},
+                    {name : '年最低', value : 23, xAxis: 11, yAxis: 3}
+                ]
+            },
+           
+			
+        }
+		, {
+            name:'已付款',
+            type:'bar',
+            data:[26, 59, 60, 264, 287, 77, 176, 122, 247, 148, 60, 23],
+            markPoint : {
+                data : [
+                    {name : '年最高', value : 172, xAxis: 7, yAxis: 172, symbolSize:18},
+                    {name : '年最低', value : 23, xAxis: 11, yAxis: 3}
+                ]
+            },
+           
+		}
+		, {
+            name:'代发货',
+            type:'bar',
+            data:[26, 59, 80, 24, 87, 70, 175, 1072, 48, 18, 69, 63],
+            markPoint : {
+                data : [
+                    {name : '年最高', value : 1072, xAxis: 7, yAxis: 1072, symbolSize:18},
+                    {name : '年最低', value : 22, xAxis: 11, yAxis: 3}
+                ]
+            },
+           
+		}
+    ]
+};
+                    
+                myChart.setOption(option);
+            }
+        );	
+function fanhui(){
+	location.href = basePath+"/admin/index.action";
+}
+function refresh(){
+	window.location.reload();
+}
+a();
+function a(){
+// 百度地图API功能
+var aa = $('#jiansuo1').val();
+ var diseSerach = $('#diseSerach').val();
+if(aa=='请输入关键字进行查询'){
+	aa='';
+}
+var map = new BMap.Map("l-map",{mapType:BMAP_HYBRID_MAP});          // 创建地图实例
+var point = new BMap.Point(116.403694,39.927552);  // 创建点坐标
+map.centerAndZoom(point, 5);                 // 初始化地图，设置中心点坐标和地图级别
+
+/* var polyline = new BMap.Polyline([
+                                  new BMap.Point(111.386601, 41.480484),
+                                  new BMap.Point(117.402517, 41.314242),
+                                  new BMap.Point(118.359177, 36.78359)
+                                ], {strokeColor:"blue", strokeWeight:6, strokeOpacity:0.5});
+                                map.addOverlay(polyline); */
+
+map.enableScrollWheelZoom();
+/* map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件 */
+	map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_HYBRID_MAP]}));     //2D图，卫星图
+//	map.addControl(new BMap.MapTypeControl({anchor: BMAP_ANCHOR_TOP_LEFT}));    //左上角，默认地图控件
+	/* map.setCurrentCity("北京");   //由于有3D图，需要设置城市哦 */
+var  mapStyle ={      //此段设置地图的底色样式
+        features: [],//隐藏地图上的poi
+        style : ''+diseSerach+''  //设置地图风格为高端黑
+    }
+map.setMapStyle(mapStyle); 
+/* var MAX = 10;
+var markers = [];
+var pt = null;
+var i = 0;
+for (; i < MAX; i++) {
+   pt = new BMap.Point(Math.random() * 40 + 85, Math.random() * 30 + 21);
+   markers.push(new BMap.Marker(pt));
+}
+ var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});  */
+var customLayer;
+function addCustomLayer(keyword) {
+    if (customLayer) {
+        map.removeTileLayer(customLayer);
+    }
+    customLayer=new BMap.CustomLayer({
+        geotableId: 72216,
+        q: ''+aa+'', //检索关键字
+        tags: '', //空格分隔的多字符串
+        filter: '' //过滤条件,参考http://developer.baidu.com/map/lbs-geosearch.htm#.search.nearby
+    });
+    map.addTileLayer(customLayer);
+    customLayer.addEventListener('hotspotclick',callback);
+}
+addCustomLayer();
+
+function callback(e)//单击热点图层
+{
+        var customPoi = e.customPoi;//poi的默认字段
+        var contentPoi=e.content;//poi的自定义字段
+        var content = '<p style="width:280px;margin:0;line-height:20px;">地址：' + contentPoi.customerName + '销售:'+customPoi.title+'<br/>产品:'+contentPoi.productName+'     演示日期:'+contentPoi.yanshiDate+'</p>';
+        var searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
+            title: customPoi.title, //标题
+            width: 290, //宽度
+            height: 40, //高度
+            panel : "panel", //检索结果面板
+            enableAutoPan : true, //自动平移
+            enableSendToPhone: true, //是否显示发送到手机按钮
+         /*    searchTypes :[
+                BMAPLIB_TAB_SEARCH,   //周边检索
+                BMAPLIB_TAB_TO_HERE,  //到这里去
+                BMAPLIB_TAB_FROM_HERE //从这里出发
+            ] */
+        });
+        var point = new BMap.Point(customPoi.point.lng, customPoi.point.lat);
+        var marker = new BMap.Marker(point);
+        searchInfoWindow.open(marker);
+}
+
+
+document.getElementById("open").onclick = function(){
+	addCustomLayer();
+};
+
+document.getElementById("close").onclick = function(){
+	if (customLayer) {
+        map.removeTileLayer(customLayer);
+    }
+};
+
+// 创建CityList对象，并放在citylist_container节点内
+var myCl = new BMapLib.CityList({container : "citylist_container", map : map});
+
+// 给城市点击时，添加相关操作
+myCl.addEventListener("cityclick", function(e) {
+	// 修改当前城市显示
+	document.getElementById("curCity").innerHTML = e.name;
+
+	// 点击后隐藏城市列表
+	document.getElementById("cityList").style.display = "none";
+});
+
+// 给“更换城市”链接添加点击操作
+document.getElementById("curCityText").onclick = function() {
+	var cl = document.getElementById("cityList");
+	if (cl.style.display == "none") {
+		cl.style.display = "";
+	} else {
+		cl.style.display = "none";
+	}	
+};
+
+// 给城市列表上的关闭按钮添加点击操作
+document.getElementById("popup_close").onclick = function() {
+	var cl = document.getElementById("cityList");
+	if (cl.style.display == "none") {
+		cl.style.display = "";
+	} else {
+		cl.style.display = "none";
+	}	
+};
+}
+
+	
+</script>

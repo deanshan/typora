@@ -1,0 +1,113 @@
+.order-collapse {
+  margin-bottom: 2.4rem;
+  background-color: $color-white;
+  border-top: 3px solid;
+  box-shadow: $box-shadow;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+  overflow: hidden;
+
+  &.green {
+    border-color: #35ae47;
+  }
+
+  &.blue {
+    border-color: $color-blue-dodger;
+  }
+
+  &.gray {
+    border-color: $color-gray-medium;
+  }
+
+  &.purple {
+    border-color: $color-purple;
+  }
+
+  &.coral {
+    border-color: #eb3b48;
+  }
+
+  &.marengo {
+    border-color: $color-marengo-light;
+    background-color: $color-white;
+  }
+
+  &.orange {
+    border-color: #f48221;
+  }
+}
+
+.order-collapse__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.9rem;
+
+  h4 {
+    margin-bottom: 0;
+    font-size: 1.7em;
+  }
+
+  span,
+  .collapse-icon {
+    display: flex;
+    align-items: center;
+    font-size: 1.4em;
+    color: $color-black-light;
+  }
+
+  .collapse-icon {
+    font-size: 7px;
+    margin-left: 5px;
+    position: relative;
+    top: 1px;
+    transition: transform $transition;
+  }
+
+  &.collapsed {
+    .collapse-icon {
+      top: 0;
+      transform: rotate(-180deg);
+      transform-origin: center;
+    }
+  }
+}
+
+.order-collapse-inner {
+  border-top: 1px solid $color-gray-medium;
+
+  p {
+    padding: 1.4rem 2.1rem;
+  }
+}
+
+.accordion {
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+}
+
+.card {
+  border: 0;
+  border-radius: 0;
+}
+
+.card-header {
+  padding: 1.75rem 2rem;
+  border-color: $color-gray-medium;
+
+  &:first-child {
+    border-radius: 0;
+  }
+
+  a {
+    font-size: 2rem;
+    color: #1278c5;
+  }
+}
+
+.card-block {
+  padding: 1.7rem 2.1rem;
+  font-size: 1.4em;
+  line-height: 1.429;
+}

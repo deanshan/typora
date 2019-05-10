@@ -1,0 +1,135 @@
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+
+  &::after {
+    font-family: $font-icon;
+    content: $dropdown-icon-code;
+    border: none;
+    font-size: 6px;
+    margin-right: 0;
+    margin-left: 5px;
+    width: 12px;
+    height: 7px;
+    transform-origin: center;
+    color: #929faa;
+    transition: transform $transition, color .3s ease-in-out;
+    position: relative;
+    top: 2px;
+  }
+
+  &.btn {
+    &::after {
+      color: #fff;
+    }
+  }
+
+  &.btn-secondary,
+  &.btn-select {
+    &::after {
+      color: #929faa;
+    }
+  }
+}
+
+.dropdown.show {
+  .dropdown-toggle {
+    &::after {
+      transform: rotate(-180deg);
+      transform-origin: center;
+    }
+  }
+}
+
+.dropdown-menu {
+  margin-top: .4rem;
+  border: 1px solid #e9ebee;
+  border-radius: .3rem;
+  box-shadow: $box-shadow;
+  animation: fadeInDown .3s cubic-bezier(.23, 1, .32, 1);
+
+  &[x-placement="top-start"] {
+    margin-top: -4px;
+  }
+
+  &__heading {
+    text-transform: uppercase;
+    color: #939daa;
+    font-size: 14px;
+    padding: 0 10px 10px 10px;
+  }
+}
+
+.dropdown-item {
+  display: inline-flex;
+  align-items: center;
+  padding: .6rem 1rem;
+  font-size: 1.4rem;
+  transition: none;
+
+  &:hover {
+    background-color: #d9effd;
+    color: $color-lasur;
+  }
+
+  .badge {
+    margin-left: auto;
+  }
+}
+
+.dropdown {
+  display: inline-flex;
+
+  &.no-arrow {
+    .dropdown-toggle {
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+.control-dropdown {
+  .dropdown-toggle {
+    padding: 7px 6px 3px 6px;
+    font-size: 20px;
+    display: inline-block;
+    margin: 0;
+    line-height: 10px;
+    color: #a1aab5;
+
+    &:hover {
+      color: $color-lasur;
+    }
+  }
+
+  .dropdown-text {
+    font-size: 14px;
+    color: #939daa;
+    padding: 10px;
+  }
+
+  .dropdown-menu {
+    min-width: 143px;
+  }
+
+  .dropdown-radios {
+    padding: 5px 10px 0 10px;
+
+    &__item {
+      &:last-child {
+        .custom-control {
+          margin-bottom: 2px;
+        }
+      }
+    }
+  }
+
+  .custom-control {
+    margin-bottom: 10px;
+  }
+
+  .custom-control-description {
+    font-size: 14px;
+  }
+}

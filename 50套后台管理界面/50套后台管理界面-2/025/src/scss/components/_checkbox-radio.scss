@@ -1,0 +1,371 @@
+.custom-control {
+  padding-left: 0;
+}
+
+.custom-checkbox {
+  &.form-control-plaintext {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .custom-control-indicator {
+    width: 15px;
+    height: 15px;
+    min-width: 15px;
+    min-height: 15px;
+    border-radius: 2px;
+    border: 1px solid #d3d9dd;
+    background-color: #ffffff;
+    transition: border .15s ease-in-out, color .15s ease-in-out;
+    box-shadow: none !important;
+    position: relative;
+  }
+
+  .custom-control-description {
+    padding-left: 8px;
+  }
+
+  .custom-control-input {
+    &:checked ~ .custom-control-indicator {
+      background-image: none;
+      box-shadow: none;
+      background: #fff;
+
+      &::before {
+        content: $icon-checkbox-check-code;
+        font-family: $font-icon;
+        font-size: 15px;
+        color: #3f4145;
+        font-weight: bold;
+        position: absolute;
+        top: -3px;
+        left: 1px;
+        line-height: 1.2rem;
+        height: 16px;
+      }
+    }
+
+    &:disabled ~ .custom-control-indicator {
+      border: 1px solid #d3d9dd;
+      background: #e9ecf1;
+
+      &::before {
+        color: rgba(#3f4145, .5);
+      }
+    }
+  }
+
+  &:hover {
+    .custom-control-indicator {
+      border-color: #1990ea;
+    }
+  }
+}
+
+.custom-radio {
+  .custom-control-indicator {
+    width: 15px;
+    height: 15px;
+    min-width: 15px;
+    min-height: 15px;
+    border-radius: 15px;
+    border: 1px solid #d3d9dd;
+    background-color: #ffffff;
+    transition: border .15s ease-in-out, color .15s ease-in-out;
+    box-shadow: none !important;
+    position: relative;
+    top: 1px;
+  }
+
+  .custom-control-description {
+    padding-left: 8px;
+    margin-top: -2px;
+  }
+
+  .custom-control-input {
+    &:checked ~ .custom-control-indicator {
+      background-image: none;
+      box-shadow: none;
+      background: #fff;
+
+      &::before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        background: #3f4145;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        border-radius: 50%;
+      }
+    }
+
+    &:disabled ~ .custom-control-indicator {
+      border: 1px solid #d3d9dd;
+      background: #e9ecf1;
+
+      &::before {
+        background: rgba(#3f4145, .5);
+      }
+    }
+  }
+
+  &:hover {
+    .custom-control-indicator {
+      border-color: #1990ea;
+    }
+  }
+}
+
+.custom-radio-simple {
+  .custom-control-indicator {
+    border-color: transparent;
+
+    &::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: #3f4145;
+      position: absolute;
+      top: calc(50% - 4px);
+      left: calc(50% - 4px);
+      border-radius: 50%;
+    }
+  }
+
+  .custom-control-input {
+    &:checked ~ .custom-control-indicator {
+      border-color: #d3d9dd;
+    }
+  }
+
+  &--secondary {
+    .custom-control-indicator {
+      &::before {
+        background: #a1aab5;
+      }
+    }
+
+    .custom-control-input {
+      &:checked ~ .custom-control-indicator {
+        border-color: #a1aab5;
+
+        &::before {
+          background: #a1aab5;
+        }
+      }
+    }
+
+    &:hover {
+      .custom-control-indicator {
+        border-color: #a1aab5;
+      }
+    }
+  }
+
+  &--info {
+    .custom-control-indicator {
+      &::before {
+        background: $color-info;
+      }
+    }
+
+    .custom-control-input {
+      &:checked ~ .custom-control-indicator {
+        border-color: $color-info;
+
+        &::before {
+          background: $color-info;
+        }
+      }
+    }
+
+    &:hover {
+      .custom-control-indicator {
+        border-color: $color-info;
+      }
+    }
+  }
+
+  &--danger {
+    .custom-control-indicator {
+      &::before {
+        background: $color-danger;
+      }
+    }
+
+    .custom-control-input {
+      &:checked ~ .custom-control-indicator {
+        border-color: $color-danger;
+
+        &::before {
+          background: $color-danger;
+        }
+      }
+    }
+
+    &:hover {
+      .custom-control-indicator {
+        border-color: $color-danger;
+      }
+    }
+  }
+
+  &--success {
+    .custom-control-indicator {
+      &::before {
+        background: $color-success;
+      }
+    }
+
+    .custom-control-input {
+      &:checked ~ .custom-control-indicator {
+        border-color: $color-success;
+
+        &::before {
+          background: $color-success;
+        }
+      }
+    }
+
+    &:hover {
+      .custom-control-indicator {
+        border-color: $color-success;
+      }
+    }
+  }
+
+  &--warning {
+    .custom-control-indicator {
+      &::before {
+        background: $color-warning;
+      }
+    }
+
+    .custom-control-input {
+      &:checked ~ .custom-control-indicator {
+        border-color: $color-warning;
+
+        &::before {
+          background: $color-warning;
+        }
+      }
+    }
+
+    &:hover {
+      .custom-control-indicator {
+        border-color: $color-warning;
+      }
+    }
+  }
+}
+
+.color-checkbox,
+.color-radio {
+  display: inline-flex;
+  padding: 3px 6px 3px 3px;
+  border-radius: 22px;
+  height: 22px;
+  align-items: center;
+  border: 1px solid transparent;
+
+  input {
+    opacity: 0;
+    width: 0;
+  }
+
+  &__color {
+    width: 14px;
+    height: 14px;
+    min-width: 14px;
+    min-height: 14px;
+    border: 1px solid #d3d9dd;
+    background: #ffffff;
+    border-radius: 14px;
+
+    &--primary {
+      border: 1px solid $color-primary;
+      background: $color-primary;
+    }
+
+    &--success {
+      border: 1px solid $color-success;
+      background: $color-success;
+    }
+
+    &--info {
+      border: 1px solid $color-info;
+      background: $color-info;
+    }
+
+    &--warning {
+      border: 1px solid $color-warning;
+      background: $color-warning;
+    }
+
+    &--danger {
+      border: 1px solid $color-danger;
+      background: $color-danger;
+    }
+
+    &--river-bad {
+      border: 1px solid #455161;
+      background: #455161;
+    }
+
+    &--deep-cerulean {
+      border: 1px solid #048ba8;
+      background: #048ba8;
+    }
+
+    &--bermuda-gray {
+      border: 1px solid #7685ab;
+      background: #7685ab;
+    }
+
+    &--sun-juan {
+      border: 1px solid #32466f;
+      background: #32466f;
+    }
+
+    &--big-stone {
+      border: 1px solid #1b3446;
+      background: #1b3446;
+    }
+
+    &--kabul {
+      border: 1px solid #5d4c46;
+      background: #5d4c46;
+    }
+
+    &--wine-berry {
+      border: 1px solid #5a1846;
+      background: #5a1846;
+    }
+
+    &--killarney {
+      border: 1px solid #31582c;
+      background: #31582c;
+    }
+
+    &--deep-sea {
+      border: 1px solid #0b486b;
+      background: #0b486b;
+    }
+  }
+
+  &__text {
+    font-size: 14px;
+    margin-left: 8px;
+    line-height: 14px;
+    user-select: none;
+  }
+
+  &:hover {
+    border-color: rgba(#0094f2, .8);
+  }
+
+  &.is-checked {
+    border-color: #0094f2;
+  }
+}

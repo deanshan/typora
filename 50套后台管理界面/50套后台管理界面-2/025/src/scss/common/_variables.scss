@@ -1,0 +1,195 @@
+// -------------------------------------------------------------------------------------------------
+// FONTS ............................ Fonts
+// COLORS ........................... Colors
+// BUTTONS .......................... Buttons background-color
+// SIZE ............................. Size
+// TRANSITIONS ...................... TRANSITIONS
+// ICONS ............................ Icons
+// -------------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------------------------
+// FONTS
+// -------------------------------------------------------------------------------------------------
+$font-size: 10px;
+$font-size-text: 1.4em;
+$font-size-text-rem: 1.4rem;
+$font-base: 'Open Sans';
+$font-icon: 'iconfont';
+
+// -------------------------------------------------------------------------------------------------
+// COLORS
+// -------------------------------------------------------------------------------------------------
+$color-red: #e74c3c;
+$color-white: #fff;
+$color-black: #111;
+$color-black-medium: #222;
+$color-black-light: #939daa;
+$color-gray: #939daa;
+$color-gray-light: #ecf2f6;
+$color-gray-medium: #d3d9dd;
+$color-gray-dark: #455161;
+$color-lasur: #0094f2;
+$color-lasur-hover: darken(#0094f2, 3.5%);
+$color-purple: #7552e0;
+$color-purple-hover: #6b49d1;
+$color-purple-focus: #613dd1;
+$color-coral: #f84646;
+$color-coral-light: #fe7645;
+$color-marengo-light: #445464;
+$color-marengo: #394656;
+$color-marengo-dark: #2c3846;
+$color-blue-dodger: #269af1;
+$color-blue-curious: #1d84d1;
+$color-blue-denim: #0b75c1;
+$color-orange: #ff5720;
+$color-orange-tango: #f48221;
+$color-orange-zest: #e77c1a;
+$color-orange-christine: #e56b08;
+$color-green-apple: #35ae47;
+$color-green-lapalma: #1f9a0e;
+$color-green-laurel: #1a7808;
+$color-green-jungle: #229e8f;
+$color-shamrock: #24c79f;
+$color-coral-amaranth: #eb3b48;
+$color-coral-crimson: #e02b34;
+$color-coral-cardinal: #cb2529;
+$color-gray-athens: #f4f5f8;
+$color-gray-athens-dark: #e9ecf1;
+$color-green-mantis: #82c250;
+$color-amarath: #e62265;
+$color-java: #14b8d2;
+$color-chambray: #395b95;
+$color-chambray-hover: darken($color-chambray, 2%);
+$color-chambray-active: darken($color-chambray-hover, 4%);
+$color-kournikova: #ffd875;
+$color-buttercup: #f0b71e;
+$color-emerald: #5fd47e;
+$color-facebook: #3a589b;
+$color-twitter: #598dca;
+$color-google-plus: #d6492f;
+$color-linkedin: #007ab9;
+$color-rss: #e19126;
+$color-bittersweet: #fe6f60;
+$color-rose: #eb48ba;
+$color-scooter: #38c5d8;
+$color-coral: #f87f52;
+$color-puerto-rico: #3bbeb0;
+$color-mandy: #ed5564;
+$color-deep-blush: #e560b1;
+$color-golden: #ffcd56;
+$color-waterlemon: #ff6384;
+$color-fountain-blue: #4bc0c0;
+$color-heliotrope: #ad7cf9;
+$color-yellow-orange: #ff9f40;
+$color-vista-green: #84d7b8;
+$color-cornflower-blue: #5d97f9;
+$color-success: #35ae47;
+$color-success-hover: #1f9a0e;
+$color-success-active: #1a7808;
+$color-info: #269af1;
+$color-info-hover: #1d84d1;
+$color-info-active: #0b75c1;
+$color-secondary: #fff;
+$color-secondary-hover: #f4f5f8;
+$color-secondary-active: #e9ecf1;
+$color-purple: #7552e0;
+$color-purple-hover: #6b49d1;
+$color-purple-active: #613dd1;
+$color-danger: #eb3b48;
+$color-danger-hover: #e02b34;
+$color-danger-active: #cb2529;
+$color-primary: #445464;
+$color-primary-hover: #394656;
+$color-primary-active: #2c3846;
+$color-warning: #f48221;
+$color-warning-hover: #e77c1a;
+$color-warning-active: #e56b08;
+$color-send: #269af1;
+$color-send-hover: #1d84d1;
+$color-send-active: #0b75c1;
+$color-delete: #eb3b48;
+$color-delete-hover: #e02b34;
+$color-delete-active: #cb2529;
+
+// -------------------------------------------------------------------------------------------------
+// SHADOWS
+// -------------------------------------------------------------------------------------------------
+$box-shadow: 0 .2rem .5rem 0 rgba(147, 157, 170, .03);
+
+// -------------------------------------------------------------------------------------------------
+// TRANSITIONS
+// -------------------------------------------------------------------------------------------------
+$transition: .2s;
+$transition-hover: color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s ease-in-out !default;
+
+$dropdown-icon-code: '\E0B8';
+$icon-search: '\E02D';
+$icon-checkbox-check-code: '\E090';
+$icon-switcher-close-code: '\E0A4';
+$icon-switcher-check-code: '\E02E'; // select check
+$icon-arrow-up: '\E020';
+$icon-arrow-down: '\E009';
+$icon-scheduler-left-arrow: '\E0E6';
+$icon-scheduler-right-arrow: '\E02C';
+$icon-close: '\E006';
+$icon-circle-close: '\E0A3';
+$icon-nav-item-active-arrow-right: '\E02C';
+$icon-tree-plus: '\E09F';
+$icon-tree-minus: '\E098';
+$icon-date: '\E0B0';
+
+$breakpoints: (
+  "phone":        400px,
+  "phone-wide":   480px,
+  "phablet":      560px,
+  "tablet-small": 640px,
+  "tablet":       768px,
+  "screen-lg":    998px,
+  "tablet-wide":  1024px,
+  "desktop":      1200px,
+  "desktop-wide": 1440px,
+  "screen-wide-xl": 1600px
+);
+
+// -------------------------------------------------------------------------------------------------
+// SIZE
+// -------------------------------------------------------------------------------------------------
+$navbar: 5.2rem;
+$input: 3.6rem;
+$border-color: rgba(#939daa, .2) !default;
+$border-radius: 3px !default;
+$navbar-height: 52px !default;
+
+$progress-bg-color: #e0e5e8 !default;
+
+$sidebar-bg-color: #455161 !default;
+$sidebar-scrollbar-color: #aeb5bf !default;
+$sidebar-separator-color: #939daa !default;
+$sidebar-user-avatar-placeholder-bg-color: rgba(#939daa, .4) !default;
+$sidebar-user-avatar-placeholder-color: #939daa !default;
+$sidebar-user-dropdown-bg-color: #f3f5f6 !default;
+$sidebar-user-dropdown-item-color: #455161 !default;
+$sidebar-user-dropdown-item-bg-hover-color: #b5bcc5 !default;
+$sidebar-user-dropdown-item-hover-color: #fff !default;
+$sidebar-user-dropdown-menu-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) !default;
+$sidebar-badge-hover-color: #e74c3c !default;
+$sidebar-badge-bg-color: #e74c3c !default;
+$sidebar-badge-bg-hover-color: #fff !default;
+$sidebar-user-dropdown-color: #939daa !default;
+$sidebar-user-dropdown-hover-color: #fff !default;
+$sidebar-collapse-bg-color: #374451 !default;
+$sidebar-collapse-color: #939daa !default;
+$sidebar-nav-link-color: #939daa !default;
+$sidebar-nav-item-border-color: lighten($sidebar-bg-color, 8%) !default;
+$sidebar-nav-item-hover-bg-color: $color-lasur !default;
+$sidebar-nav-item-hover-color: $color-white !default;
+$sidebar-subnav-bg-color: darken($sidebar-bg-color, 2.5%) !default;
+$sidebar-subnav-link-color: #939daa !default;
+$sidebar-subnav-link-hover-color: $color-white !default;
+$sidebar-subnav-link-hover-bg-color: darken($sidebar-bg-color, 5%) !default;
+
+// -------------------------------------------------------------------------------------------------
+// FORMS
+// -------------------------------------------------------------------------------------------------
+$input-border-color: $color-gray-medium;
+$input-border-color-active: $color-lasur;

@@ -1,0 +1,24 @@
+{% extends "./common/layout.html" %}
+
+{% block title %}Tag Editor / Universe Admin{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <h2 class="content-heading">Tag Editor</h2>
+  <div class="main-container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="tag-editor"> <!-- need wrap -->
+          <textarea id="tag-editor" name="tags" placeholder='Write some tags'>foo, bar,buzz</textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="vendor/tagify/tagify.min.js"></script>
+<script src="js/preview/tag-editor.min.js"></script>
+{% endblock %}
