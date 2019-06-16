@@ -1,0 +1,152 @@
+{% extends "./common/layout.html" %}
+
+{% block title %}Alerts, Notifications, Messages / Universe Admin{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <h2 class="content-heading">Alerts, Notifications, Messages</h2>
+  <div class="main-container">
+    <div class="row">
+      <div class="col-lg-7 col-md-12">
+        <h5 class="color-coral"><strong>Welcome message</strong></h5>
+        <div class="alert custom-alert custom-alert--warning" role="alert">
+          <!--<span class="close iconfont iconfont-alert-close custom-alert__close" data-dismiss="alert"></span>-->
+          <div class="custom-alert__top-side">
+            <span class="alert-icon iconfont iconfont-alert-comment custom-alert__icon"></span>
+            <div class="custom-alert__body">
+              <h6 class="custom-alert__heading">
+                Welcome to your account, Dear user!
+              </h6>
+              <div class="custom-alert__content">
+                Please confirm your email address: email@example.com &nbsp;<a href="#" class="link-info link-info--bordered">Resend email</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h5 class="color-puerto-rico mt-5"><strong>Info/hins message</strong></h5>
+        <div class="alert custom-alert custom-alert--info" role="alert">
+          <!--<span class="close iconfont iconfont-alert-close custom-alert__close" data-dismiss="alert"></span>-->
+          <div class="custom-alert__top-side">
+            <span class="alert-icon iconfont iconfont-alert-info custom-alert__icon"></span>
+            <div class="custom-alert__body">
+              <h6 class="custom-alert__heading">
+                Do you know?
+              </h6>
+              <div class="custom-alert__content">
+                <ul class="custom-alert__list">
+                  <li>Fetches trigger events as soon as they occur</li>
+                  <li>Requires setup to be done in Salesforce</li>
+                </ul>
+                <a href="#" class="link-info link-info--bordered">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h5 class="color-green-mantis mt-5"><strong>Success message</strong></h5>
+        <div class="alert custom-alert custom-alert--success" role="alert">
+          <!--<span class="close iconfont iconfont-alert-close custom-alert__close" data-dismiss="alert"></span>-->
+          <div class="custom-alert__top-side">
+            <span class="alert-icon iconfont iconfont-alert-help custom-alert__icon"></span>
+            <div class="custom-alert__body">
+              <h6 class="custom-alert__heading">
+                Congratulation!
+              </h6>
+              <div class="custom-alert__content">
+                <p>You have successfully created a recipe.</p>
+                <a href="#" class="link-info link-info--bordered">Test it now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h5 class="color-mandy mt-5"><strong>Error message</strong></h5>
+        <div class="alert custom-alert custom-alert--danger" role="alert">
+          <!--<span class="close iconfont iconfont-alert-close custom-alert__close" data-dismiss="alert"></span>-->
+          <div class="custom-alert__top-side">
+            <span class="alert-icon iconfont iconfont-alert-warning custom-alert__icon"></span>
+            <div class="custom-alert__body">
+              <h6 class="custom-alert__heading">
+                Data fields errors!
+              </h6>
+              <div class="custom-alert__content">
+                <p>This recipe relies on custom fields that are not in your app. You can add the custom field (from your app) or remove it from recipe.</p>
+                <a href="#" class="link-info link-info--bordered">Remove</a>
+              </div>
+            </div>
+          </div>
+          <div class="custom-alert__bottom-side">
+            <ul class="custom-alert__error-desc">
+              <li class="custom-alert__error-desc-item">
+                <span class="custom-alert__error-desc-number color-error">Line 1</span>
+                <span class="custom-alert__error-desc-error">Has invalid value: App Trigger / Stage (field_name: StageName)</span>
+              </li>
+              <li class="custom-alert__error-desc-item">
+                <span class="custom-alert__error-desc-number color-error">Line 2</span>
+                <span class="custom-alert__error-desc-error">Has invalid value: App Trigger / Stage (field_name: StageName)</span>
+              </li>
+              <li class="custom-alert__error-desc-item">
+                <span class="custom-alert__error-desc-number color-error">Line 3</span>
+                <span class="custom-alert__error-desc-error">Has invalid value: App Trigger / Stage (field_name: StageName)</span>
+              </li>
+            </ul>
+            <div class="custom-alert__tips">
+              After adding custom fields <a href="#" class="color-error">refresh</a> schema. You can learn more about custom data fields
+              <a href="#" class="color-error">here</a>.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-md-12">
+        <h3>Notifications</h3>
+        <div class="alert alert-success" role="alert">
+          <span class="alert-icon iconfont iconfont-info"></span>
+          <strong>Well done!</strong> You successfully read this important alert message.
+          <span class="close iconfont iconfont-alert-close" data-dismiss="alert"></span>
+        </div>
+        <div class="alert alert-info" role="alert">
+          <span class="alert-icon iconfont iconfont-info"></span>
+          <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+          <span class="close iconfont iconfont-alert-close" data-dismiss="alert"></span>
+        </div>
+        <div class="alert alert-warning" role="alert">
+          <span class="alert-icon iconfont iconfont-info"></span>
+          <strong>Warning!</strong> Better check yourself, you're not looking too good.
+          <span class="close iconfont iconfont-alert-close" data-dismiss="alert"></span>
+        </div>
+        <div class="alert alert-danger" role="alert">
+          <span class="alert-icon iconfont iconfont-info"></span>
+          <strong>Oh snap!</strong> Change a few things up and try submitting again.
+          <span class="close iconfont iconfont-alert-close" data-dismiss="alert"></span>
+        </div>
+      </div>
+    </div>
+    <h3 class="mt-4">Messages</h3>
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="alert alert-message alert-message-blue" role="alert">
+          <div class="alert-message-heading">Message</div>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae</p>
+          <span class="close iconfont iconfont-alert-close" data-dismiss="alert"></span>
+        </div>
+        <div class="alert alert-message alert-message-red" role="alert">
+          <div class="alert-message-heading">Message</div>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae</p>
+          <span class="close iconfont iconfont-alert-close" data-dismiss="alert"></span>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="alert alert-message alert-message-orange" role="alert">
+          <div class="alert-message-heading">Message</div>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae</p>
+          <span class="close iconfont iconfont-alert-close" data-dismiss="alert"></span>
+        </div>
+        <div class="alert alert-message alert-message-gray" role="alert">
+          <div class="alert-message-heading">Message</div>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae</p>
+          <span class="close iconfont iconfont-alert-close" data-dismiss="alert"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

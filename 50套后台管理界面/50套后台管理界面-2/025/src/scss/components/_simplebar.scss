@@ -1,0 +1,7 @@
+@import '../../vendor/simplebar/simplebar';
+
+.simplebar-scrollbar {
+  border-radius: 0;
+  background: $sidebar-scrollbar-color;
+  width: 6px;
+}

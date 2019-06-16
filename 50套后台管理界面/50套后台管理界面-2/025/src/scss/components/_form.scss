@@ -1,0 +1,319 @@
+.form-group {
+  margin-bottom: 15px;
+
+  > .form-label,
+  > label:not(.custom-control) {
+    color: #000;
+    margin-bottom: 10px;
+    line-height: 14px;
+    display: inline-block;
+  }
+
+  .form-label {
+    &__desc {
+      font-size: 13px;
+      color: $color-gray;
+      display: inline-block;
+      margin-left: 5px;
+      position: relative;
+      top: 1px;
+    }
+  }
+
+  &.row {
+    > .form-label,
+    > label:not(.custom-control) {
+      margin-bottom: 0;
+      margin-top: 5px;
+    }
+  }
+}
+
+.form-group-no-label {
+  margin-top: 24px;
+}
+
+.form-labels-light {
+  label {
+    color: #939daa;
+  }
+}
+
+.form-text-inline {
+  margin-top: 5px;
+}
+
+input,
+select {
+  height: 3.6rem;
+}
+
+textarea {
+  height: auto;
+}
+
+.form-control {
+  display: inline-flex;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1.4rem;
+  background: $color-white;
+  border: 1px solid $input-border-color;
+  border-radius: $border-radius;
+  cursor: pointer;
+  color: #000;
+
+  &::placeholder {
+    color: #939daa;
+  }
+
+  &:focus {
+    border-color: $color-lasur;
+    color: #000;
+    box-shadow: none;
+    outline: none;
+  }
+
+  &:disabled,
+  &:disabled:focus {
+    background: #e9ecf1;
+    border: 1px solid #d3d9dd;
+  }
+
+  &:read-only {
+    border: 1px solid rgba(#d3d9dd, .6);
+    background: rgba(#e9ecf1, .5);
+
+    &:focus {
+      border-color: $color-lasur;
+    }
+  }
+}
+
+.has-danger {
+  .form-control {
+    border-color: $color-danger;
+  }
+
+  .form-control-danger {
+    background-image: none;
+
+    &:focus {
+      border-color: $color-danger;
+    }
+  }
+}
+
+.has-success {
+  .form-control {
+    border-color: $color-success;
+  }
+
+  .form-control-danger {
+    background-image: none;
+
+    &:focus {
+      border-color: $color-success;
+    }
+  }
+}
+
+.has-warning {
+  .form-control {
+    border-color: $color-warning;
+  }
+
+  .form-control-danger {
+    background-image: none;
+
+    &:focus {
+      border-color: $color-warning;
+    }
+  }
+}
+
+.input-icon {
+  position: absolute;
+  top: calc(50%);
+  transform: translateY(-50%);
+  z-index: 998;
+  color: #c9ced4;
+  font-size: 14px;
+  line-height: 14px;
+  right: 1rem;
+  width: 15px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 2rem;
+
+  &.input-group-icon {
+    .form-control {
+      border-radius: $border-radius;
+    }
+  }
+
+  &.icon-right {
+    .form-control {
+      padding-right: 3.2rem;
+    }
+
+    .input-icon {
+      right: 1rem;
+    }
+  }
+
+  &.icon-left {
+    .form-control {
+      padding-left: 3.2rem;
+    }
+
+    .input-icon {
+      left: 1rem;
+    }
+  }
+}
+
+.input-group-addon {
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: $color-black-light;
+  background: none;
+  border-radius: $border-radius;
+}
+
+@mixin input-group-sm {
+  font-size: (1.4rem !important);
+  padding: 0 1rem;
+}
+
+.input-group-sm {
+  input {
+    height: 2.6rem;
+  }
+
+  & > .input-group-addon {
+    @include input-group-sm;
+  }
+
+  & > .input-group-btn {
+    & > .input-group-addon {
+      &.btn {
+        @include input-group-sm;
+      }
+    }
+
+    & > .btn {
+      @include input-group-sm;
+    }
+  }
+
+  & > .form-control {
+    @include input-group-sm;
+  }
+}
+
+.form-control-sm {
+  @include input-group-sm;
+}
+
+@mixin input-group-lg {
+  font-size: (1.4rem !important);
+  padding: 0 1.5rem;
+}
+
+.input-group-lg {
+  &.icon-right {
+    .form-control {
+      padding-right: 3.8rem;
+    }
+
+    .input-icon {
+      right: 1.5rem;
+    }
+  }
+
+  &.icon-left {
+    .form-control {
+      padding-left: 3.8rem;
+    }
+
+    .input-icon {
+      left: 1.5rem;
+    }
+  }
+
+  input {
+    height: 4.8rem;
+  }
+
+  & > .input-group-addon {
+    @include input-group-lg;
+  }
+
+  & > .input-group-btn {
+    & > .input-group-addon {
+      &.btn {
+        @include input-group-lg;
+      }
+    }
+
+    & > .btn {
+      @include input-group-lg;
+    }
+  }
+
+  & > .form-control {
+    @include input-group-lg;
+  }
+}
+
+.form-control-lg {
+  height: 4.8rem;
+  padding: 0 1.5rem;
+}
+
+.form-control-md {
+  height: 40px;
+}
+
+.form-text {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.input-control {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &-item {
+    color: $color-lasur;
+    margin-left: 10px;
+    font-size: 16px;
+    line-height: 16px;
+    position: absolute;
+    right: -26px;
+    top: calc(50% - 8px);
+
+    &:hover,
+    &:focus {
+      color: $color-lasur-hover;
+    }
+  }
+}
+
+.custom-control-extra-description {
+  .custom-control {
+    margin-bottom: 0;
+  }
+
+  .form-text {
+    margin-top: 0;
+    margin-left: 22px;
+  }
+}

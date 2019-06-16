@@ -1,0 +1,268 @@
+.badge {
+  padding: .4rem .9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: normal;
+  line-height: normal;
+  text-transform: uppercase;
+  border-radius: $border-radius;
+  color: $color-white;
+
+  &-rounded {
+    border-radius: 26px;
+  }
+}
+
+.badge[class*="-outline"] {
+  padding: .3rem .9rem;
+}
+
+.badge-sm {
+  font-size: 11px;
+  padding: 3px 8px;
+}
+
+.badge-success {
+  background: $color-success;
+}
+
+.badge-outline-success {
+  border: 1px solid $color-success;
+  color: $color-success;
+}
+
+.badge-default {
+  background-color: #e1e2e7;
+  color: #939daa;
+}
+
+.badge-outline-default {
+  border: 1px solid #939daa;
+  color: #939daa;
+}
+
+.badge-warning {
+  background-color: $color-warning;
+}
+
+.badge-outline-warning {
+  border: 1px solid $color-warning;
+  color: $color-warning;
+}
+
+.badge-primary {
+  background-color: $color-primary;
+}
+
+.badge-outline-primary {
+  border: 1px solid $color-primary;
+  color: $color-primary;
+}
+
+.badge-info {
+  background-color: $color-info;
+}
+
+.badge-outline-info {
+  border: 1px solid $color-info;
+  color: $color-info;
+}
+
+.badge-danger {
+  background-color: $color-danger;
+}
+
+.badge-outline-danger {
+  border: 1px solid $color-danger;
+  color: $color-danger;
+}
+
+.badge-shamrock {
+  background: $color-shamrock;
+}
+
+.badge-outline-shamrock {
+  border: 1px solid $color-shamrock;
+  color: $color-shamrock;
+}
+
+.badge-buttercup {
+  background: $color-buttercup;
+}
+
+.badge-outline-buttercup {
+  border: 1px solid $color-buttercup;
+  color: $color-buttercup;
+}
+
+.badge-lasur {
+  background: $color-lasur;
+}
+
+.badge-outline-lasur {
+  border: 1px solid $color-lasur;
+  color: $color-lasur;
+}
+
+.badge-bittersweet {
+  background: $color-bittersweet;
+}
+
+.badge-outline-bittersweet {
+  border: 1px solid $color-bittersweet;
+  color: $color-bittersweet;
+}
+
+.badge-rose {
+  background: $color-rose;
+}
+
+.badge-outline-rose {
+  border: 1px solid $color-rose;
+  color: $color-rose;
+}
+
+.badge-outline-circle {
+  font-size: 1.5rem;
+
+  &:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #4272d2;
+    display: inline-block;
+    margin-right: 8px;
+    position: relative;
+    top: 1px;
+  }
+
+  &-deep-blush {
+    &:before {
+      border-color: $color-deep-blush;
+    }
+  }
+
+  &-info {
+    &:before {
+      border-color: $color-info;
+    }
+  }
+
+  &-primary {
+    &:before {
+      border-color: $color-primary;
+    }
+  }
+
+  &-danger {
+    &:before {
+      border-color: $color-danger;
+    }
+  }
+
+  &-success {
+    &:before {
+      border-color: $color-success;
+    }
+  }
+
+  &-warning {
+    &:before {
+      border-color: $color-warning;
+    }
+  }
+}
+
+.badge-circle {
+  font-size: 1.5rem;
+
+  &:before {
+    background: #4272d2;
+    border: none;
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    position: relative;
+    top: 1px;
+  }
+
+  &-sm {
+    &:before {
+      width: 10px;
+      height: 10px;
+      top: 0;
+    }
+  }
+
+  &-deep-blush {
+    &:before {
+      background: $color-deep-blush;
+    }
+  }
+
+  &-info {
+    &:before {
+      background: $color-info;
+    }
+  }
+
+  &-primary {
+    &:before {
+      background: $color-primary;
+    }
+  }
+
+  &-danger {
+    &:before {
+      background: $color-danger;
+    }
+  }
+
+  &-success {
+    &:before {
+      background: $color-success;
+    }
+  }
+
+  &-warning {
+    &:before {
+      background: $color-warning;
+    }
+  }
+
+  &-yellow-orange {
+    &:before {
+      background: $color-yellow-orange;
+    }
+  }
+
+  &-fountain-blue {
+    &:before {
+      background: $color-fountain-blue;
+    }
+  }
+
+  &-heliotrope {
+    &:before {
+      background: $color-heliotrope;
+    }
+  }
+
+  &-golden {
+    &:before {
+      background: $color-golden;
+    }
+  }
+
+  &-waterlemon {
+    &:before {
+      background: $color-waterlemon;
+    }
+  }
+}

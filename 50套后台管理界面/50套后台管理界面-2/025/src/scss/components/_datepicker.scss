@@ -1,0 +1,126 @@
+.flatpickr-calendar {
+  margin-top: 4px;
+  width: 297px;
+  transform: translateY(-.1rem);
+  border: 1px solid #e9ebee;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+
+  &::before,
+  &::after {
+    display: none;
+  }
+
+  &:not(.inline).arrowBottom {
+    margin-top: -4px;
+  }
+
+  &.noCalendar.showTimeInput.hasTime {
+    .flatpickr-time {
+      border-top: none;
+    }
+  }
+}
+
+.flatpickr-input {
+  background: #fff !important;
+}
+
+.flatpickr-month {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  border-bottom: 1px solid #e9ebee;
+}
+
+.flatpickr-current-month {
+  padding-top: 0;
+}
+
+// Hack for firefox
+@-moz-document url-prefix('') {
+  .flatpickr-current-month {
+    top: 16px;
+  }
+}
+
+.flatpickr-prev-month,
+.flatpickr-next-month {
+  position: relative;
+  right: (auto !important);
+  display: (flex !important);
+  align-items: center;
+  justify-content: space-between;
+  height: auto;
+  line-height: normal;
+
+  &:hover {
+    svg {
+      fill: $color-lasur;
+    }
+  }
+}
+
+.flatpickr-weekdays {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  height: 35px;
+  font-size: 1.1rem;
+  text-transform: lowercase;
+  color: $color-black-light;
+}
+
+.flatpickr-days {
+  width: 297px;
+}
+
+.flatpickr-day {
+  display: flex;
+  align-items: center;
+  border: 0;
+  border-radius: $border-radius;
+  color: $color-black;
+  line-height: normal;
+
+  &.today {
+    color: $color-lasur;
+    font-weight: bold;
+    border: 1px solid $color-lasur;
+
+    &:hover {
+      border-color: $color-lasur;
+    }
+  }
+
+  &:hover,
+  &.selected {
+    color: $color-white;
+    background-color: $color-lasur;
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-lasur;
+    }
+  }
+
+  .disabled {
+    &:hover {
+      color: $color-black-light;
+    }
+  }
+
+  &.prevMonthDay,
+  &.nextMonthDay {
+    color: $color-black-light;
+  }
+}
+
+.dayContainer {
+  width: 297px;
+  min-width: 297px;
+  max-width: 297px;
+  padding-right: 1rem;
+  padding-bottom: .9rem;
+  padding-left: 1rem;
+}
