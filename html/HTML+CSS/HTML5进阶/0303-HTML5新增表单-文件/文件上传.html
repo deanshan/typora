@@ -19,7 +19,7 @@
 			3、FileReader：异步读取文件的接口   <br />
 			4、Blob：文件对象的二进制原始数据   <br />
 		</p>
-		
+
 		<h4>二、Blob 对象：Blob对象作为一个装填二进制数据的基本对象，其作用也仅仅是一个容器，而真正的业务功能则需要通		 			过FileReader、URL、Canvas等对象实现</h4>
 		<p><b>方法：</b><br />
 			1、Blob.slice(start ,end ,contentType)：属于Blob对象的一个方法,而File对象是继承Blob对象的,因此File对象也含有slice方法。
@@ -92,7 +92,7 @@
 		 	inpFiles.onchange = function (e) {
 		 		// console.log(e)
 		 		// console.log(e.target.files);
-		 		// inpFiles == this == e.target 
+		 		// inpFiles == this == e.target
 		 		// console.log(this.files);
 		 		var fileList = this.files;
 		 		var pHtml2 = "";
@@ -147,7 +147,7 @@
 				}
 				// 将文件读取为文本，并且可以强制选择文件编码
 				// fileReader.readAsText(fileList,'UTF-8');
-				
+
 				// 以DataURL格式读取文件内容
 				fileReader.readAsDataURL(fileList);
 			}
@@ -227,7 +227,7 @@
 			//已经读取的大小
 			var spliceSize = 0;
 			//每次上传的大小   5M
-			var addSize = 5*1025*1024;  
+			var addSize = 3*1024*1024;
 			//总大小
 			var fileSize;
 			//文件的信息
@@ -250,8 +250,9 @@
 				console.log(file.slice());
 			}
 			fileReader.onload = function(e){
+				console.log(e)
 				spliceSize += e.total;
-				
+
 				console.log(spliceSize ,addSize+spliceSize)
 				//每次加的大小 除以总大小
 				var num = spliceSize / fileSize;
@@ -267,12 +268,12 @@
 				pro.innerHTML = num;
 				pro.style.width = num;
 			}
-			
+
 			function stop(){
 				// 方法终止
 				fileReader.abort();
 				pro.innerHTML = "终止上传！";
-				
+
 				// 事件终止
 				// fileReader.onabort = function(){
 				// 	pro.innerHTML = "终止上传！";
