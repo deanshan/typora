@@ -246,16 +246,15 @@
 
     // B.x = 3;
     // B.m() // 3
-} {
-    // class Person {
-    //     constructor() {
-    //         this.x = 111;
-    //     }
-    //     static getName() {}
-    //     getAge() {}
-    // }
-    // class Human extends Person {
-
-    // }
-    // console.log(Human.__proto__)
 }
+    class Person {
+        constructor() {
+            this.x = 111;
+        }
+        static getName() {}
+        getAge() {}
+    }
+    class Human extends Person {
+
+    }
+    console.log(Human.__proto__)
