@@ -1,4 +1,4 @@
-{ // function Person() {
+ // function Person() {
     //     this.age = 20;
     //     this.toString = function () {}
     // }
@@ -18,9 +18,7 @@
     // console.log('Object.keys:' + Object.keys(p)); //自身的+通过Object.defineProperty()添加的可枚举
 
     // console.log('JSON.stringify:' + JSON.stringify(p)); //自身的+通过Object.defineProperty()添加的可枚举
-}
-
-{ // class Person {
+// class Person {
     //     constructor() {
     //         this.age = 20;
     //     }
@@ -55,9 +53,7 @@
     // console.log('Object.keys:' + Object.keys(p)); //toString\valueOf是类内部定义的方法，是不可枚举的
 
     // console.log('JSON.stringify:' + JSON.stringify(p)); //自身的+通过Object.defineProperty()添加的可枚举
-}
-
-{ // const MyPerson = class Person {
+ // const MyPerson = class Person {
     //     getName() {
     //         return Person.name;
     //     }
@@ -74,7 +70,7 @@
     //     }
     // }('lisi');
     // console.log(person.sayName());
-} {
+
     // class Person {
     //     constructor(name) {
     //         this.age = name;
@@ -95,7 +91,7 @@
     // getName();
     // console.log(Person.prototype)
 
-} {
+
     // class Person {
     //     constructor() {}
     //     set age(value) {
@@ -122,7 +118,7 @@
     // Person.getName();
     // p.getName();
 
-} {
+
     // class Person {
     //     static getAge() {
     //         this.setAge();
@@ -154,7 +150,7 @@
     //     p.age = 30;
     //     console.log(p.age);
     //     Person.getAge()
-} {
+
     // class Person {
     //     constructor(x, y) {
     //         this.x = x;
@@ -180,7 +176,7 @@
     // Human.getName();
     // h.getAge();
     // console.log(h.x, h.y, h.z);
-} {
+
     // class Person {
     //     constructor() {
     //         this.x = 21;
@@ -203,7 +199,7 @@
     // }
     // let h = new Human();
 
-} {
+
     // class Parent {
     //     static myMethod(msg) {
     //         console.log('static', msg);
@@ -225,7 +221,7 @@
 
     // var child = new Child();
     // child.myMethod(2); // instance 2
-} {
+
     // class A {
     //     constructor() {
     //         this.x = 1;
@@ -246,15 +242,15 @@
 
     // B.x = 3;
     // B.m() // 3
-}
-    class Person {
-        constructor() {
-            this.x = 111;
-        }
-        static getName() {}
-        getAge() {}
-    }
-    class Human extends Person {
 
-    }
-    console.log(Human.__proto__)
+    // class Person {
+    //     constructor() {
+    //         this.x = 111;
+    //     }
+    //     static getName() {}
+    //     getAge() {}
+    // }
+    // class Human extends Person {
+
+    // }
+    // console.log(Human.__proto__)
