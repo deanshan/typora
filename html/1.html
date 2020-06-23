@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        html {
+            background: -webkit-radial-gradient(center, ellipse, #430d6d 0%, #000000 100%);
+            background: radial-gradient(ellipse at center, #430d6d 0%, #000000 100%);
+            height: 100%;
+        }
+
+        .stage {
+            perspective: 1000px;
+            -webkit-perspective: 1000px;
+            width: 20em;
+            height: 20em;
+            left: 50%;
+            top: 50%;
+            margin-left: -10em;
+            margin-top: -10em;
+            position: absolute;
+        }
+
+        .cube {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            transform: rotateX(-20deg) rotateY(-20deg);
+            animation: 6s spin linear infinite;
+        }
+
+        .cube * {
+            background: -webkit-linear-gradient(left, rgba(54, 226, 248, 0.5) 0px, rgba(54, 226, 248, 0.5) 3px, rgba(0, 0, 0, 0) 0px), -webkit-linear-gradient(top, rgba(54, 226, 248, 0.5) 0px, rgba(54, 226, 248, 0.5) 3px, rgba(0, 0, 0, 0) 0px);
+            background-size: 2.5em 2.5em;
+
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(54, 226, 248, 0.5);
+            box-shadow: 0 0 5em rgba(0, 128, 0, 0.4);
+
+
+        }
+
+        .font {
+            transform: translateZ(50px);
+        }
+
+        .back {
+            transform: rotateX(180deg) translateZ(50px);
+        }
+
+        .left {
+            transform: rotateY(-90deg) translateZ(50px);
+        }
+
+        .right {
+            transform: rotateY(90deg) translateZ(50px);
+        }
+
+        .top {
+            transform: rotateX(90deg) translateZ(50px);
+        }
+
+        .bottom {
+            transform: rotateX(-90deg) translateZ(50px);
+        }
+
+
+        @keyframes spin {
+            from {
+                -webkit-transform: translateZ(-10em) rotateX(0) rotateY(0deg);
+                transform: translateZ(-10em) rotateX(0) rotateY(0deg);
+            }
+
+            to {
+                -webkit-transform: translateZ(-10em) rotateX(360deg) rotateY(360deg);
+                transform: translateZ(-10em) rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+        .cube *:before {
+            display: block;
+            background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0) 30%, rgba(0, 128, 0, 0.2) 100%);
+            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 30%, rgba(0, 128, 0, 0.2) 100%);
+            content: '';
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stage">
+        <div class="cube">
+            <div class="font"></div>
+            <div class="back"></div>
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="top"></div>
+            <div class="bottom"></div>
+        </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>骰子</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        html {
+            background: radial-gradient(ellipse at center, #430d6d 0%, #000000 100%);
+            height: 100%;
+        }
+
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        .stage {
+            perspective: 1000px;
+            -webkit-perspective: 1000px;
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            left: 50%;
+            top: 35%;
+            transform: translate(-50%, -50%);
+        }
+
+        ul.cube {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            /* top: 50%;
+            left: 50%; */
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            transform: rotateX(-20deg) rotateY(-20deg);
+            /* transform: translate(-50%, -40%) rotateZ(45deg); */
+            /* transform-origin: center center -200px;
+            -webkit-transform-origin: center center -200px; */
+            /* animation: rotateY 5s linear infinite; */
+        }
+
+        ul.cube li {
+            /* width: 100%;
+            height: 100%;
+            text-align: center;
+            font: bold 300px/1.0 '隶书';
+            position: absolute;
+            opacity: 0.5; */
+            background: -webkit-linear-gradient(left, rgba(54, 226, 248, 0.5) 0px, rgba(54, 226, 248, 0.5) 3px, rgba(0, 0, 0, 0) 0px), -webkit-linear-gradient(top, rgba(54, 226, 248, 0.5) 0px, rgba(54, 226, 248, 0.5) 3px, rgba(0, 0, 0, 0) 0px);
+            background-size: 50px 50px;
+
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid rgba(54, 226, 248, 0.5);
+            box-shadow: 0 0 5em rgba(0, 128, 0, 0.4);
+
+        }
+
+        ul.cube li:nth-child(1) {
+            /* background-color: rgba(255, 0, 0, 0.2); */
+            transform: translateZ(0);
+        }
+
+        ul.cube li:nth-child(2) {
+            /* background-color: rgba(255, 165, 0, 0.2); */
+            transform: translateX(-400px) rotateY(-90deg);
+            transform-origin: right;
+        }
+
+        ul.cube li:nth-child(3) {
+            /* background-color: rgba(255, 255, 0, 0.2); */
+            transform: translateX(400px) rotateY(90deg);
+            transform-origin: left;
+        }
+
+        ul.cube li:nth-child(4) {
+            /* background-color: rgba(0, 128, 0, 0.2); */
+            transform: translateY(400px) rotateX(-90deg);
+            transform-origin: top;
+        }
+
+        ul.cube li:nth-child(5) {
+            /* background-color: rgba(0, 255, 255, 0.2); */
+            transform: translateY(-400px) rotateX(90deg);
+            transform-origin: bottom;
+        }
+
+        ul.cube li:nth-child(6) {
+            /* background-color: rgba(0, 0, 255, 0.2); */
+            transform: translateZ(-400px);
+        }
+
+        @keyframes rotateY {
+            from {
+                transform: translateZ(-10em) rotateX(0) rotateY(0deg);
+            }
+
+            to {
+                transform: translateZ(-10em) rotateX(360deg) rotateY(360deg);
+            }
+
+            /* to {
+                transform: translate(-50%, -40%) rotateZ(45deg) rotateX(0deg);
+            }
+
+            from {
+                transform: translate(-50%, -40%) rotateZ(45deg) rotateX(360deg);
+            } */
+        }
+
+        #heart {
+            width: 200px;
+            height: 320px;
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            transform-style: preserve-3d;
+            /* -webkit-perspective: 800;
+            perspective: 100; */
+            /* transform-origin: 50% 50% 160px;
+            -webkit-transform-origin: 50% 50% 160px; */
+            animation: rotate 20s linear infinite;
+        }
+
+        #heart li {
+            position: absolute;
+            width: 200px;
+            height: 320px;
+            /* border: 2px solid red; */
+            border-width: 2px;
+            border-style: solid;
+            border-radius: 53% 50% 10%/40% 50%;
+            border-left: 0;
+            border-bottom: 0;
+        }
+
+        @keyframes rotate {
+            to {
+                transform: translate(-50%, -50%) rotateY(0deg);
+            }
+
+            from {
+                transform: translate(-50%, -50%) rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="heart"></ul>
+    <div class="stage">
+        <ul class="cube">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        let heart = document.querySelector('#heart')
+        for (let i = 0; i < 36; i++) {
+            let lis = document.createElement('li')
+            lis.style.transform = `rotateY(${10 * i}deg) rotateZ(43deg) translateX(65px)`
+            lis.style.borderColor = "#" + Math.random().toString().slice(-6)
+            heart.appendChild(lis)
+        }
+        setInterval(function() {
+            let lis = document.querySelectorAll('#heart li')
+            for (let i = 0; i < lis.length; i++) {
+                lis[i].style.borderColor = "#" + Math.random().toString().slice(-6)
+            }
+        }, 2000)
+    </script>
+</body>
+
+</html>
