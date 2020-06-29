@@ -1,9 +1,0 @@
-1、下载phpstudy
-2/解压，安装
-3、点击快捷方式。运行 PHPstudy，=>  
-?4  更改端口
-其他选项菜单  => 端口常规设置 =>  httph端口设置
-
-5/ 找到WWW文件夹
-6/ 放置项目
-7、运行    localhost:端口号/worker/index.html
